@@ -4,15 +4,36 @@ import { customElement, property } from 'lit/decorators.js';
 /**
  * A clickable button component.
  * 
+ * ## Installation
+ * ```sh
+ * npm install @objekt/web-components/button
+ * ```
+ * 
+ * @example
+ *
+ * ```html
+ * Primary:
+ * 
+ * <obj-button label="Primary" type="primary"></obj-button>
+ * <obj-button label="Disabled" type="primary" disabled></obj-button>
+ * <obj-button label="Invert" type="primary" invert></obj-button>
+ * 
+ * Secondary:
+ * 
+ * <obj-button label="Secondary" type="secondary"></obj-button>
+ * <obj-button label="Disabled" type="secondary" disabled></obj-button>
+ * <obj-button label="Invert" type="secondary" invert></obj-button>
+ * ```
+ * 
  * @element obj-button
  * 
  * @property {string} [type='secondary'] - The button display type. e.g. primary, secondary.
  * @property {string} [label=''] - The button display label.
- * @property {boolean} [invert] = Set to invert the component colours for rendering on dark backgrounds.
+ * @property {boolean} [invert] - Set to invert the component colours for rendering on dark backgrounds.
  * 
- * @fires click - When the button is clicked.
+ * @fires click - Dispatched when the button is clicked.
  * 
- * @csspart button
+ * @csspart button - The button container.
  * 
  * @cssprop --obj-button-border-radius
  * @cssprop --obj-button-padding
@@ -47,21 +68,13 @@ import { customElement, property } from 'lit/decorators.js';
  * @cssprop --obj-button-secondary-invert-background
  * @cssprop --obj-button-secondary-invert-border
  * @cssprop --obj-button-secondary-invert-font-color
- * 
- * @example
- * ```html
- *   <obj-button
- *     type="primary|secondary"
- *     label="Hello">
- *   </obj-button>
- * ```
  */
 @customElement('obj-button')
 export class Button extends LitElement {
 
-  @property() public type = 'secondary';
-  @property() public label = '';
-  @property() public invert = false;
+  @property({ type: 'string', reflect: true }) public type = 'secondary';
+  @property({ type: 'string', reflect: true }) public label = '';
+  @property({ type: 'string', reflect: true }) public invert = false;
 
 	// ------------
 	// CONSTRUCTORS

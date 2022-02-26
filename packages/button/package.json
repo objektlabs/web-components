@@ -1,12 +1,20 @@
 {
-  "name": "@wcd/jn42lm1.button",
-  "version": "0.0.0",
-  "description": "UI ",
+  "name": "@objekt/obj-button",
+  "version": "0.0.1",
+  "description": "A clickable button component.",
   "license": "ISC",
   "type": "module",
-  "homepage": "{{ homepage }}",
+  "homepage": "https://objektlabs.github.io/web-components/packages/button",
   "scripts": {
-    "serve": "npx wcd-cli@latest serve rP8cTzQ8QFwJn9GxWCR3 --open"
+    "docs": "npx web-component-analyzer **/*.{js,ts} --outFile README.md",
+    "build": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lit": "^2.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.5",
+    "web-component-analyzer": "^1.1.6"
+  }
 }
