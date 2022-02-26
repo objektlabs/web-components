@@ -1,0 +1,12 @@
+{
+  "name": "@wcd/jn42lm1.button",
+  "version": "0.0.0",
+  "description": "UI ",
+  "license": "ISC",
+  "type": "module",
+  "homepage": "{{ homepage }}",
+  "scripts": {
+    "serve": "npx wcd-cli@latest serve rP8cTzQ8QFwJn9GxWCR3 --open"
+  },
+  "dependencies": {}
+}

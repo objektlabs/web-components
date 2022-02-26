@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <script src="./dist/index.js" type="module"></script>
+
+  <style>
+    h1 {
+      font-family: sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    figure {
+      padding: 30px;
+      border-radius: 10px;
+      background-color: #eeeeee;
+    }
+
+    figure>* {
+      margin: 5px;
+    }
+
+    figure.dark {
+      background-color: #333333;
+    }
+
+    figcaption {
+      font-family: sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <figure>
+    <figcaption>Primary</figcaption>
+    <obj-button label="Primary" type="primary"></obj-button>
+    <obj-button label="Disabled" type="primary" disabled></obj-button>
+    <obj-button label="Invert" type="primary" invert></obj-button>
+  </figure>
+
+  <figure>
+    <figcaption>Secondary</figcaption>
+    <obj-button label="Secondary" type="secondary"></obj-button>
+    <obj-button label="Disabled" type="secondary" disabled></obj-button>
+    <obj-button label="Invert" type="secondary" invert></obj-button>
+  </figure>
+</body>
+
+</html>
