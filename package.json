@@ -13,7 +13,8 @@
     "url": "https://github.com/objektlabs/web-components/issues"
   },
   "scripts": {
-    "build": "cd packages/button && npm run build && cd ../..",
+    "docs": "cd packages/button && npm ci && npm run docs && cd ../..",
+    "build": "cd packages/button && npm ci && npm run build && cd ../..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
