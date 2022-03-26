@@ -72,9 +72,9 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement('obj-button')
 export class Button extends LitElement {
 
-  @property({ type: 'string', reflect: true }) public type = 'secondary';
-  @property({ type: 'string', reflect: true }) public label = '';
-  @property({ type: 'string', reflect: true }) public invert = false;
+  @property({ type: String, reflect: true }) public type = 'secondary';
+  @property({ type: String, reflect: true }) public label = '';
+  @property({ type: Boolean, reflect: true }) public invert = false;
 
 	// ------------
 	// CONSTRUCTORS
@@ -121,23 +121,23 @@ export class Button extends LitElement {
 	 * 
 	 * @type {CSSResultGroup}
 	 */
-	static get styles() {
+	static override get styles() {
 
 		return [
 			css`
 				/* HOST */
 
-        :host {
-          display: inline-flex;
-        }
+				:host {
+					display: inline-flex;
+				}
 
 				.container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
 
-          width: 100%;
+					width: 100%;
 
 					border-radius: var(--obj-button-border-radius, 0px);
 					padding: var(--obj-button-padding, 10px);
@@ -211,7 +211,7 @@ export class Button extends LitElement {
 	 * 
 	 * @returns {TemplateResult} The updated DOM template.
 	 */
-	render() {
+	override render() {
 
 		return html`
 			<div part="button" class="container">${this.label}</div>

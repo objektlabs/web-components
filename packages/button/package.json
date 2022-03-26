@@ -3,17 +3,23 @@
   "version": "0.0.1",
   "description": "A clickable button component.",
   "license": "ISC",
-  "type": "module",
   "homepage": "https://objektlabs.github.io/web-components/packages/button",
   "scripts": {
-    "docs": "npx web-component-analyzer **/*.{js,ts} --outFile README.md",
     "build": "npx tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds --config=../web-dev-server.config.js --watch\"",
+    "docs": "npx web-component-analyzer **/*.{js,ts} --outFile README.md",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds --config=../../.storybook/server.mjs --watch\"",
+    "storybook:build": "tsc && npm run analyze -- --exclude dist && build-storybook"
   },
   "dependencies": {
     "lit": "^2.2.0"
   },
   "devDependencies": {
+    "@web/dev-server": "^0.1.30",
+    "@web/dev-server-storybook": "^0.4.3",
+    "@webcomponents/webcomponentsjs": "^2.6.0",
+    "concurrently": "^7.0.0",
     "typescript": "^4.5.5",
     "web-component-analyzer": "^1.1.6"
   }

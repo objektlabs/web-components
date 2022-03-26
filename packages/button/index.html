@@ -3,6 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
+
+  <title>Button</title>
+
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../node_modules/lit/polyfill-support.js"></script>
+
   <script type="module" src="./dist/obj-button.js"></script>
 
   <style>
@@ -19,7 +25,7 @@
       background-color: #eeeeee;
     }
 
-    figure>* {
+    figure > * {
       margin: 5px;
     }
 
@@ -39,6 +45,8 @@
 </head>
 
 <body>
+  <h1>Button</h1>
+  
   <figure>
     <figcaption>Primary</figcaption>
     <obj-button label="Primary" type="primary"></obj-button>
