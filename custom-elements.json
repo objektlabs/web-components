@@ -1,0 +1,476 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "packages/button/components/obj-button.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A clickable button component.\n\n## Installation\n```sh\nnpm install @objekt/web-components/button\n```",
+          "name": "Button",
+          "cssProperties": [
+            {
+              "description": "Hello World",
+              "name": "--obj-button-border-radius"
+            },
+            {
+              "name": "--obj-button-padding"
+            },
+            {
+              "name": "--obj-button-text-align"
+            },
+            {
+              "name": "--obj-button-primary-background"
+            },
+            {
+              "name": "--obj-button-primary-border"
+            },
+            {
+              "name": "--obj-button-primary-font-color"
+            },
+            {
+              "name": "--obj-button-primary-font-family"
+            },
+            {
+              "name": "--obj-button-primary-font-size"
+            },
+            {
+              "name": "--obj-button-primary-font-weight"
+            },
+            {
+              "name": "--obj-button-primary-disabled-background"
+            },
+            {
+              "name": "--obj-button-primary-disabled-border"
+            },
+            {
+              "name": "--obj-button-primary-disabled-font-color"
+            },
+            {
+              "name": "--obj-button-primary-invert-background"
+            },
+            {
+              "name": "--obj-button-primary-invert-border"
+            },
+            {
+              "name": "--obj-button-primary-invert-font-color"
+            },
+            {
+              "name": "--obj-button-secondary-background"
+            },
+            {
+              "name": "--obj-button-secondary-border"
+            },
+            {
+              "name": "--obj-button-secondary-font-color"
+            },
+            {
+              "name": "--obj-button-secondary-font-family"
+            },
+            {
+              "name": "--obj-button-secondary-font-size"
+            },
+            {
+              "name": "--obj-button-secondary-font-weight"
+            },
+            {
+              "name": "--obj-button-secondary-disabled-background"
+            },
+            {
+              "name": "--obj-button-secondary-disabled-border"
+            },
+            {
+              "name": "--obj-button-secondary-disabled-font-color"
+            },
+            {
+              "name": "--obj-button-secondary-invert-background"
+            },
+            {
+              "name": "--obj-button-secondary-invert-border"
+            },
+            {
+              "name": "--obj-button-secondary-invert-font-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The button container.",
+              "name": "button"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "default": "'secondary'",
+              "description": "The button display type. e.g. primary, secondary.",
+              "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "default": "''",
+              "description": "The button display label.",
+              "attribute": "label",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "invert",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Set to invert the component colors for rendering on dark backgrounds.",
+              "attribute": "invert",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "click",
+              "type": {
+                "text": "Event"
+              },
+              "description": "Dispatched when the button is clicked."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "'secondary'",
+              "description": "The button display type. e.g. primary, secondary.",
+              "fieldName": "type"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The button display label.",
+              "fieldName": "label"
+            },
+            {
+              "name": "invert",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Set to invert the component colors for rendering on dark backgrounds.",
+              "fieldName": "invert"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "obj-button",
+          "summary": "This is MyElement",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Button",
+          "declaration": {
+            "name": "Button",
+            "module": "packages/button/components/obj-button.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "obj-button",
+          "declaration": {
+            "name": "Button",
+            "module": "packages/button/components/obj-button.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/text-field/components/obj-text-field.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A simple text input component.\n\n## Installation\n```sh\nnpm install @objekt/web-components/text-field\n```",
+          "name": "TextField",
+          "cssProperties": [
+            {
+              "name": "--obj-text-field-border-radius"
+            },
+            {
+              "name": "--obj-text-field-padding"
+            },
+            {
+              "name": "--obj-text-field-text-align"
+            },
+            {
+              "name": "--obj-text-field-primary-background"
+            },
+            {
+              "name": "--obj-text-field-primary-border"
+            },
+            {
+              "name": "--obj-text-field-primary-font-color"
+            },
+            {
+              "name": "--obj-text-field-primary-font-family"
+            },
+            {
+              "name": "--obj-text-field-primary-font-size"
+            },
+            {
+              "name": "--obj-text-field-primary-font-weight"
+            },
+            {
+              "name": "--obj-text-field-primary-disabled-background"
+            },
+            {
+              "name": "--obj-text-field-primary-disabled-border"
+            },
+            {
+              "name": "--obj-text-field-primary-disabled-font-color"
+            },
+            {
+              "name": "--obj-text-field-primary-invert-background"
+            },
+            {
+              "name": "--obj-text-field-primary-invert-border"
+            },
+            {
+              "name": "--obj-text-field-primary-invert-font-color"
+            },
+            {
+              "name": "--obj-text-field-secondary-background"
+            },
+            {
+              "name": "--obj-text-field-secondary-border"
+            },
+            {
+              "name": "--obj-text-field-secondary-font-color"
+            },
+            {
+              "name": "--obj-text-field-secondary-font-family"
+            },
+            {
+              "name": "--obj-text-field-secondary-font-size"
+            },
+            {
+              "name": "--obj-text-field-secondary-font-weight"
+            },
+            {
+              "name": "--obj-text-field-secondary-disabled-background"
+            },
+            {
+              "name": "--obj-text-field-secondary-disabled-border"
+            },
+            {
+              "name": "--obj-text-field-secondary-disabled-font-color"
+            },
+            {
+              "name": "--obj-text-field-secondary-invert-background"
+            },
+            {
+              "name": "--obj-text-field-secondary-invert-border"
+            },
+            {
+              "name": "--obj-text-field-secondary-invert-font-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The input field container.",
+              "name": "input-field"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "default": "''",
+              "description": "The text field display label.",
+              "attribute": "label",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "default": "''",
+              "description": "The value entered into the text field.",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "default": "''",
+              "description": "The default text to display in the text field when the value is not set.",
+              "attribute": "placeholder",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "invert",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Set to invert the component colors for rendering on dark backgrounds.",
+              "attribute": "invert",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "description": "Dispatched when the text in entered into the field.",
+              "name": "input"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text field display label.",
+              "fieldName": "label"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The value entered into the text field.",
+              "fieldName": "value"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The default text to display in the text field when the value is not set.",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "invert",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Set to invert the component colors for rendering on dark backgrounds.",
+              "fieldName": "invert"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "obj-text-field",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TextField",
+          "declaration": {
+            "name": "TextField",
+            "module": "packages/text-field/components/obj-text-field.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "obj-text-field",
+          "declaration": {
+            "name": "TextField",
+            "module": "packages/text-field/components/obj-text-field.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -29,13 +29,13 @@ import { customElement, property } from 'lit/decorators.js';
  * 
  * @property {string} [type='secondary'] - The button display type. e.g. primary, secondary.
  * @property {string} [label=''] - The button display label.
- * @property {boolean} [invert] - Set to invert the component colours for rendering on dark backgrounds.
+ * @property {boolean} [invert] - Set to invert the component colors for rendering on dark backgrounds.
  * 
  * @fires click - Dispatched when the button is clicked.
  * 
  * @csspart button - The button container.
  * 
- * @cssprop --obj-button-border-radius
+ * @cssprop --obj-button-border-radius - Hello World
  * @cssprop --obj-button-padding
  * @cssprop --obj-button-text-align
  * 
@@ -75,6 +75,7 @@ export class Button extends LitElement {
   @property({ type: String, reflect: true }) public type = 'secondary';
   @property({ type: String, reflect: true }) public label = '';
   @property({ type: Boolean, reflect: true }) public invert = false;
+  @property({ type: Boolean, reflect: true }) public disabled = false;
 
 	// ------------
 	// CONSTRUCTORS
@@ -104,7 +105,16 @@ export class Button extends LitElement {
 	// EVENT HANDLERS
 	// --------------
 
-	// n/a
+    #handleClick(e: MouseEvent) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        this.dispatchEvent(new Event('click', {
+            bubbles: true,
+            composed: true,
+        }));
+    }
 
 	// ----------------
 	// HELPER FUNCTIONS
@@ -119,7 +129,6 @@ export class Button extends LitElement {
 	/**
 	 * The element style template.
 	 * 
-	 * @type {CSSResultGroup}
 	 */
 	static override get styles() {
 
@@ -214,7 +223,13 @@ export class Button extends LitElement {
 	override render() {
 
 		return html`
-			<div part="button" class="container">${this.label}</div>
+			<div
+				part="button"
+				class="container"
+				@click=${this.#handleClick}>
+				${this.label}
+				<slot></slot>
+			</div>
 		`;
 	}
 }

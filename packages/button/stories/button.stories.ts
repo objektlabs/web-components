@@ -1,18 +1,15 @@
 import { html, TemplateResult } from 'lit';
-import '../src/obj-button';
+import '../components/obj-button';
 
 export default {
-  title: 'Button',
+  title: 'Buttons/Button',
   component: 'obj-button',
   argTypes: {
     type: { 
       control: 'radio',
       options: ['primary', 'secondary']
-    },
-    label: { control: 'text' },
-    invert: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-  },
+    }
+  }
 };
 
 interface Story<T> {
