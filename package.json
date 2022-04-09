@@ -15,7 +15,7 @@
   "scripts": {
     "clean": "npx rimraf docs",
     "build": "npm run clean && npm run build --workspaces",
-    "docs": "npm run build && npm run docs:readme && npm run docs:storybook",
+    "docs": "npm run build && npm run docs:readme && npm run docs:storybook && npx cpy ./custom-elements.json ./docs",
     "docs:readme": "npm run docs --workspaces",
     "docs:storybook": "npx build-storybook --output-dir=docs",
     "test": "npm run test --workspaces",
@@ -28,6 +28,7 @@
     "@web/dev-server": "^0.1.30",
     "@web/dev-server-storybook": "^0.4.3",
     "concurrently": "^7.1.0",
+    "cpy-cli": "^4.1.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.6.3"
   },
