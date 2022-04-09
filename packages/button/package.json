@@ -14,10 +14,10 @@
   },
   "main": "./dist/components/obj-button.js",
   "scripts": {
-    "clean": "rimraf dist docs",
-    "build": "npm run clean && npm run docs",
+    "clean": "npx rimraf dist docs",
+    "build": "npm run clean && npm run docs && tsc",
     "docs": "npx web-component-analyzer ./components/**/*.{js,ts} --outFile README.md",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "dependencies": {
     "lit": "^2.2.0"
@@ -26,6 +26,7 @@
     "@web/dev-server": "^0.1.30",
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "concurrently": "^7.0.0",
+    "rimraf": "^3.0.2",
     "typescript": "^4.5.5",
     "web-component-analyzer": "^1.1.6"
   }

@@ -14,16 +14,17 @@
   },
   "main": "./dist/components/obj-text-field.js",
   "scripts": {
-    "build": "npm run clean && npm run docs",
-    "clean": "rimraf dist docs",
-    "docs": "npx web-component-analyzer **/*.{js,ts} --outFile README.md",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "npx rimraf dist docs",
+    "build": "npm run clean && npm run docs && tsc",
+    "docs": "npx web-component-analyzer ./components/**/*.{js,ts} --outFile README.md",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "dependencies": {
     "lit": "^2.2.0"
   },
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.6.0",
+    "rimraf": "^3.0.2",
     "typescript": "^4.6.3",
     "web-component-analyzer": "^1.1.6"
   }

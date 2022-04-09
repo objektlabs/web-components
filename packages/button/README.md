@@ -36,10 +36,9 @@ Secondary:
 
 ## Methods
 
-| Method         | Type                    | Description                           |
-|----------------|-------------------------|---------------------------------------|
-| `#handleClick` | `(e: MouseEvent): void` |                                       |
-| `click`        | `(): void`              | Triggers a click event on the button. |
+| Method         | Type                    |
+|----------------|-------------------------|
+| `#handleClick` | `(e: MouseEvent): void` |
 
 ## Events
 
