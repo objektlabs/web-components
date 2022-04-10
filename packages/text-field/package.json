@@ -4,7 +4,7 @@
 	"description": "A simple text input component.",
 	"license": "ISC",
 	"author": "Objekt Labs",
-	"homepage": "https://objektlabs.github.io/web-components/packages/text-field",
+	"homepage": "https://github.com/objektlabs/web-components/tree/main/packages/text-field",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/objektlabs/web-components.git"
