@@ -4,6 +4,8 @@ import { customElement, property } from 'lit/decorators.js';
 /**
  * A simple text input component.
  * 
+ * &#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/inputs-text-field)
+ * 
  * ## Installation
  * ```sh
  * npm install @objekt/obj-text-field

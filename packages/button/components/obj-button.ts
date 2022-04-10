@@ -4,13 +4,15 @@ import { customElement, property } from 'lit/decorators.js';
 /**
  * A clickable button component.
  * 
+ * &#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/buttons-button)
+ * 
  * ## Installation
  * ```sh
  * npm install @objekt/obj-button
  * ```
  * 
  * @example
- *
+ * 
  * ```html
  * Primary:
  * 
