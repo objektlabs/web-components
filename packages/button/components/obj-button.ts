@@ -72,10 +72,10 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement('obj-button')
 export class Button extends LitElement {
 
-  @property({ type: String, reflect: true }) public type = 'secondary';
-  @property({ type: String, reflect: true }) public label = '';
-  @property({ type: Boolean, reflect: true }) public invert = false;
-  @property({ type: Boolean, reflect: true }) public disabled = false;
+	@property({ type: String, reflect: true }) public type = 'secondary';
+	@property({ type: String, reflect: true }) public label = '';
+	@property({ type: Boolean, reflect: true }) public invert = false;
+	@property({ type: Boolean, reflect: true }) public disabled = false;
 
 	// ------------
 	// CONSTRUCTORS
@@ -105,16 +105,16 @@ export class Button extends LitElement {
 	// EVENT HANDLERS
 	// --------------
 
-    #handleClick(e: MouseEvent) {
+	#handleClick(e: MouseEvent) {
 
-        e.preventDefault();
-        e.stopPropagation();
+		e.preventDefault();
+		e.stopPropagation();
 
-        this.dispatchEvent(new Event('click', {
-            bubbles: true,
-            composed: true,
-        }));
-    }
+		this.dispatchEvent(new Event('click', {
+			bubbles: true,
+			composed: true,
+		}));
+	}
 
 	// ----------------
 	// HELPER FUNCTIONS

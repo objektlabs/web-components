@@ -1,21 +1,38 @@
-import { setCustomElementsManifest } from '@web/storybook-prebuilt/web-components.js';
+import { setCustomElementsManifest } from '@storybook/web-components';
+import customElements from '../custom-elements.json';
 
-// Populate custom element metadata into story docs.
-const response = await fetch('../custom-elements.json');
-setCustomElementsManifest(await response.json());
+import basicTheme from '!!style-loader?injectType=lazyStyleTag!css-loader!../themes/default-theme.css'
+import purpleTheme from '!!style-loader?injectType=lazyStyleTag!css-loader!../themes/purple-theme.css'
+
+import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
+
+// Auto generate properties in the docs view from the custom elements manifest.
+setCustomElementsManifest(customElements);
+
+// Activate the theme switcher addon.
+export const decorators = [
+	cssVariablesTheme,
+];
 
 // Configure global settings for all stories.
 export const parameters = {
-    backgrounds: {
-        values: [
-        { name: 'light', value: '#ffffff' },
-        { name: 'dark', value: '#202124' },
-        ],
-    },
-    /*theme: {
-        values: [
-            { name: 'basic', value: '#ffffff' },
-            { name: 'easy', value: '#202124' },
-        ],
-    }*/
-  };
+	actions: { argTypesRegex: "^on[A-Z].*" },
+	controls: {
+		matchers: {
+			color: /(background|color)$/i,
+			date: /Date$/,
+		},
+	},
+	backgrounds: {
+		values: [
+			{ name: 'light', value: '#ffffff' },
+			{ name: 'dark', value: '#202124' },
+		],
+	},
+	cssVariables: {
+		files: {
+			'default': basicTheme,
+			'Purple Theme': purpleTheme,
+		}
+	}
+}

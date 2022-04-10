@@ -150,12 +150,12 @@
             },
             {
               "kind": "method",
-              "name": "handleClick",
+              "name": "#handleClick",
               "parameters": [
                 {
                   "name": "e",
                   "type": {
-                    "text": "Event"
+                    "text": "MouseEvent"
                   }
                 }
               ]
@@ -212,7 +212,6 @@
             "package": "lit"
           },
           "tagName": "obj-button",
-          "summary": "This is MyElement",
           "customElement": true
         }
       ],

@@ -1,31 +1,31 @@
 {
-  "name": "@objekt/obj-text-field",
-  "version": "0.0.1",
-  "description": "A simple text input component.",
-  "license": "ISC",
-  "author": "Objekt Labs",
-  "homepage": "https://objektlabs.github.io/web-components/packages/text-field",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/objektlabs/web-components.git"
-  },
-  "bugs": {
-    "url": "https://github.com/objektlabs/web-components/issues"
-  },
-  "main": "./dist/components/obj-text-field.js",
-  "scripts": {
-    "clean": "npx rimraf dist docs",
-    "build": "npm run clean && npm run docs && tsc",
-    "docs": "npx web-component-analyzer ./components/**/*.{js,ts} --outFile README.md",
-    "test": "echo \"Error: no test specified\" && exit 0"
-  },
-  "dependencies": {
-    "lit": "^2.2.0"
-  },
-  "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^2.6.0",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.6.3",
-    "web-component-analyzer": "^1.1.6"
-  }
+	"name": "@objekt/obj-text-field",
+	"version": "0.0.1",
+	"description": "A simple text input component.",
+	"license": "ISC",
+	"author": "Objekt Labs",
+	"homepage": "https://objektlabs.github.io/web-components/packages/text-field",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/objektlabs/web-components.git"
+	},
+	"bugs": {
+		"url": "https://github.com/objektlabs/web-components/issues"
+	},
+	"main": "./dist/components/obj-text-field.js",
+	"scripts": {
+		"clean": "npx rimraf dist docs",
+		"build": "npm run clean && npm run docs && tsc",
+		"docs": "npx web-component-analyzer ./components/**/*.{js,ts} --outFile README.md",
+		"test": "echo \"Error: no test specified\" && exit 0"
+	},
+	"dependencies": {
+		"lit": "^2.2.0"
+	},
+	"devDependencies": {
+		"@webcomponents/webcomponentsjs": "^2.6.0",
+		"rimraf": "^3.0.2",
+		"typescript": "^4.6.3",
+		"web-component-analyzer": "^1.1.6"
+	}
 }

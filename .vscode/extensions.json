@@ -1,0 +1,12 @@
+{
+	"recommendations": [
+		"dbaeumer.vscode-eslint",
+		"eamodio.gitlens",
+		"hediet.vscode-drawio",
+		"mongodb.mongodb-vscode",
+		"ms-vsliveshare.vsliveshare",
+		"redhat.vscode-xml",
+		"msjsdiag.debugger-for-chrome",
+		"runem.lit-plugin"
+	]
+}

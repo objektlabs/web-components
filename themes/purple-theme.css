@@ -1,0 +1,36 @@
+:root {
+	/* BUTTON */
+	--obj-button-border-radius: 8px;
+	--obj-button-padding: 14.5px 20px;
+	--obj-button-text-align: center;
+
+	--obj-button-primary-background: #5308b2;
+	--obj-button-primary-border: 1px solid #5308b2;
+	--obj-button-primary-font-color: #ffffff;
+	--obj-button-primary-font-family: 'Open Sans';
+	--obj-button-primary-font-size: 14px;
+	--obj-button-primary-font-weight: 600;
+
+	--obj-button-primary-disabled-background: lightgray;
+	--obj-button-primary-disabled-border: 1px solid lightgray;
+	--obj-button-primary-disabled-font-color: white;
+
+	--obj-button-primary-invert-background: white;
+	--obj-button-primary-invert-border: 1px solid lightgray;
+	--obj-button-primary-invert-font-color: gray;
+
+	--obj-button-secondary-background: white;
+	--obj-button-secondary-border: 1px solid #5308b2;
+	--obj-button-secondary-font-color: #86888b;
+	--obj-button-secondary-font-family: 'Open Sans';
+	--obj-button-secondary-font-size: 14px;
+	--obj-button-secondary-font-weight: 600;
+
+	--obj-button-secondary-disabled-background: lightgray;
+	--obj-button-secondary-disabled-border: 1px solid lightgray;
+	--obj-button-secondary-disabled-font-color: white;
+
+	--obj-button-secondary-invert-background: gray;
+	--obj-button-secondary-invert-border: 1px solid darkgray;
+	--obj-button-secondary-invert-font-color: white;
+}
