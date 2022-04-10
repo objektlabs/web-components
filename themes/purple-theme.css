@@ -1,36 +1,86 @@
 :root {
-	/* BUTTON */
+	/* ---------- DEFAULTS ---------- */
+
+	/* Fonts */
+
+	--obj-font-family: 'Open Sans';
+	--obj-font-size: 14px;
+
+	/* Colors */
+
+	--obj-color-brand-default: #5308b2;
+	--obj-color-brand-accent: #7B30DA;
+	--obj-color-brand-invert: #ffffff;
+
+	--obj-color-text-light: #ffffff;
+	--obj-color-text-dark: #86888b;
+
+	--obj-color-disabled-fill: #dddddd;
+	--obj-color-disabled-text: #ffffff;
+
+	/* ---------- BUTTON ---------- */
+
 	--obj-button-border-radius: 8px;
 	--obj-button-padding: 14.5px 20px;
 	--obj-button-text-align: center;
 
-	--obj-button-primary-background: #5308b2;
-	--obj-button-primary-border: 1px solid #5308b2;
-	--obj-button-primary-font-color: #ffffff;
-	--obj-button-primary-font-family: 'Open Sans';
-	--obj-button-primary-font-size: 14px;
+	/* Primary */
+
+	--obj-button-primary-font-family: var(--obj-font-family);
+	--obj-button-primary-font-size: var(--obj-font-size);
 	--obj-button-primary-font-weight: 600;
 
-	--obj-button-primary-disabled-background: lightgray;
-	--obj-button-primary-disabled-border: 1px solid lightgray;
-	--obj-button-primary-disabled-font-color: white;
+	--obj-button-primary-background: var(--obj-color-brand-default);
+	--obj-button-primary-border: 1px solid var(--obj-color-brand-default);
+	--obj-button-primary-font-color: var(--obj-color-text-light);
 
-	--obj-button-primary-invert-background: white;
-	--obj-button-primary-invert-border: 1px solid lightgray;
-	--obj-button-primary-invert-font-color: gray;
+	--obj-button-primary-hover-background: var(--obj-color-brand-accent);
+	--obj-button-primary-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-button-primary-hover-font-color: var(--obj-color-text-light);
 
-	--obj-button-secondary-background: white;
-	--obj-button-secondary-border: 1px solid #5308b2;
-	--obj-button-secondary-font-color: #86888b;
-	--obj-button-secondary-font-family: 'Open Sans';
-	--obj-button-secondary-font-size: 14px;
+	--obj-button-primary-disabled-background: var(--obj-color-disabled-fill);
+	--obj-button-primary-disabled-border: 1px solid var(--obj-color-disabled-fill);
+	--obj-button-primary-disabled-font-color: var(--obj-color-disabled-text);
+
+	--obj-button-primary-invert-background: var(--obj-color-brand-invert);
+	--obj-button-primary-invert-border: 1px solid var(--obj-color-brand-invert);
+	--obj-button-primary-invert-font-color: var(--obj-color-text-dark);
+
+	--obj-button-primary-invert-hover-background: var(--obj-color-brand-accent);
+	--obj-button-primary-invert-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-button-primary-invert-hover-font-color: var(--obj-color-text-light);
+
+	--obj-button-primary-invert-disabled-background: var(--obj-color-disabled-fill);
+	--obj-button-primary-invert-disabled-border: 1px solid var(--obj-color-disabled-fill);
+	--obj-button-primary-invert-disabled-font-color: var(--obj-color-disabled-text);
+
+	/* Secondary */
+
+	--obj-button-secondary-font-family: var(--obj-font-family);
+	--obj-button-secondary-font-size: var(--obj-font-size);
 	--obj-button-secondary-font-weight: 600;
 
-	--obj-button-secondary-disabled-background: lightgray;
-	--obj-button-secondary-disabled-border: 1px solid lightgray;
-	--obj-button-secondary-disabled-font-color: white;
+	--obj-button-secondary-background: var(--obj-color-brand-invert);
+	--obj-button-secondary-border: 1px solid var(--obj-color-brand-default);
+	--obj-button-secondary-font-color: var(--obj-color-text-dark);
 
-	--obj-button-secondary-invert-background: gray;
-	--obj-button-secondary-invert-border: 1px solid darkgray;
-	--obj-button-secondary-invert-font-color: white;
+	--obj-button-secondary-hover-background: var(--obj-color-brand-accent);
+	--obj-button-secondary-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-button-secondary-hover-font-color: var(--obj-color-text-light);
+
+	--obj-button-secondary-disabled-background: var(--obj-color-brand-invert);
+	--obj-button-secondary-disabled-border: 1px solid var(--obj-color-disabled-fill);
+	--obj-button-secondary-disabled-font-color: var(--obj-color-disabled-fill);
+
+	--obj-button-secondary-invert-background: transparent;
+	--obj-button-secondary-invert-border: 1px solid var(--obj-color-brand-invert);
+	--obj-button-secondary-invert-font-color: var(--obj-color-text-light);
+
+	--obj-button-secondary-invert-hover-background: var(--obj-color-brand-accent);
+	--obj-button-secondary-invert-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-button-secondary-invert-hover-font-color: var(--obj-color-text-light);
+
+	--obj-button-secondary-invert-disabled-background: transparent;
+	--obj-button-secondary-invert-disabled-border: 1px solid var(--obj-color-disabled-fill);
+	--obj-button-secondary-invert-disabled-font-color: var(--obj-color-disabled-fill);
 }

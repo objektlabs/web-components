@@ -6,7 +6,7 @@ import { customElement, property } from 'lit/decorators.js';
  * 
  * ## Installation
  * ```sh
- * npm install @objekt/web-components/button
+ * npm install @objekt/obj-button
  * ```
  * 
  * @example
@@ -35,7 +35,7 @@ import { customElement, property } from 'lit/decorators.js';
  * 
  * @csspart button - The button container.
  * 
- * @cssprop --obj-button-border-radius - Hello World
+ * @cssprop --obj-button-border-radius
  * @cssprop --obj-button-padding
  * @cssprop --obj-button-text-align
  * 
@@ -151,65 +151,113 @@ export class Button extends LitElement {
 					border-radius: var(--obj-button-border-radius, 0px);
 					padding: var(--obj-button-padding, 10px);
 					text-align: var(--obj-button-text-align, center);
+					
+					cursor: pointer;
+					user-select: none;
+
+					transition: all 0.25s;
 				}
 
 				/* TYPE - PRIMARY */
 
 				:host([type="primary"]) > .container {
-					background: var(--obj-button-primary-background, grey);
-					border: var(--obj-button-primary-border, 1px solid grey);
-
-					color: var(--obj-button-primary-font-color, white);
 					font-family: var(--obj-button-primary-font-family, Arial);
 					font-size: var(--obj-button-primary-font-size, 12px);
 					font-weight: var(--obj-button-primary-font-weight, normal);
+
+					background: var(--obj-button-primary-background, grey);
+					border: var(--obj-button-primary-border, 1px solid grey);
+					color: var(--obj-button-primary-font-color, white);
+				}
+
+				:host([type="primary"]:hover) > .container {
+					background: var(--obj-button-primary-hover-background, grey);
+					border: var(--obj-button-primary-hover-border, 1px solid grey);
+					color: var(--obj-button-primary-hover-font-color, white);
+				}
+
+				:host([type="primary"][disabled]) > .container {
+					background: var(--obj-button-primary-disabled-background, lightgrey);
+					border: var(--obj-button-primary-disabled-border, 1px solid lightgrey);
+					color: var(--obj-button-primary-disabled-font-color, white);
+
+					cursor: default;
+				}
+
+				/* PRIMARY INVERT */
+
+				:host([type="primary"][invert]) > .container {
+					background: var(--obj-button-primary-invert-background, white);
+					border: var(--obj-button-primary-invert-border, 1px solid white);
+					color: var(--obj-button-primary-invert-font-color, grey);
+				}
+
+				:host([type="primary"][invert]:hover) > .container {
+					background: var(--obj-button-primary-invert-hover-background, grey);
+					border: var(--obj-button-primary-invert-hover-border, 1px solid grey);
+					color: var(--obj-button-primary-invert-hover-font-color, white);
+				}
+
+				:host([type="primary"][invert][disabled]) > .container {
+					background: var(--obj-button-primary-invert-disabled-background, lightgrey);
+					border: var(--obj-button-primary-invert-disabled-border, 1px solid lightgrey);
+					color: var(--obj-button-primary-invert-disabled-font-color, white);
+
+					cursor: default;
 				}
 
 				/* TYPE - SECONDARY */
 
 				:host > .container,
 				:host([type="secondary"]) > .container {
-					background: var(--obj-button-secondary-background, transparent);
-					border: var(--obj-button-secondary-border, 1px solid grey);
-
-					color: var(--obj-button-secondary-font-color, grey);
 					font-family: var(--obj-button-secondary-font-family, Arial);
 					font-size: var(--obj-button-secondary-font-size, 12px);
 					font-weight: var(--obj-button-secondary-font-weight, normal);
+
+					background: var(--obj-button-secondary-background, transparent);
+					border: var(--obj-button-secondary-border, 1px solid grey);
+					color: var(--obj-button-secondary-font-color, grey);
 				}
 
-				/* DISABLED */
+				:host(:hover) > .container,
+				:host([type="secondary"]:hover) > .container {
+					background: var(--obj-button-secondary-hover-background, grey);
+					border: var(--obj-button-secondary-hover-border, 1px solid grey);
+					color: var(--obj-button-secondary-hover-font-color, white);
+				}
 
 				:host([disabled]) > .container,
-				:host([disabled][type="secondary"]) > .container {
+				:host([type="secondary"][disabled]) > .container {
 					background: var(--obj-button-secondary-disabled-background, white);
 					border: var(--obj-button-secondary-disabled-border, 1px solid lightgrey);
-
 					color: var(--obj-button-secondary-disabled-font-color, lightgrey);
+
+					cursor: default;
 				}
 
-				:host([disabled][type="primary"]) > .container {
-					background: var(--obj-button-primary-disabled-background, lightgrey);
-					border: var(--obj-button-primary-disabled-border, 1px solid lightgrey);
-
-					color: var(--obj-button-primary-disabled-font-color, white);
-				}
-
-				/* INVERT */
+				/* SECONDARY INVERT */
 
 				:host([invert]) > .container,
-				:host([invert][type="secondary"]) > .container {
+				:host([type="secondary"][invert]) > .container {
 					background: var(--obj-button-secondary-invert-background, transparent);
 					border: var(--obj-button-secondary-invert-border, 1px solid white);
-
 					color: var(--obj-button-secondary-invert-font-color, white);
 				}
 
-				:host([invert][type="primary"]) > .container {
-					background: var(--obj-button-primary-invert-background, white);
-					border: var(--obj-button-primary-invert-border, 1px solid white);
+				:host([invert]:hover) > .container,
+				:host([type="secondary"][invert]:hover) > .container {
+					background: var(--obj-button-secondary-invert-hover-background, white);
+					border: var(--obj-button-secondary-invert-hover-border, 1px solid white);
+					color: var(--obj-button-secondary-invert-hover-font-color, grey);
+				}
 
-					color: var(--obj-button-primary-invert-font-color, grey);
+				:host([invert][disabled]) > .container,
+				:host([type="secondary"][invert][disabled]) > .container {
+					background: var(--obj-button-secondary-invert-disabled-background, transparent);
+					border: var(--obj-button-secondary-invert-disabled-border, 1px solid lightgrey);
+					color: var(--obj-button-secondary-invert-disabled-font-color, lightgrey);
+
+					cursor: default;
 				}
 			`
 		];

@@ -6,7 +6,7 @@ import { customElement, property } from 'lit/decorators.js';
  * 
  * ## Installation
  * ```sh
- * npm install @objekt/web-components/text-field
+ * npm install @objekt/obj-text-field
  * ```
  * 
  * @example

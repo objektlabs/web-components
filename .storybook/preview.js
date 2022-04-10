@@ -11,7 +11,7 @@ setCustomElementsManifest(customElements);
 
 // Activate the theme switcher addon.
 export const decorators = [
-	cssVariablesTheme,
+	cssVariablesTheme
 ];
 
 // Configure global settings for all stories.
@@ -24,8 +24,10 @@ export const parameters = {
 		},
 	},
 	backgrounds: {
+		default: 'light',
 		values: [
-			{ name: 'light', value: '#ffffff' },
+			{ name: 'white', value: '#ffffff' },
+			{ name: 'light', value: '#f0f0f0' },
 			{ name: 'dark', value: '#202124' },
 		],
 	},

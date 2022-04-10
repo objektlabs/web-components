@@ -8,11 +8,10 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A clickable button component.\n\n## Installation\n```sh\nnpm install @objekt/web-components/button\n```",
+          "description": "A clickable button component.\n\n## Installation\n```sh\nnpm install @objekt/obj-button\n```",
           "name": "Button",
           "cssProperties": [
             {
-              "description": "Hello World",
               "name": "--obj-button-border-radius"
             },
             {
@@ -240,7 +239,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A simple text input component.\n\n## Installation\n```sh\nnpm install @objekt/web-components/text-field\n```",
+          "description": "A simple text input component.\n\n## Installation\n```sh\nnpm install @objekt/obj-text-field\n```",
           "name": "TextField",
           "cssProperties": [
             {

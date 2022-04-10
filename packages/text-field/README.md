@@ -4,7 +4,7 @@ A simple text input component.
 
 ## Installation
 ```sh
-npm install @objekt/web-components/text-field
+npm install @objekt/obj-text-field
 ```
 
 ## Example

@@ -12,12 +12,21 @@
 	"bugs": {
 		"url": "https://github.com/objektlabs/web-components/issues"
 	},
-	"main": "./dist/components/obj-button.js",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"directories": {
+		"test": "tests"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"clean": "npx rimraf dist docs",
 		"build": "npm run clean && npm run docs && tsc",
 		"docs": "npx web-component-analyzer ./components/**/*.{js,ts} --outFile README.md",
-		"test": "echo \"Error: no test specified\" && exit 0"
+		"test": "echo \"Error: no test specified\" && exit 0",
+		"prepublish": "npm run build",
+		"publish": "npm publish --access public"
 	},
 	"dependencies": {
 		"lit": "^2.2.0"

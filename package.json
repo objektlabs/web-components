@@ -1,5 +1,5 @@
 {
-	"name": "web-components",
+	"name": "@objekt/web-components",
 	"version": "1.0.0",
 	"description": "Collection of UI components for mobile and web",
 	"license": "ISC",
@@ -12,6 +12,10 @@
 	"bugs": {
 		"url": "https://github.com/objektlabs/web-components/issues"
 	},
+	"main": "index.js",
+	"directories": {
+		"doc": "docs"
+	},
 	"scripts": {
 		"clean": "npm run clean --workspaces",
 		"build": "npm run build --workspaces",
@@ -22,7 +26,6 @@
 		"test": "npm run test --workspaces",
 		"serve": "tsc --build tsconfig.project.json && npm run docs:custom-elements && concurrently -k -r \"tsc --build tsconfig.project.json --watch --preserveWatchOutput\" \"npx start-storybook --port=9000\""
 	},
-	"dependencies": {},
 	"devDependencies": {
 		"@custom-elements-manifest/analyzer": "^0.5.7",
 		"@etchteam/storybook-addon-css-variables-theme": "^1.1.1",
@@ -31,6 +34,7 @@
 		"@storybook/addon-links": "^6.4.21",
 		"@storybook/web-components": "^6.4.21",
 		"concurrently": "^7.1.0",
+		"lit": "^2.2.2",
 		"rimraf": "^3.0.2",
 		"typescript": "^4.6.3"
 	},
