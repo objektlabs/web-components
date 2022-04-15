@@ -162,6 +162,7 @@ export class Button extends LitElement {
 
 				/* TYPE - PRIMARY */
 
+				:host > .container,
 				:host([type="primary"]) > .container {
 					font-family: var(--obj-button-primary-font-family, Arial);
 					font-size: var(--obj-button-primary-font-size, 12px);
@@ -172,12 +173,14 @@ export class Button extends LitElement {
 					color: var(--obj-button-primary-font-color, white);
 				}
 
+				:host(:hover) > .container,
 				:host([type="primary"]:hover) > .container {
 					background: var(--obj-button-primary-hover-background, grey);
 					border: var(--obj-button-primary-hover-border, 1px solid grey);
 					color: var(--obj-button-primary-hover-font-color, white);
 				}
 
+				:host([disabled]) > .container,
 				:host([type="primary"][disabled]) > .container {
 					background: var(--obj-button-primary-disabled-background, lightgrey);
 					border: var(--obj-button-primary-disabled-border, 1px solid lightgrey);
@@ -210,7 +213,7 @@ export class Button extends LitElement {
 
 				/* TYPE - SECONDARY */
 
-				:host > .container,
+				:host([invert]) > .container,
 				:host([type="secondary"]) > .container {
 					font-family: var(--obj-button-secondary-font-family, Arial);
 					font-size: var(--obj-button-secondary-font-size, 12px);
@@ -221,14 +224,14 @@ export class Button extends LitElement {
 					color: var(--obj-button-secondary-font-color, grey);
 				}
 
-				:host(:hover) > .container,
+				:host([invert]:hover) > .container,
 				:host([type="secondary"]:hover) > .container {
 					background: var(--obj-button-secondary-hover-background, grey);
 					border: var(--obj-button-secondary-hover-border, 1px solid grey);
 					color: var(--obj-button-secondary-hover-font-color, white);
 				}
 
-				:host([disabled]) > .container,
+				:host([invert][disabled]) > .container,
 				:host([type="secondary"][disabled]) > .container {
 					background: var(--obj-button-secondary-disabled-background, white);
 					border: var(--obj-button-secondary-disabled-border, 1px solid lightgrey);
@@ -239,21 +242,18 @@ export class Button extends LitElement {
 
 				/* SECONDARY INVERT */
 
-				:host([invert]) > .container,
 				:host([type="secondary"][invert]) > .container {
 					background: var(--obj-button-secondary-invert-background, transparent);
 					border: var(--obj-button-secondary-invert-border, 1px solid white);
 					color: var(--obj-button-secondary-invert-font-color, white);
 				}
 
-				:host([invert]:hover) > .container,
 				:host([type="secondary"][invert]:hover) > .container {
 					background: var(--obj-button-secondary-invert-hover-background, white);
 					border: var(--obj-button-secondary-invert-hover-border, 1px solid white);
 					color: var(--obj-button-secondary-invert-hover-font-color, grey);
 				}
 
-				:host([invert][disabled]) > .container,
 				:host([type="secondary"][invert][disabled]) > .container {
 					background: var(--obj-button-secondary-invert-disabled-background, transparent);
 					border: var(--obj-button-secondary-invert-disabled-border, 1px solid lightgrey);

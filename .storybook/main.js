@@ -9,11 +9,14 @@ module.exports = {
 		'@storybook/addon-essentials',
 		'@etchteam/storybook-addon-css-variables-theme'
 	],
+	features: {
+		postcss: false,
+	},
 	staticDirs: [
 		{ from: '../custom-elements.json', to: 'custom-elements.json' }
 	],
 	webpackFinal: async (config, { configType }) => {
-		
+
 		// To prevent double refresh due to tsc running in the background, exlude
 		// all source directories from causing a refresh of storybook, i.e. only
 		// reload if anything in the /dist directory changes
@@ -25,7 +28,7 @@ module.exports = {
 				'**/node_modules'
 			],
 		}
-		
+
 		return config;
 	}
 };

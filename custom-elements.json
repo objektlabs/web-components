@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A clickable button component.\n\n## Installation\n```sh\nnpm install @objekt/obj-button\n```",
+          "description": "A clickable button component.\n\n&#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/buttons-button)\n\n## Installation\n```sh\nnpm install @objekt/obj-button\n```",
           "name": "Button",
           "cssProperties": [
             {
@@ -239,7 +239,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A simple text input component.\n\n## Installation\n```sh\nnpm install @objekt/obj-text-field\n```",
+          "description": "A simple text input component.\n\n&#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/inputs-text-field)\n\n## Installation\n```sh\nnpm install @objekt/obj-text-field\n```",
           "name": "TextField",
           "cssProperties": [
             {
@@ -338,8 +338,8 @@
                 "text": "string"
               },
               "privacy": "public",
-              "default": "''",
               "description": "The text field display label.",
+              "default": "''",
               "attribute": "label",
               "reflects": true
             },
@@ -350,8 +350,8 @@
                 "text": "string"
               },
               "privacy": "public",
-              "default": "''",
               "description": "The value entered into the text field.",
+              "default": "''",
               "attribute": "value",
               "reflects": true
             },
@@ -362,9 +362,20 @@
                 "text": "string"
               },
               "privacy": "public",
-              "default": "''",
               "description": "The default text to display in the text field when the value is not set.",
+              "default": "''",
               "attribute": "placeholder",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "default": "'test'",
+              "attribute": "error",
               "reflects": true
             },
             {
@@ -389,6 +400,18 @@
               "default": "false",
               "attribute": "disabled",
               "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ]
             }
           ],
           "events": [
@@ -403,8 +426,8 @@
               "type": {
                 "text": "string"
               },
-              "default": "''",
               "description": "The text field display label.",
+              "default": "''",
               "fieldName": "label"
             },
             {
@@ -412,8 +435,8 @@
               "type": {
                 "text": "string"
               },
-              "default": "''",
               "description": "The value entered into the text field.",
+              "default": "''",
               "fieldName": "value"
             },
             {
@@ -421,9 +444,17 @@
               "type": {
                 "text": "string"
               },
-              "default": "''",
               "description": "The default text to display in the text field when the value is not set.",
+              "default": "''",
               "fieldName": "placeholder"
+            },
+            {
+              "name": "error",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "'test'",
+              "fieldName": "error"
             },
             {
               "name": "invert",

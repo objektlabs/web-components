@@ -14,9 +14,20 @@
 
 	--obj-color-text-light: #ffffff;
 	--obj-color-text-dark: #86888b;
+	--obj-color-text-black: #111111;
 
 	--obj-color-disabled-fill: #dddddd;
 	--obj-color-disabled-text: #ffffff;
+
+	--obj-color-border-dark: #86888b;
+	--obj-color-border-light: #86888b;
+
+	--obj-color-background-light: #ffffff;
+
+	--obj-color-error: red;
+	--obj-color-warn: orange;
+	--obj-color-success: darkgreen;
+	--obj-color-info: blue;
 
 	/* ---------- BUTTON ---------- */
 
@@ -83,4 +94,41 @@
 	--obj-button-secondary-invert-disabled-background: transparent;
 	--obj-button-secondary-invert-disabled-border: 1px solid var(--obj-color-disabled-fill);
 	--obj-button-secondary-invert-disabled-font-color: var(--obj-color-disabled-fill);
+
+	/* ---------- TEXT-FIELD ---------- */
+
+
+	--obj-input-font-family: var(--obj-font-family);
+	--obj-input-font-size: 16px;
+	--obj-input-font-weight: normal;
+	--obj-input-font-color: var(--obj-color-text-black);
+
+	--obj-input-border: 1px solid var(--obj-color-border-dark);
+	--obj-input-border-radius: 5px;
+
+	--obj-input-background: var(--obj-color-background-light);
+
+	--obj-input-text-align: left;
+	--obj-input-padding-x: 10px;
+	--obj-input-padding-y: 10px;
+	--obj-input-line-gap: 5px;
+
+	--obj-input-focus-border: 1px solid var(--obj-color-brand-default);
+	--obj-input-focus-border-offset: 0px;
+	--obj-input-focus-label-font-color: var(--obj-color-brand-default);
+	--obj-input-padding: 10px;
+
+	--obj-input-label-font-family: var(--obj-font-family);
+	--obj-input-label-font-size: 14px;
+	--obj-input-label-font-weight: normal;
+	--obj-input-label-font-color: var(--obj-color-text-dark);
+
+	--obj-input-error-font-family: var(--obj-font-family);
+	--obj-input-error-font-size: var(--obj-font-size);
+	--obj-input-error-font-weight: normal;
+	--obj-input-error-font-color: var(--obj-color-error);
+}
+
+html {
+	font-size: 16px;
 }
