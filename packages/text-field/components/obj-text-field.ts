@@ -1,6 +1,6 @@
 import { html, css, LitElement, CSSResultGroup, TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
+import { customElement, property } from 'lit/decorators';
+import { ClassInfo, classMap } from 'lit/directives/class-map';
 
 /**
  * A simple text input component.
@@ -22,13 +22,16 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * 
  * @element obj-text-field
  * 
- * @property {string} [label=''] - The text field display label.
- * @property {string} [value=''] - The value entered into the text field.
- * @property {string} [placeholder=''] - The default text to display in the text field when the value is not set.
- *
+ * @property {string} [type] - The text field variant type, e.g. stack, outline, inline, filled, or clear.
+ * @property {string} [label] - The text field display label.
+ * @property {string} [value] - The value entered into the text field.
+ * @property {string} [placeholder] - The default text to display in the text field when the value is not set.
+ * @property {string} [message] - A guide message to show under the text field.
+ * @property {boolean} [error] - Set to place the component in an error state.
  * @property {boolean} [invert] - Set to invert the component colors for rendering on dark backgrounds.
+ * @property {boolean} [disabled] - Sets to place the component in an disabled state.
  * 
- * @fires input - Dispatched when the text in entered into the field.
+ * @fires value-changed - Dispatched when the text in entered into the field.
  * 
  * @csspart input-field - The input field container.
  * 
@@ -69,14 +72,16 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 @customElement('obj-text-field')
 export class TextField extends LitElement {
 
+	@property({ type: String, reflect: true }) public type?: string;
 	@property({ type: String, reflect: true }) public label?: string;
 	@property({ type: String, reflect: true }) public value?: string;
 	@property({ type: String, reflect: true }) public placeholder?: string;
-	@property({ type: String, reflect: true }) public type?: string;
-	@property({ type: String, reflect: true }) public labelPosition?: string;
-	@property({ type: String, reflect: true }) public error?: string = 'test';
-	@property({ type: Boolean, reflect: true }) public invert = false;
-	@property({ type: Boolean, reflect: true }) public disabled = false;
+	@property({ type: String, reflect: true }) public message?: string;
+	@property({ type: Boolean, reflect: true }) public error?: boolean;
+	@property({ type: Boolean, reflect: true }) public invert?: boolean;
+	@property({ type: Boolean, reflect: true }) public disabled?: boolean;
+
+	private _validTypes = ['stack', 'inline', 'outline', 'clear', 'filled'];
 
 	// ------------
 	// CONSTRUCTORS
@@ -106,9 +111,13 @@ export class TextField extends LitElement {
 	// EVENT HANDLERS
 	// --------------
 
-	_handleInput(e: InputEvent) {
+	private _handleInput(e: InputEvent) {
 
 		this.value = (<HTMLInputElement>e?.target).value || undefined;
+
+		this.dispatchEvent(new CustomEvent('value-changed', {
+			detail: this.value
+		}));
 	}
 
 	// ----------------
@@ -143,16 +152,24 @@ export class TextField extends LitElement {
 					justify-content: flex-start;
 
 					width: 100%;
-				}
 
-				/* INPUT FIELD */
-
-				label {
-					
-				}
-
-				input {
 					font-family: var(--obj-input-font-family, Arial);
+				}
+
+				/* TOUCH ZONE */
+
+				.touch-zone {
+					position: relative;
+
+					display: flex;
+					flex-direction: column-reverse;
+					align-items: flex-start;
+					justify-content: center;
+
+					padding: var(--obj-input-padding-y, 10px) var(--obj-input-padding-x, 10px);
+				}
+
+				.touch-zone > input {
 					font-size: var(--obj-input-font-size, 12px);
 					font-weight: var(--obj-input-font-weight, normal);
 
@@ -167,20 +184,54 @@ export class TextField extends LitElement {
 					margin: 0px;
 				}
 
-				label > div {
-					font-family: var(--obj-input-label-font-family, Arial);
+				:host([value]) .touch-zone > .label,
+				:host([placeholder]) .touch-zone > .label,
+				.touch-zone > input:focus + .label {
+					color: var(--obj-input-focus-label-font-color, black);
+				}
+
+				.touch-zone > .label {
+					position: absolute;
+
+					top: 50%;
+					transform: translateY(-50%);
+					transform-origin: top var(--obj-input-text-align, left);
+
+					transition: all 150ms ease 0s;
+
+					pointer-events: none;
+					user-select: none;
+
+					padding: 0px;
+					margin: 0px;
+
+					height: var(--obj-input-label-font-size, 12px);
+					line-height: 100%;
+
 					font-size: var(--obj-input-label-font-size, 12px);
 					font-weight: var(--obj-input-label-font-weight, normal);
 
 					color: var(--obj-input-label-font-color, black);
 
 					text-align: var(--obj-input-text-align, left);
+				
+					left: var(--obj-input-padding-x);
+					right: var(--obj-input-padding-x);
 				}
 
-				/* TYPE - PRIMARY */
-				
-				label,
-				:host([type="primary"]) label {
+				.touch-zone > .label > span {
+					position: relative;
+				}
+
+				.touch-zone > .border {
+					position: absolute;
+					top: 0px;
+					bottom: 0px;
+					left: 0px;
+					right: 0px;
+
+					z-index: -1;
+
 					background: var(--obj-input-background, white);
 
 					border-radius: var(--obj-input-border-radius, 5px);
@@ -191,194 +242,229 @@ export class TextField extends LitElement {
 					border-right: var(--obj-input-border, 1px solid grey);
 				}
 
-				label:focus-within,
-				:host([type="primary"]) label:focus-within {
-					outline: var(--obj-input-focus-border, 1px solid black);
-					outline-offset: var(--obj-input-focus-border-offset, 0px);
+				/* TYPE - STACK */
+
+				.type-stack .touch-zone {
+					padding-left: 0px;
+					padding-right: 0px;
 				}
 
-				/* TYPE - SECONDARY */
+				.type-stack .touch-zone > .border {
+					top: var(--obj-input-line-gap, 10px);
+					margin-top: var(--obj-input-label-font-size, 12px);
+				}
 
-				:host([type="secondary"]) label {
+				.type-stack .touch-zone > .label {
+					position: relative;
+
+					top: 0px;
+					transform: translateY(-37.5%) scale(75%);
+
+					left: 0px;
+					right: 0px;
+					width: 100%;
+				}
+
+				:host([label]) .type-stack .touch-zone > input {
+					margin-top: var(--obj-input-line-gap, 10px);
+					padding-left: var(--obj-input-padding-x, 10px);
+					padding-right: var(--obj-input-padding-x, 10px);
+				}
+
+				/* TYPE - OUTLINE */
+
+				:host([value]) .type-outline .touch-zone > .label,
+				:host([placeholder]) .type-outline .touch-zone > .label,
+				.type-outline .touch-zone > input:focus + .label {
+					top: 0px;
+					transform: translateY(-37.5%) scale(75%);
+				}
+
+				:host([value]) .type-outline .touch-zone > .label > span::before,
+				:host([placeholder]) .type-outline .touch-zone > .label > span::before,
+				.type-outline .touch-zone > input:focus + .label > span::before {
+					content: "";
+					display: block;
+					height: 100%;
+					background-color: var(--obj-input-background);
+					position: absolute;
+					left: -3px;
+					right: -3px;
+					top: 50%;
+    				height: 50%;
+					z-index: -1;
+				}
+
+				/* TYPE - INLINE */
+
+				:host([value]) .type-inline .touch-zone > .label,
+				:host([placeholder]) .type-inline .touch-zone > .label,
+				.type-inline .touch-zone > input:focus + .label {
+					top: var(--obj-input-padding-y, 10px);
+					transform: translateY(0%) scale(75%);
+				}
+
+				:host([label]) .type-inline .touch-zone > input {
+					margin-top: var(--obj-input-label-font-size, 12px);
+				}
+
+				/* TYPE - FILLED */
+
+				:host([value]) .type-filled .touch-zone > .label,
+				:host([placeholder]) .type-filled .touch-zone > .label,
+				.type-filled .touch-zone > input:focus + .label {
+					top: 0px;
+					transform: translateY(-37.5%) scale(75%);
+				}
+
+				.type-filled .touch-zone > .border {
+					background-color: var(--obj-input-background, lightgrey);
+
 					border-radius: 0px;
 					
 					border-top: none;
 					border-bottom: var(--obj-input-border, 1px solid grey);
 					border-left: none;
 					border-right: none;
-
-					background-color: transparent;
 				}
 
-				:host([type="secondary"]) label:focus-within {
-					outline: none;
-				}
-				
-				:host([type="secondary"]) label:focus-within::after {
-					content: "";
-					width: 100%;
-					position: absolute;
-					bottom: 0px;
-					left: 0px;
-					right: 0px;
-					border-bottom: var(--obj-input-focus-border, 1px solid grey);
-				}
+				/* TYPE - CLEAR */
 
-				/* LABEL POSITION ABOVE */
-
-
-
-				/* LABEL POSITION INLINE */
-
-				/*
-				label {
-					position: relative;
-				}
-
-				label {
-					color: var(--obj-input-label-font-color, black);
-					font-family: var(--obj-input-label-font-family, Arial);
-					font-size: var(--obj-input-label-font-size, 12px);
-					font-weight: var(--obj-input-label-font-weight, normal);
-
-					text-align: left;
-					text-overflow: ellipsis;
-					white-space: nowrap;
-
-					pointer-events: none;
-
-					transform-origin: left top;
-
-					transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
-				}
-
-				input {
-					border-radius: var(--obj-input-input-border-radius, 5px);
-					padding: var(--obj-input-padding-y, 10px) var(--obj-input-padding-x, 10px);
-					text-align: var(--obj-input-text-align, left);
-
-					background: var(--obj-input-input-background, white);
-					border: var(--obj-input-input-border, 1px solid grey);
-
-					color: var(--obj-input-input-font-color, black);
-					font-family: var(--obj-input-input-font-family, Arial);
-					font-size: var(--obj-input-font-size, 12px);
-					font-weight: var(--obj-input-input-font-weight, normal);
-				}
-
-				input:focus {
-					border: var(--obj-input-input-border, 1px solid black);
-					outline: none;
-				}
-
-				
-				label {
-					position: absolute;
-					left: var(--obj-input-padding-x, 10px);
-					top: 50%;
-					transform: translateY(-50%);
-				}
-
-				input[value] + label,
-				input[placeholder] + label,
-				input:focus + label {
-					color: red;
-					font-size: 0.75rem;
+				:host([value]) .type-clear .touch-zone > .label,
+				:host([placeholder]) .type-clear .touch-zone > .label,
+				.type-clear .touch-zone > input:focus + .label {
 					top: 0px;
+					transform: translateY(-37.5%) scale(75%);
 				}
 
-				input[value] + label::before, input[placeholder] + label::before, input:focus + label::before {
-					content: "";
-					display: block;
-					height: 1px;
-					background-color: white;
-					position: absolute;
-					left: -3px;
-					right: -3px;
-					top: 50%;
-					z-index: -1;
-				}
-				*/
+				.type-clear .touch-zone > .border {
+					background-color: transparent;
 
-				/* LABEL POSITION INSIDE */
-
-				label.position-inside {
-					display: flex;
-					flex-direction: column-reverse;
-					align-items: flex-start;
-					justify-content: center;
-
-					position: relative;
-
-					padding: var(--obj-input-padding-y, 10px) var(--obj-input-padding-x, 10px);
-				}
-
-				label.position-inside > div {
-					position: absolute;
-					transition: all 150ms ease 0s;
-					top: 50%;
-					left: var(--obj-input-padding-x);
-					right: var(--obj-input-padding-x);
+					border-radius: 0px;
 					
-					transform: translateY(-50%);
-					pointer-events: none;
-					user-select: none;
-
-					padding: 0px;
-					margin: 0px;
-					height: var(--obj-input-label-font-size, 12px);
-					line-height: var(--obj-input-label-font-size, 12px);
-					
-					transform-origin: top var(--obj-input-text-align, left);
+					border-top: none;
+					border-bottom: var(--obj-input-border, 1px solid grey);
+					border-left: none;
+					border-right: none;
 				}
 
-				label.position-inside > input[value] + div,
-				label.position-inside > input[placeholder] + div,
-				label.position-inside > input:focus + div {
-					top: var(--obj-input-padding-y, 10px);
-					transform: translateY(0%) scale(75%);
-					color: var(--obj-input-focus-label-font-color, black);
-				}
+				/* MESSAGE */
 
-				:host([label]) label.position-inside > input {
-					margin-top: var(--obj-input-label-font-size, 12px);
-				}
-
-				label.position-inside > input[value],
-				label.position-inside > input[placeholder],
-				label.position-inside > input:focus {
-					/*transform: translateY(50%);*/
-				}
-
-
-
-
-				/* DISABLED */
-				
-				:host([disabled]) label {
-					color: var(--obj-input-input-disabled-font-color, grey);
-				}
-
-				:host([disabled]) input {
-					color: var(--obj-input-input-disabled-font-color, grey);
-					border: var(--obj-input-input-disabled-border, 1px solid grey);
-				}
-
-				/* ERROR */
-
-				.error {
-					font-family: var(--obj-input-error-font-family, sans-serif);
-					font-size: var(--obj-input-error-font-size, 12px);
-					font-weight: var(--obj-input-error-font-weight, normal);
+				.message {
+					font-size: var(--obj-input-message-font-size, 12px);
+					font-weight: var(--obj-input-message-font-weight, normal);
 
 					text-align: var(--obj-input-text-align, left);
 
-					color: var(--obj-input-error-font-color, red);
+					color: var(--obj-input-message-font-color, red);
 
 					padding-top: var(--obj-input-line-gap, 10px);
 					padding-bottom: 0px;
 					padding-left: var(--obj-input-padding-x, 10px);
 					padding-right: var(--obj-input-padding-x, 10px);
+				}
+
+				/* ERROR */
+
+				.error .touch-zone > .label {
+					color: var(--obj-input-error-font-color, red) !important;
+				}
+
+				.error.type-stack .touch-zone > .border,
+				.error.type-outline .touch-zone > .border,
+				.error.type-inline .touch-zone > .border {
+					background-color: var(--obj-input-error-background, white);
+
+					border-top: var(--obj-input-error-border, 1px solid red);
+					border-bottom: var(--obj-input-error-border, 1px solid red);
+					border-left: var(--obj-input-error-border, 1px solid red);
+					border-right: var(--obj-input-error-border, 1px solid red);
+				}
+				
+				.error.type-filled .touch-zone > .border {
+					background-color: var(--obj-input-error-background, white);
+
+					border-bottom: var(--obj-input-error-border, 1px solid red);
+				}
+
+				.error.type-clear .touch-zone > .border {
+					border-bottom: var(--obj-input-error-border, 1px solid red);
+				}
+
+				.error .message {
+					color: var(--obj-input-error-font-color, red) !important;
+				}
+
+				/* INVERT */
+
+				/* --- todo --- */
+
+				/* HOVER */
+
+				.type-stack .touch-zone:hover > .border,
+				.type-outline .touch-zone:hover > .border,
+				.type-inline .touch-zone:hover > .border {
+					background-color: var(--obj-input-hover-background, white);
+					
+					border-top: var(--obj-input-hover-border, 1px solid grey);
+					border-bottom: var(--obj-input-hover-border, 1px solid grey);
+					border-left: var(--obj-input-hover-border, 1px solid grey);
+					border-right: var(--obj-input-hover-border, 1px solid grey);
+				}
+
+				.type-filled .touch-zone:hover > .border {
+					background-color: var(--obj-input-hover-background, white);
+
+					border-bottom: var(--obj-input-hover-border, 1px solid grey);
+				}
+				
+				.type-clear .touch-zone:hover > .border {
+					border-bottom: var(--obj-input-hover-border, 1px solid grey);
+				}
+
+				/** FOCUS */
+
+				.type-stack .touch-zone:focus-within > .border,
+				.type-outline .touch-zone:focus-within > .border,
+				.type-inline .touch-zone:focus-within > .border {
+					border: var(--obj-input-focus-border, 1px solid black) !important;
+				}
+
+				.type-filled .touch-zone:focus-within > .border,
+				.type-clear .touch-zone:focus-within > .border {
+					border-bottom: var(--obj-input-focus-border, 1px solid black) !important;
+				}
+
+				/* DISABLED */
+
+				.disabled .touch-zone > input {
+					color: var(--obj-input-disabled-font-color, lightgrey) !important;
+				}
+
+				.disabled .touch-zone > .label {
+					color: var(--obj-input-disabled-font-color, lightgrey) !important;
+
+					transition: none;
+				}
+
+				.disabled.type-stack .touch-zone > .border,
+				.disabled.type-outline .touch-zone > .border,
+				.disabled.type-inline .touch-zone > .border,
+				.disabled.type-filled .touch-zone > .border {
+					background-color: var(--obj-input-disabled-background, white);
+
+					border-top: var(--obj-input-disabled-border, 1px solid lightgrey);
+					border-bottom: var(--obj-input-disabled-border, 1px solid lightgrey);
+					border-left: var(--obj-input-disabled-border, 1px solid lightgrey);
+					border-right: var(--obj-input-disabled-border, 1px solid lightgrey);
+				}
+
+				.disabled.type-clear .touch-zone > .border {
+					border-bottom: var(--obj-input-disabled-border, 1px solid lightgrey);
+				}
+
+				.disabled .message {
+					color: var(--obj-input-disabled-font-color, lightgrey) !important;
 				}
 			`
 		];
@@ -391,36 +477,31 @@ export class TextField extends LitElement {
 	 */
 	override render() {
 
+		const renderType = this._validTypes.find(type => type === this.type?.toLowerCase()) || 'inline';
+
+		const classes: ClassInfo = {
+			'container': true,
+			['type-' + renderType]: true,
+			'error': this.error === true,
+			'disabled': this.disabled === true,
+			'invert': this.invert === true,
+		};
+
 		return html`
-			<div class="container">
-				<label class="input-box position-${this.labelPosition || 'inside'}">
+			<div class="${classMap(classes)}">
+				<label class="touch-zone">
+					<div class="border"></div>
 					<input
 						id="input-field"
 						part="input-field"
 						type="text"
-						value="${ifDefined(this.value)}"
-						placeholder="${ifDefined(this.placeholder)}"
+						.value="${this.value ?? ''}"
+						.placeholder="${this.placeholder ?? ''}"
 						?disabled="${this.disabled}"
 						@input="${(e: InputEvent) => this._handleInput(e)}">
-					${this.label ? html`<div>${this.label}</div>` : html``}
+					${this.label ? html`<div class="label"><span>${this.label}</span></div>` : html``}
 				</label>
-				<!--
-				<div class="input-box position-inside">
-					<input
-						id="input-field"
-						part="input-field"
-						type="text"
-						value="${ifDefined(this.value)}"
-						placeholder="${ifDefined(this.placeholder)}"
-						?disabled="${this.disabled}"
-						@input="${(e: InputEvent) => this._handleInput(e)}">
-					${this.label ? html`
-						<label for="input-field">${this.label}</label>
-					` : html``}
-				</div>-->
-				${this.error ? html`
-					<div class="error">${this.error}</div>
-				` : html``}
+				${this.message ? html`<div class="message">${this.message}</div>` : html``}
 			</div>
 		`;
 	}

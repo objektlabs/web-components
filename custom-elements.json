@@ -243,85 +243,85 @@
           "name": "TextField",
           "cssProperties": [
             {
-              "name": "--obj-text-field-border-radius"
+              "name": "--obj-input-border-radius"
             },
             {
-              "name": "--obj-text-field-padding"
+              "name": "--obj-input-padding"
             },
             {
-              "name": "--obj-text-field-text-align"
+              "name": "--obj-input-text-align"
             },
             {
-              "name": "--obj-text-field-primary-background"
+              "name": "--obj-input-primary-background"
             },
             {
-              "name": "--obj-text-field-primary-border"
+              "name": "--obj-input-primary-border"
             },
             {
-              "name": "--obj-text-field-primary-font-color"
+              "name": "--obj-input-primary-font-color"
             },
             {
-              "name": "--obj-text-field-primary-font-family"
+              "name": "--obj-input-primary-font-family"
             },
             {
-              "name": "--obj-text-field-primary-font-size"
+              "name": "--obj-input-primary-font-size"
             },
             {
-              "name": "--obj-text-field-primary-font-weight"
+              "name": "--obj-input-primary-font-weight"
             },
             {
-              "name": "--obj-text-field-primary-disabled-background"
+              "name": "--obj-input-primary-disabled-background"
             },
             {
-              "name": "--obj-text-field-primary-disabled-border"
+              "name": "--obj-input-primary-disabled-border"
             },
             {
-              "name": "--obj-text-field-primary-disabled-font-color"
+              "name": "--obj-input-primary-disabled-font-color"
             },
             {
-              "name": "--obj-text-field-primary-invert-background"
+              "name": "--obj-input-primary-invert-background"
             },
             {
-              "name": "--obj-text-field-primary-invert-border"
+              "name": "--obj-input-primary-invert-border"
             },
             {
-              "name": "--obj-text-field-primary-invert-font-color"
+              "name": "--obj-input-primary-invert-font-color"
             },
             {
-              "name": "--obj-text-field-secondary-background"
+              "name": "--obj-input-secondary-background"
             },
             {
-              "name": "--obj-text-field-secondary-border"
+              "name": "--obj-input-secondary-border"
             },
             {
-              "name": "--obj-text-field-secondary-font-color"
+              "name": "--obj-input-secondary-font-color"
             },
             {
-              "name": "--obj-text-field-secondary-font-family"
+              "name": "--obj-input-secondary-font-family"
             },
             {
-              "name": "--obj-text-field-secondary-font-size"
+              "name": "--obj-input-secondary-font-size"
             },
             {
-              "name": "--obj-text-field-secondary-font-weight"
+              "name": "--obj-input-secondary-font-weight"
             },
             {
-              "name": "--obj-text-field-secondary-disabled-background"
+              "name": "--obj-input-secondary-disabled-background"
             },
             {
-              "name": "--obj-text-field-secondary-disabled-border"
+              "name": "--obj-input-secondary-disabled-border"
             },
             {
-              "name": "--obj-text-field-secondary-disabled-font-color"
+              "name": "--obj-input-secondary-disabled-font-color"
             },
             {
-              "name": "--obj-text-field-secondary-invert-background"
+              "name": "--obj-input-secondary-invert-background"
             },
             {
-              "name": "--obj-text-field-secondary-invert-border"
+              "name": "--obj-input-secondary-invert-border"
             },
             {
-              "name": "--obj-text-field-secondary-invert-font-color"
+              "name": "--obj-input-secondary-invert-font-color"
             }
           ],
           "cssParts": [
@@ -333,13 +333,23 @@
           "members": [
             {
               "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The text field variant type, e.g. stack, outline, inline, filled, or clear.",
+              "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "label",
               "type": {
                 "text": "string"
               },
               "privacy": "public",
               "description": "The text field display label.",
-              "default": "''",
               "attribute": "label",
               "reflects": true
             },
@@ -351,7 +361,6 @@
               },
               "privacy": "public",
               "description": "The value entered into the text field.",
-              "default": "''",
               "attribute": "value",
               "reflects": true
             },
@@ -363,18 +372,28 @@
               },
               "privacy": "public",
               "description": "The default text to display in the text field when the value is not set.",
-              "default": "''",
               "attribute": "placeholder",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "A guide message to show under the text field.",
+              "attribute": "message",
               "reflects": true
             },
             {
               "kind": "field",
               "name": "error",
               "type": {
-                "text": "string | undefined"
+                "text": "boolean"
               },
               "privacy": "public",
-              "default": "'test'",
+              "description": "Set to place the component in an error state.",
               "attribute": "error",
               "reflects": true
             },
@@ -385,7 +404,6 @@
                 "text": "boolean"
               },
               "privacy": "public",
-              "default": "false",
               "description": "Set to invert the component colors for rendering on dark backgrounds.",
               "attribute": "invert",
               "reflects": true
@@ -397,13 +415,23 @@
                 "text": "boolean"
               },
               "privacy": "public",
-              "default": "false",
+              "description": "Sets to place the component in an disabled state.",
               "attribute": "disabled",
               "reflects": true
             },
             {
+              "kind": "field",
+              "name": "_validTypes",
+              "type": {
+                "text": "array"
+              },
+              "privacy": "private",
+              "default": "['stack', 'inline', 'outline', 'clear', 'filled']"
+            },
+            {
               "kind": "method",
               "name": "_handleInput",
+              "privacy": "private",
               "parameters": [
                 {
                   "name": "e",
@@ -416,18 +444,28 @@
           ],
           "events": [
             {
-              "description": "Dispatched when the text in entered into the field.",
-              "name": "input"
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched when the text in entered into the field."
             }
           ],
           "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "The text field variant type, e.g. stack, outline, inline, filled, or clear.",
+              "fieldName": "type"
+            },
             {
               "name": "label",
               "type": {
                 "text": "string"
               },
               "description": "The text field display label.",
-              "default": "''",
               "fieldName": "label"
             },
             {
@@ -436,7 +474,6 @@
                 "text": "string"
               },
               "description": "The value entered into the text field.",
-              "default": "''",
               "fieldName": "value"
             },
             {
@@ -445,15 +482,22 @@
                 "text": "string"
               },
               "description": "The default text to display in the text field when the value is not set.",
-              "default": "''",
               "fieldName": "placeholder"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "description": "A guide message to show under the text field.",
+              "fieldName": "message"
             },
             {
               "name": "error",
               "type": {
-                "text": "string | undefined"
+                "text": "boolean"
               },
-              "default": "'test'",
+              "description": "Set to place the component in an error state.",
               "fieldName": "error"
             },
             {
@@ -461,7 +505,6 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Set to invert the component colors for rendering on dark backgrounds.",
               "fieldName": "invert"
             },
@@ -470,7 +513,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
+              "description": "Sets to place the component in an disabled state.",
               "fieldName": "disabled"
             }
           ],

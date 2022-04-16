@@ -4,15 +4,8 @@ import '../components/obj-text-field';
 
 // Setup the story block.
 export default {
-	title: 'Inputs/Text-Field',
-	component: 'obj-text-field',
-	argTypes: {
-		label: { control: 'text' },
-		value: { control: 'text' },
-		placeholder: { control: 'text' },
-		invert: { control: 'boolean' },
-		disabled: { control: 'boolean' },
-	},
+	title: 'inputs/text-field',
+	component: 'obj-text-field'
 };
 
 // Create a rendering template for the component.
@@ -24,23 +17,25 @@ interface Story<T> {
 }
 
 interface ArgTypes {
-	label?: string;
-	value?: string;
-	placeholder?: string;
-	type?: string;
-	labelPosition?: string;
-	invert?: boolean;
-	disabled?: boolean;
-	slot?: TemplateResult;
+	type: string;
+	label: string;
+	value: string;
+	placeholder: string;
+	message: string;
+	error: boolean;
+	invert: boolean;
+	disabled: boolean;
+	slot: TemplateResult;
 }
 
 const Template: Story<ArgTypes> = (args: ArgTypes) => html`
 	<obj-text-field
+		.type="${args.type}"
 		.label="${args.label}"
 		.value="${args.value}"
 		.placeholder="${args.placeholder}"
-		.type="${args.type}"
-		.labelPosition="${args.labelPosition}"
+		.message="${args.message}"
+		.error="${args.error}"
 		?invert="${args.invert}"
 		?disabled="${args.disabled}">
 		${args.slot}
@@ -74,42 +69,57 @@ Placeholder.args = {
 	placeholder: 'e.g. user@site.com',
 };
 
-// Type - Primary
-export const TypePrimary = Template.bind({});
-TypePrimary.storyName = 'Type - Primary';
-TypePrimary.args = {
+// Message
+export const Message = Template.bind({});
+Message.args = {
 	label: 'Username',
-	type: 'primary'
+	message: 'Must be at least 8 characters long'
 };
 
-// Type - Secondary
-export const TypeSecondary = Template.bind({});
-TypeSecondary.storyName = 'Type - Secondary';
-TypeSecondary.args = {
+// Error
+export const Error = Template.bind({});
+Error.args = {
 	label: 'Username',
-	type: 'secondary'
+	error: true,
+	message: 'Field is required'
 };
 
-// Label Position - Above
-export const LabelPositionAbove = Template.bind({});
-LabelPositionAbove.storyName = 'Label Position - Above';
-LabelPositionAbove.args = {
+// Type - Above
+export const TypeAbove = Template.bind({});
+TypeAbove.storyName = 'Type - Stack';
+TypeAbove.args = {
 	label: 'Username',
-	labelPosition: 'above'
+	type: 'stack'
 };
 
-// Label Position - Inline
-export const LabelPositionInline = Template.bind({});
-LabelPositionInline.storyName = 'Label Position - Inline';
-LabelPositionInline.args = {
+// Type - Outline
+export const TypeOutline = Template.bind({});
+TypeOutline.storyName = 'Type - Outline';
+TypeOutline.args = {
 	label: 'Username',
-	labelPosition: 'inline'
+	type: 'outline'
 };
 
-// Label Position - Inside
-export const LabelPositionInside = Template.bind({});
-LabelPositionInside.storyName = 'Label Position - Inside';
-LabelPositionInside.args = {
+// Type - Inside
+export const TypeInline = Template.bind({});
+TypeInline.storyName = 'Type - Inline';
+TypeInline.args = {
 	label: 'Username',
-	labelPosition: 'inside'
+	type: 'inline'
+};
+
+// Type - Filled
+export const TypeFilled = Template.bind({});
+TypeFilled.storyName = 'Type - Filled';
+TypeFilled.args = {
+	label: 'Username',
+	type: 'filled'
+};
+
+// Type - Clear
+export const TypeClear = Template.bind({});
+TypeClear.storyName = 'Type - Clear';
+TypeClear.args = {
+	label: 'Username',
+	type: 'clear'
 };

@@ -24,7 +24,7 @@
 		"docs:storybook": "npx build-storybook --output-dir=docs",
 		"docs:custom-elements": "npx cem analyze --litelement --globs packages/*/components/*",
 		"test": "npm run test --workspaces",
-		"serve": "tsc --build tsconfig.project.json && npm run docs:custom-elements && concurrently -k -r \"tsc --build tsconfig.project.json --watch --preserveWatchOutput\" \"npx start-storybook --port=9000\""
+		"serve": "tsc --build tsconfig.project.json && npm run docs:custom-elements && concurrently -k -r \"tsc --build tsconfig.project.json --watch --preserveWatchOutput\" \"npx start-storybook --no-manager-cache --port=9000\""
 	},
 	"devDependencies": {
 		"@custom-elements-manifest/analyzer": "^0.5.7",

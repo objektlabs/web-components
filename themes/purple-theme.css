@@ -97,7 +97,6 @@
 
 	/* ---------- TEXT-FIELD ---------- */
 
-
 	--obj-input-font-family: var(--obj-font-family);
 	--obj-input-font-size: 16px;
 	--obj-input-font-weight: normal;
@@ -113,20 +112,29 @@
 	--obj-input-padding-y: 10px;
 	--obj-input-line-gap: 5px;
 
-	--obj-input-focus-border: 1px solid var(--obj-color-brand-default);
-	--obj-input-focus-border-offset: 0px;
+	--obj-input-focus-border: 2px solid var(--obj-color-brand-default);
 	--obj-input-focus-label-font-color: var(--obj-color-brand-default);
 	--obj-input-padding: 10px;
 
-	--obj-input-label-font-family: var(--obj-font-family);
-	--obj-input-label-font-size: 14px;
+	--obj-input-label-font-size: 16px;
 	--obj-input-label-font-weight: normal;
 	--obj-input-label-font-color: var(--obj-color-text-dark);
 
-	--obj-input-error-font-family: var(--obj-font-family);
-	--obj-input-error-font-size: var(--obj-font-size);
-	--obj-input-error-font-weight: normal;
+	--obj-input-message-font-size: var(--obj-font-size);
+	--obj-input-message-font-weight: normal;
+	--obj-input-message-font-color: var(--obj-color-text-black);
+
+	--obj-input-error-background: var(--obj-color-background-light);
+	--obj-input-error-border: 1px solid var(--obj-color-error);
 	--obj-input-error-font-color: var(--obj-color-error);
+
+	--obj-input-hover-background: var(--obj-color-background-light);
+	--obj-input-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-input-hover-font-color: var(--obj-color-text-black);
+
+	--obj-input-disabled-background: var(--obj-color-brand-invert);
+	--obj-input-disabled-border: 1px solid var(--obj-color-disabled-fill);
+	--obj-input-disabled-font-color: var(--obj-color-disabled-fill);
 }
 
 html {
