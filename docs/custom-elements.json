@@ -1,0 +1,468 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "packages/button/components/obj-button.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A clickable button component.\n\n&#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/buttons-button)\n\n## Installation\n```sh\nnpm install @objekt/obj-button\n```",
+          "name": "Button",
+          "cssProperties": [
+            {
+              "name": "--obj-button-border-radius"
+            },
+            {
+              "name": "--obj-button-padding"
+            },
+            {
+              "name": "--obj-button-text-align"
+            },
+            {
+              "name": "--obj-button-primary-background"
+            },
+            {
+              "name": "--obj-button-primary-border"
+            },
+            {
+              "name": "--obj-button-primary-font-color"
+            },
+            {
+              "name": "--obj-button-primary-font-family"
+            },
+            {
+              "name": "--obj-button-primary-font-size"
+            },
+            {
+              "name": "--obj-button-primary-font-weight"
+            },
+            {
+              "name": "--obj-button-primary-disabled-background"
+            },
+            {
+              "name": "--obj-button-primary-disabled-border"
+            },
+            {
+              "name": "--obj-button-primary-disabled-font-color"
+            },
+            {
+              "name": "--obj-button-primary-invert-background"
+            },
+            {
+              "name": "--obj-button-primary-invert-border"
+            },
+            {
+              "name": "--obj-button-primary-invert-font-color"
+            },
+            {
+              "name": "--obj-button-secondary-background"
+            },
+            {
+              "name": "--obj-button-secondary-border"
+            },
+            {
+              "name": "--obj-button-secondary-font-color"
+            },
+            {
+              "name": "--obj-button-secondary-font-family"
+            },
+            {
+              "name": "--obj-button-secondary-font-size"
+            },
+            {
+              "name": "--obj-button-secondary-font-weight"
+            },
+            {
+              "name": "--obj-button-secondary-disabled-background"
+            },
+            {
+              "name": "--obj-button-secondary-disabled-border"
+            },
+            {
+              "name": "--obj-button-secondary-disabled-font-color"
+            },
+            {
+              "name": "--obj-button-secondary-invert-background"
+            },
+            {
+              "name": "--obj-button-secondary-invert-border"
+            },
+            {
+              "name": "--obj-button-secondary-invert-font-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The button container.",
+              "name": "button"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The button display type. e.g. primary, secondary.",
+              "default": "'secondary'",
+              "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The button display label.",
+              "default": "''",
+              "attribute": "label",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "invert",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "Set to invert the component colors for rendering on dark backgrounds.",
+              "attribute": "invert",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "public",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_validTypes",
+              "type": {
+                "text": "array"
+              },
+              "privacy": "private",
+              "default": "['primary', 'secondary', 'clear']"
+            },
+            {
+              "kind": "method",
+              "name": "#handleClick",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched when the button is clicked."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "The button display type. e.g. primary, secondary.",
+              "default": "'secondary'",
+              "fieldName": "type"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "The button display label.",
+              "default": "''",
+              "fieldName": "label"
+            },
+            {
+              "name": "invert",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set to invert the component colors for rendering on dark backgrounds.",
+              "fieldName": "invert"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "obj-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Button",
+          "declaration": {
+            "name": "Button",
+            "module": "packages/button/components/obj-button.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "obj-button",
+          "declaration": {
+            "name": "Button",
+            "module": "packages/button/components/obj-button.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/text-field/components/obj-text-field.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A simple text input component.\n\n&#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/inputs-text-field)\n\n## Installation\n```sh\nnpm install @objekt/obj-text-field\n```",
+          "name": "TextField",
+          "cssProperties": [
+            {
+              "name": "TODO"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The text field variant type, e.g. stack, outline, inline, filled, or clear.",
+              "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The text field display label.",
+              "attribute": "label",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The value entered into the text field.",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The default text to display in the text field when the value is not set.",
+              "attribute": "placeholder",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "A guide message to show under the text field.",
+              "attribute": "message",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "Set to place the component in an error state.",
+              "attribute": "error",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "invert",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "Set to invert the component colors for rendering on dark backgrounds.",
+              "attribute": "invert",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "Sets to place the component in an disabled state.",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_validTypes",
+              "type": {
+                "text": "array"
+              },
+              "privacy": "private",
+              "default": "['stack', 'inline', 'outline', 'clear', 'filled']"
+            },
+            {
+              "kind": "method",
+              "name": "#handleInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched when the text in entered into the field."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "The text field variant type, e.g. stack, outline, inline, filled, or clear.",
+              "fieldName": "type"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "The text field display label.",
+              "fieldName": "label"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "The value entered into the text field.",
+              "fieldName": "value"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "The default text to display in the text field when the value is not set.",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "description": "A guide message to show under the text field.",
+              "fieldName": "message"
+            },
+            {
+              "name": "error",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set to place the component in an error state.",
+              "fieldName": "error"
+            },
+            {
+              "name": "invert",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set to invert the component colors for rendering on dark backgrounds.",
+              "fieldName": "invert"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Sets to place the component in an disabled state.",
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "obj-text-field",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TextField",
+          "declaration": {
+            "name": "TextField",
+            "module": "packages/text-field/components/obj-text-field.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "obj-text-field",
+          "declaration": {
+            "name": "TextField",
+            "module": "packages/text-field/components/obj-text-field.ts"
+          }
+        }
+      ]
+    }
+  ]
+}
