@@ -33,41 +33,7 @@ import { ClassInfo, classMap } from 'lit/directives/class-map';
  * 
  * @fires value-changed - Dispatched when the text in entered into the field.
  * 
- * @csspart input-field - The input field container.
- * 
- * @cssprop --obj-input-border-radius
- * @cssprop --obj-input-padding
- * @cssprop --obj-input-text-align
- * 
- * @cssprop --obj-input-primary-background
- * @cssprop --obj-input-primary-border
- * @cssprop --obj-input-primary-font-color
- * @cssprop --obj-input-primary-font-family
- * @cssprop --obj-input-primary-font-size
- * @cssprop --obj-input-primary-font-weight
- *
- * @cssprop --obj-input-primary-disabled-background
- * @cssprop --obj-input-primary-disabled-border
- * @cssprop --obj-input-primary-disabled-font-color
- *
- * @cssprop --obj-input-primary-invert-background
- * @cssprop --obj-input-primary-invert-border
- * @cssprop --obj-input-primary-invert-font-color
- * 
- * @cssprop --obj-input-secondary-background
- * @cssprop --obj-input-secondary-border
- * @cssprop --obj-input-secondary-font-color
- * @cssprop --obj-input-secondary-font-family
- * @cssprop --obj-input-secondary-font-size
- * @cssprop --obj-input-secondary-font-weight
- *
- * @cssprop --obj-input-secondary-disabled-background
- * @cssprop --obj-input-secondary-disabled-border
- * @cssprop --obj-input-secondary-disabled-font-color
- * 
- * @cssprop --obj-input-secondary-invert-background
- * @cssprop --obj-input-secondary-invert-border
- * @cssprop --obj-input-secondary-invert-font-color
+ * @cssprop TODO
  */
 @customElement('obj-text-field')
 export class TextField extends LitElement {
