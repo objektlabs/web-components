@@ -42,10 +42,10 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: main # The branch the action should deploy to.
+          BRANCH: docs # The branch the action should deploy to.
           FOLDER: docs # The folder to grab the built docs files from
           CLEAN: true # Clean out any previous files in the docs folder
-          TARGET_FOLDER: docs # The folder to commit the build docs files into
+          #TARGET_FOLDER: docs # The folder to commit the build docs files into
           GIT_CONFIG_NAME: Deploy Bot
           GIT_CONFIG_EMAIL: info@objektlabs.io
-          COMMIT_MESSAGE: Auto generated docs
+          #COMMIT_MESSAGE: Auto generated docs
