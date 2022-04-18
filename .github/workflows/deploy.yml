@@ -28,8 +28,14 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm ci
-          npm run build --if-present
-          npm test
+          npm run build
+
+      - name: Run Tests 🔥
+        run: |
+          npm run test
+
+      - name: Generate Docs 📝
+        run: |
           npm run docs
 
       - name: Deploy 🚀
@@ -37,7 +43,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: main # The branch the action should deploy to.
-          FOLDER: docs-build # The folder to grab the built docs files from
+          FOLDER: dist/docs # The folder to grab the built docs files from
           CLEAN: true # Clean out any previous files in the docs folder
           TARGET_FOLDER: docs # The folder to commit the build docs files into
           GIT_CONFIG_NAME: Deploy Bot
