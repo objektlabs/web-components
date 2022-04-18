@@ -31,7 +31,6 @@ jobs:
 
       - name: Build Project 🔧
         run: |
-          npm ci
           npm run build
 
       - name: Run Tests 🔥

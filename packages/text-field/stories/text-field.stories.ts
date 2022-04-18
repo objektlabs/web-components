@@ -54,11 +54,6 @@ const Template: Story<ArgTypes> = (args: ArgTypes) => html`
 // SETUP STORIES
 // -------------
 
-// Default
-
-export const Default = Template.bind({});
-Default.storyName = 'Default';
-
 // Label
 
 export const Label = Template.bind({});
