@@ -21,16 +21,13 @@ jobs:
 
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2.3.1
         with:
           persist-credentials: false
 
-      - name: Install Dependencies 🔗
-        run:
+      - name: Install and Build 🔧
+        run: |
           npm ci
-
-      - name: Build Project 🔧
-        run:
           npm run build
 
       - name: Run Tests 🔥
@@ -48,7 +45,7 @@ jobs:
           BRANCH: main # The branch the action should deploy to.
           FOLDER: docs # The folder to grab the built docs files from
           CLEAN: true # Clean out any previous files in the docs folder
-          #TARGET_FOLDER: docs # The folder to commit the build docs files into
+          TARGET_FOLDER: docs # The folder to commit the build docs files into
           GIT_CONFIG_NAME: Deploy Bot
           GIT_CONFIG_EMAIL: info@objektlabs.io
           COMMIT_MESSAGE: Auto generated docs
