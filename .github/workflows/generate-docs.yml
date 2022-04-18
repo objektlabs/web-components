@@ -9,6 +9,8 @@ on:
 
 jobs:
   build-and-deploy:
+    #concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+
     runs-on: ubuntu-latest
 
     strategy:
@@ -22,7 +24,7 @@ jobs:
           persist-credentials: false
 
       - name: Install and Build 🔧
-        run: | # Install npm packages and build the Storybook files
+        run: |
           npm install
           npm run docs
 
@@ -31,6 +33,9 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: main # The branch the action should deploy to.
-          FOLDER: docs # The folder that the build-storybook script generates files.
-          CLEAN: true # Automatically remove deleted files from the deploy branch
-          TARGET_FOLDER: docs # The folder that we serve our Storybook files from
+          FOLDER: docs # The folder to grab the built docs files from
+          CLEAN: true # Clean out any previous files in the docs folder
+          TARGET_FOLDER: docs # The folder to commit the build docs files into
+          GIT_CONFIG_NAME: Deploy Bot
+          GIT_CONFIG_EMAIL: info@objektlabs.io
+          COMMIT_MESSAGE: Auto generated docs
