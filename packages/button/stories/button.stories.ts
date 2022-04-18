@@ -39,6 +39,11 @@ export const Default = Template.bind({});
 Default.args = {
 	label: 'Hello World 1'
 }
+// Define Story - Default2
+export const Default2 = Template.bind({});
+Default2.args = {
+	label: 'Hello World 1'
+}
 
 // Define Story - Primary
 export const Primary = Template.bind({});
