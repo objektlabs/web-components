@@ -43,7 +43,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: main # The branch the action should deploy to.
-          FOLDER: dist/docs # The folder to grab the built docs files from
+          FOLDER: docs # The folder to grab the built docs files from
           CLEAN: true # Clean out any previous files in the docs folder
           TARGET_FOLDER: docs # The folder to commit the build docs files into
           GIT_CONFIG_NAME: Deploy Bot
