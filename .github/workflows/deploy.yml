@@ -25,7 +25,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install and Build 🔧
+      - name: Install Dependencies 🔗
+        run: |
+          npm ci
+
+      - name: Build Project 🔧
         run: |
           npm ci
           npm run build

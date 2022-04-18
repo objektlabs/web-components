@@ -77,7 +77,7 @@ export class TextField extends LitElement {
 	// EVENT HANDLERS
 	// --------------
 
-	private _handleInput(e: InputEvent) {
+	#handleInput(e: InputEvent) {
 
 		this.value = (<HTMLInputElement>e?.target).value || undefined;
 
@@ -136,7 +136,7 @@ export class TextField extends LitElement {
 				}
 
 				.touch-zone > input {
-					font-size: var(--obj-input-font-size, 12px);
+					font-size: var(--obj-input-font-size, 14px);
 					font-weight: var(--obj-input-font-weight, normal);
 
 					color: var(--obj-input-font-color, black);
@@ -171,10 +171,10 @@ export class TextField extends LitElement {
 					padding: 0px;
 					margin: 0px;
 
-					height: var(--obj-input-label-font-size, 12px);
+					height: var(--obj-input-label-font-size, 14px);
 					line-height: 100%;
 
-					font-size: var(--obj-input-label-font-size, 12px);
+					font-size: var(--obj-input-label-font-size, 14px);
 					font-weight: var(--obj-input-label-font-weight, normal);
 
 					color: var(--obj-input-label-font-color, black);
@@ -200,7 +200,7 @@ export class TextField extends LitElement {
 
 					background: var(--obj-input-background, white);
 
-					border-radius: var(--obj-input-border-radius, 5px);
+					border-radius: var(--obj-input-border-radius, 0px);
 
 					border-top: var(--obj-input-border, 1px solid grey);
 					border-bottom: var(--obj-input-border, 1px solid grey);
@@ -217,7 +217,7 @@ export class TextField extends LitElement {
 
 				.type-stack .touch-zone > .border {
 					top: var(--obj-input-line-gap, 10px);
-					margin-top: var(--obj-input-label-font-size, 12px);
+					margin-top: var(--obj-input-label-font-size, 14px);
 				}
 
 				.type-stack .touch-zone > .label {
@@ -252,7 +252,7 @@ export class TextField extends LitElement {
 					content: "";
 					display: block;
 					height: 100%;
-					background-color: var(--obj-input-background);
+					background-color: var(--obj-input-background, white);
 					position: absolute;
 					left: -3px;
 					right: -3px;
@@ -271,7 +271,7 @@ export class TextField extends LitElement {
 				}
 
 				:host([label]) .type-inline .touch-zone > input {
-					margin-top: var(--obj-input-label-font-size, 12px);
+					margin-top: var(--obj-input-label-font-size, 14px);
 				}
 
 				/* TYPE - FILLED */
@@ -284,7 +284,7 @@ export class TextField extends LitElement {
 				}
 
 				.type-filled .touch-zone > .border {
-					background-color: var(--obj-input-background, lightgrey);
+					background-color: var(--obj-input-background, white);
 
 					border-radius: 0px;
 					
@@ -415,14 +415,19 @@ export class TextField extends LitElement {
 
 				.disabled.type-stack .touch-zone > .border,
 				.disabled.type-outline .touch-zone > .border,
-				.disabled.type-inline .touch-zone > .border,
-				.disabled.type-filled .touch-zone > .border {
+				.disabled.type-inline .touch-zone > .border {
 					background-color: var(--obj-input-disabled-background, white);
 
 					border-top: var(--obj-input-disabled-border, 1px solid lightgrey);
 					border-bottom: var(--obj-input-disabled-border, 1px solid lightgrey);
 					border-left: var(--obj-input-disabled-border, 1px solid lightgrey);
 					border-right: var(--obj-input-disabled-border, 1px solid lightgrey);
+				}
+
+				.disabled.type-filled .touch-zone > .border {
+					background-color: var(--obj-input-disabled-background, white);
+
+					border-bottom: var(--obj-input-disabled-border, 1px solid lightgrey);
 				}
 
 				.disabled.type-clear .touch-zone > .border {
@@ -443,6 +448,7 @@ export class TextField extends LitElement {
 	 */
 	override render() {
 
+		// Calculate the state classes to apply to the component.
 		const renderType = this._validTypes.find(type => type === this.type?.toLowerCase()) || 'inline';
 
 		const classes: ClassInfo = {
@@ -453,6 +459,7 @@ export class TextField extends LitElement {
 			'invert': this.invert === true,
 		};
 
+		// Generate the component template.
 		return html`
 			<div class="${classMap(classes)}">
 				<label class="touch-zone">
@@ -464,7 +471,7 @@ export class TextField extends LitElement {
 						.value="${this.value ?? ''}"
 						.placeholder="${this.placeholder ?? ''}"
 						?disabled="${this.disabled}"
-						@input="${(e: InputEvent) => this._handleInput(e)}">
+						@input="${(e: InputEvent) => this.#handleInput(e)}">
 					${this.label ? html`<div class="label"><span>${this.label}</span></div>` : html``}
 				</label>
 				${this.message ? html`<div class="message">${this.message}</div>` : html``}

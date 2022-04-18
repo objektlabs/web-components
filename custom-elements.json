@@ -107,8 +107,8 @@
                 "text": "string"
               },
               "privacy": "public",
-              "default": "'secondary'",
               "description": "The button display type. e.g. primary, secondary.",
+              "default": "'secondary'",
               "attribute": "type",
               "reflects": true
             },
@@ -119,8 +119,8 @@
                 "text": "string"
               },
               "privacy": "public",
-              "default": "''",
               "description": "The button display label.",
+              "default": "''",
               "attribute": "label",
               "reflects": true
             },
@@ -131,7 +131,6 @@
                 "text": "boolean"
               },
               "privacy": "public",
-              "default": "false",
               "description": "Set to invert the component colors for rendering on dark backgrounds.",
               "attribute": "invert",
               "reflects": true
@@ -140,12 +139,20 @@
               "kind": "field",
               "name": "disabled",
               "type": {
-                "text": "boolean"
+                "text": "boolean | undefined"
               },
               "privacy": "public",
-              "default": "false",
               "attribute": "disabled",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_validTypes",
+              "type": {
+                "text": "array"
+              },
+              "privacy": "private",
+              "default": "['primary', 'secondary', 'clear']"
             },
             {
               "kind": "method",
@@ -164,7 +171,7 @@
             {
               "name": "click",
               "type": {
-                "text": "Event"
+                "text": "CustomEvent"
               },
               "description": "Dispatched when the button is clicked."
             }
@@ -175,8 +182,8 @@
               "type": {
                 "text": "string"
               },
-              "default": "'secondary'",
               "description": "The button display type. e.g. primary, secondary.",
+              "default": "'secondary'",
               "fieldName": "type"
             },
             {
@@ -184,8 +191,8 @@
               "type": {
                 "text": "string"
               },
-              "default": "''",
               "description": "The button display label.",
+              "default": "''",
               "fieldName": "label"
             },
             {
@@ -193,16 +200,14 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Set to invert the component colors for rendering on dark backgrounds.",
               "fieldName": "invert"
             },
             {
               "name": "disabled",
               "type": {
-                "text": "boolean"
+                "text": "boolean | undefined"
               },
-              "default": "false",
               "fieldName": "disabled"
             }
           ],
@@ -346,8 +351,7 @@
             },
             {
               "kind": "method",
-              "name": "_handleInput",
-              "privacy": "private",
+              "name": "#handleInput",
               "parameters": [
                 {
                   "name": "e",

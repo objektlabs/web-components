@@ -2,26 +2,33 @@ import { html, TemplateResult } from 'lit';
 
 import '../components/obj-button';
 
-// Setup the story block.
+// ---------------------
+// CONFIGURE STORY BLOCK
+// ---------------------
+
 export default {
-	title: 'Buttons/Button',
+	title: 'buttons/button',
 	component: 'obj-button'
 };
 
-// Create a rendering template for the component.
+// ---------------------
+// CREATE STORY TEMPLATE
+// ---------------------
+
 interface Story<T> {
 	(args: T): TemplateResult;
 	args?: Partial<T>;
 	argTypes?: Record<string, unknown>;
-	parameters?: any;
+	storyName?: string;
+	parameters?: Record<string, unknown>;
 }
 
 interface ArgTypes {
-	type?: string;
-	label?: string;
-	invert?: boolean;
-	disabled?: boolean;
-	slot?: TemplateResult;
+	type: string;
+	label: string;
+	invert: boolean;
+	disabled: boolean;
+	slot: TemplateResult;
 }
 
 const Template: Story<ArgTypes> = (args: ArgTypes) => html`
@@ -34,84 +41,131 @@ const Template: Story<ArgTypes> = (args: ArgTypes) => html`
 	</obj-button>
 `;
 
-// Define Story - Default
+// -------------
+// SETUP STORIES
+// -------------
+
+// Default
+
 export const Default = Template.bind({});
-Default.args = {
-	label: 'Hello World 1'
-}
+Default.storyName = 'Default';
 
-// Define Story - Primary
-export const Primary = Template.bind({});
-Primary.args = {
+// Type - Primary
+
+export const TypePrimary = Template.bind({});
+TypePrimary.storyName = 'Type - Primary';
+TypePrimary.args = {
 	type: 'primary',
 	label: 'Hello World'
 };
 
-// Define Story - Primary Disabled
-export const PrimaryDisabled = Template.bind({});
-PrimaryDisabled.args = {
+export const TypePrimaryDisabled = Template.bind({});
+TypePrimaryDisabled.storyName = '🔸Disabled';
+TypePrimaryDisabled.args = {
 	type: 'primary',
 	label: 'Hello World',
 	disabled: true
 };
 
-// Define Story - Primary Invert
-export const PrimaryInvert = Template.bind({});
-PrimaryInvert.args = {
+export const TypePrimaryInvert = Template.bind({});
+TypePrimaryInvert.storyName = '🔸Invert';
+TypePrimaryInvert.args = {
 	type: 'primary',
 	label: 'Hello World',
 	invert: true
 };
-PrimaryInvert.parameters = {
+TypePrimaryInvert.parameters = {
 	backgrounds: { default: 'dark' }
 };
 
-// Define Story - Primary Invert Disabled
-export const PrimaryInvertDisabled = Template.bind({});
-PrimaryInvertDisabled.args = {
+export const TypePrimaryInvertDisabled = Template.bind({});
+TypePrimaryInvertDisabled.storyName = '🔸Invert, Disabled';
+TypePrimaryInvertDisabled.args = {
 	type: 'primary',
 	label: 'Hello World',
 	invert: true,
 	disabled: true
 };
-PrimaryInvertDisabled.parameters = {
+TypePrimaryInvertDisabled.parameters = {
 	backgrounds: { default: 'dark' }
 };
 
-// Define Story - Secondary
-export const Secondary = Template.bind({});
-Secondary.args = {
+// Type - Secondary
+
+export const TypeSecondary = Template.bind({});
+TypeSecondary.storyName = 'Type - Secondary';
+TypeSecondary.args = {
 	type: 'secondary',
 	label: 'Hello World'
 };
 
-// Define Story - Secondary Disabled
-export const SecondaryDisabled = Template.bind({});
-SecondaryDisabled.args = {
+export const TypeSecondaryDisabled = Template.bind({});
+TypeSecondaryDisabled.storyName = '🔸Disabled';
+TypeSecondaryDisabled.args = {
 	type: 'secondary',
 	label: 'Hello World',
 	disabled: true
 };
 
-// Define Story - Secondary Invert
-export const SecondaryInvert = Template.bind({});
-SecondaryInvert.args = {
+export const TypeSecondaryInvert = Template.bind({});
+TypeSecondaryInvert.storyName = '🔸Invert';
+TypeSecondaryInvert.args = {
 	type: 'secondary',
 	label: 'Hello World',
 	invert: true
 };
-SecondaryInvert.parameters = {
+TypeSecondaryInvert.parameters = {
 	backgrounds: { default: 'dark' }
 };
 
-// Define Story - Secondary Invert Disabled
-export const SecondaryInvertDisabled = Template.bind({});
-SecondaryInvertDisabled.args = {
+export const TypeSecondaryInvertDisabled = Template.bind({});
+TypeSecondaryInvertDisabled.storyName = '🔸Invert, Disabled';
+TypeSecondaryInvertDisabled.args = {
 	type: 'secondary',
 	label: 'Hello World',
 	invert: true,
 	disabled: true
 };
-SecondaryInvertDisabled.parameters = {
+TypeSecondaryInvertDisabled.parameters = {
+	backgrounds: { default: 'dark' }
+};
+
+// Type - Clear
+
+export const TypeClear = Template.bind({});
+TypeClear.storyName = 'Type - Clear';
+TypeClear.args = {
+	type: 'clear',
+	label: 'Hello World'
+};
+
+export const TypeClearDisabled = Template.bind({});
+TypeClearDisabled.storyName = '🔸Disabled';
+TypeClearDisabled.args = {
+	type: 'clear',
+	label: 'Hello World',
+	disabled: true
+};
+
+export const TypeClearInvert = Template.bind({});
+TypeClearInvert.storyName = '🔸Invert';
+TypeClearInvert.args = {
+	type: 'clear',
+	label: 'Hello World',
+	invert: true
+};
+TypeClearInvert.parameters = {
+	backgrounds: { default: 'dark' }
+};
+
+export const TypeClearInvertDisabled = Template.bind({});
+TypeClearInvertDisabled.storyName = '🔸Invert, Disabled';
+TypeClearInvertDisabled.args = {
+	type: 'clear',
+	label: 'Hello World',
+	invert: true,
+	disabled: true
+};
+TypeClearInvertDisabled.parameters = {
 	backgrounds: { default: 'dark' }
 };

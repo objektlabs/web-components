@@ -1,5 +1,6 @@
 import { html, css, LitElement, CSSResultGroup, TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators';
+import { ClassInfo, classMap } from 'lit/directives/class-map';
 
 /**
  * A clickable button component.
@@ -74,10 +75,12 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement('obj-button')
 export class Button extends LitElement {
 
-	@property({ type: String, reflect: true }) public type = 'secondary';
-	@property({ type: String, reflect: true }) public label = '';
-	@property({ type: Boolean, reflect: true }) public invert = false;
-	@property({ type: Boolean, reflect: true }) public disabled = false;
+	@property({ type: String, reflect: true }) public type?: string;
+	@property({ type: String, reflect: true }) public label?: string;
+	@property({ type: Boolean, reflect: true }) public invert?: boolean;
+	@property({ type: Boolean, reflect: true }) public disabled?: boolean;
+
+	private _validTypes = ['primary', 'secondary', 'clear'];
 
 	// ------------
 	// CONSTRUCTORS
@@ -112,9 +115,8 @@ export class Button extends LitElement {
 		e.preventDefault();
 		e.stopPropagation();
 
-		this.dispatchEvent(new Event('click', {
-			bubbles: true,
-			composed: true,
+		this.dispatchEvent(new CustomEvent('click', {
+			// n/a
 		}));
 	}
 
@@ -162,8 +164,7 @@ export class Button extends LitElement {
 
 				/* TYPE - PRIMARY */
 
-				:host > .container,
-				:host([type="primary"]) > .container {
+				.type-primary {
 					font-family: var(--obj-button-primary-font-family, Arial);
 					font-size: var(--obj-button-primary-font-size, 12px);
 					font-weight: var(--obj-button-primary-font-weight, normal);
@@ -173,15 +174,13 @@ export class Button extends LitElement {
 					color: var(--obj-button-primary-font-color, white);
 				}
 
-				:host(:hover) > .container,
-				:host([type="primary"]:hover) > .container {
+				.type-primary:hover {
 					background: var(--obj-button-primary-hover-background, grey);
 					border: var(--obj-button-primary-hover-border, 1px solid grey);
 					color: var(--obj-button-primary-hover-font-color, white);
 				}
 
-				:host([disabled]) > .container,
-				:host([type="primary"][disabled]) > .container {
+				.type-primary.disabled {
 					background: var(--obj-button-primary-disabled-background, lightgrey);
 					border: var(--obj-button-primary-disabled-border, 1px solid lightgrey);
 					color: var(--obj-button-primary-disabled-font-color, white);
@@ -189,21 +188,21 @@ export class Button extends LitElement {
 					cursor: default;
 				}
 
-				/* PRIMARY INVERT */
+				/* TYPE - PRIMARY - INVERT */
 
-				:host([type="primary"][invert]) > .container {
+				.type-primary.invert {
 					background: var(--obj-button-primary-invert-background, white);
 					border: var(--obj-button-primary-invert-border, 1px solid white);
 					color: var(--obj-button-primary-invert-font-color, grey);
 				}
 
-				:host([type="primary"][invert]:hover) > .container {
+				.type-primary.invert:hover {
 					background: var(--obj-button-primary-invert-hover-background, grey);
 					border: var(--obj-button-primary-invert-hover-border, 1px solid grey);
 					color: var(--obj-button-primary-invert-hover-font-color, white);
 				}
 
-				:host([type="primary"][invert][disabled]) > .container {
+				.type-primary.disabled.invert {
 					background: var(--obj-button-primary-invert-disabled-background, lightgrey);
 					border: var(--obj-button-primary-invert-disabled-border, 1px solid lightgrey);
 					color: var(--obj-button-primary-invert-disabled-font-color, white);
@@ -213,8 +212,7 @@ export class Button extends LitElement {
 
 				/* TYPE - SECONDARY */
 
-				:host([invert]) > .container,
-				:host([type="secondary"]) > .container {
+				.type-secondary {
 					font-family: var(--obj-button-secondary-font-family, Arial);
 					font-size: var(--obj-button-secondary-font-size, 12px);
 					font-weight: var(--obj-button-secondary-font-weight, normal);
@@ -224,15 +222,13 @@ export class Button extends LitElement {
 					color: var(--obj-button-secondary-font-color, grey);
 				}
 
-				:host([invert]:hover) > .container,
-				:host([type="secondary"]:hover) > .container {
+				.type-secondary:hover {
 					background: var(--obj-button-secondary-hover-background, grey);
 					border: var(--obj-button-secondary-hover-border, 1px solid grey);
 					color: var(--obj-button-secondary-hover-font-color, white);
 				}
 
-				:host([invert][disabled]) > .container,
-				:host([type="secondary"][disabled]) > .container {
+				.type-secondary.disabled {
 					background: var(--obj-button-secondary-disabled-background, white);
 					border: var(--obj-button-secondary-disabled-border, 1px solid lightgrey);
 					color: var(--obj-button-secondary-disabled-font-color, lightgrey);
@@ -240,24 +236,72 @@ export class Button extends LitElement {
 					cursor: default;
 				}
 
-				/* SECONDARY INVERT */
+				/* TYPE - SECONDARY - INVERT */
 
-				:host([type="secondary"][invert]) > .container {
+				.type-secondary.invert {
 					background: var(--obj-button-secondary-invert-background, transparent);
 					border: var(--obj-button-secondary-invert-border, 1px solid white);
 					color: var(--obj-button-secondary-invert-font-color, white);
 				}
 
-				:host([type="secondary"][invert]:hover) > .container {
+				.type-secondary.invert:hover {
 					background: var(--obj-button-secondary-invert-hover-background, white);
 					border: var(--obj-button-secondary-invert-hover-border, 1px solid white);
 					color: var(--obj-button-secondary-invert-hover-font-color, grey);
 				}
 
-				:host([type="secondary"][invert][disabled]) > .container {
+				.type-secondary.disabled.invert {
 					background: var(--obj-button-secondary-invert-disabled-background, transparent);
 					border: var(--obj-button-secondary-invert-disabled-border, 1px solid lightgrey);
 					color: var(--obj-button-secondary-invert-disabled-font-color, lightgrey);
+
+					cursor: default;
+				}
+
+				/* TYPE - CLEAR */
+
+				.type-clear {
+					font-family: var(--obj-button-clear-font-family, Arial);
+					font-size: var(--obj-button-clear-font-size, 12px);
+					font-weight: var(--obj-button-clear-font-weight, normal);
+
+					background: var(--obj-button-clear-background, transparent);
+					border: var(--obj-button-clear-border, 1px solid transparent);
+					color: var(--obj-button-clear-font-color, grey);
+				}
+
+				.type-clear:hover {
+					background: var(--obj-button-clear-hover-background, grey);
+					border: var(--obj-button-clear-hover-border, 1px solid grey);
+					color: var(--obj-button-clear-hover-font-color, white);
+				}
+
+				.type-clear.disabled {
+					background: var(--obj-button-clear-disabled-background, transparent);
+					border: var(--obj-button-clear-disabled-border, 1px solid transparent);
+					color: var(--obj-button-clear-disabled-font-color, lightgrey);
+
+					cursor: default;
+				}
+
+				/* TYPE - CLEAR - INVERT */
+
+				.type-clear.invert {
+					background: var(--obj-button-clear-invert-background, transparent);
+					border: var(--obj-button-clear-invert-border, 1px solid transparent);
+					color: var(--obj-button-clear-invert-font-color, white);
+				}
+
+				.type-clear.invert:hover {
+					background: var(--obj-button-clear-invert-hover-background, transparent);
+					border: var(--obj-button-clear-invert-hover-border, 1px solid transparent);
+					color: var(--obj-button-clear-invert-hover-font-color, grey);
+				}
+
+				.type-clear.disabled.invert {
+					background: var(--obj-button-clear-invert-disabled-background, transparent);
+					border: var(--obj-button-clear-invert-disabled-border, 1px solid transparent);
+					color: var(--obj-button-clear-invert-disabled-font-color, lightgrey);
 
 					cursor: default;
 				}
@@ -272,12 +316,23 @@ export class Button extends LitElement {
 	 */
 	override render() {
 
+		// Calculate the state classes to apply to the component.
+		const renderType = this._validTypes.find(type => type === this.type?.toLowerCase()) || 'primary';
+
+		const classes: ClassInfo = {
+			'container': true,
+			['type-' + renderType]: true,
+			'disabled': this.disabled === true,
+			'invert': this.invert === true,
+		};
+
+		// Generate the component template.
 		return html`
 			<div
 				part="button"
-				class="container"
+				class="${classMap(classes)}"
 				@click=${this.#handleClick}>
-				${this.label}
+				${this.label || html`&nbsp;`}
 				<slot></slot>
 			</div>
 		`;

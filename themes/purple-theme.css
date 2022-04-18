@@ -95,6 +95,36 @@
 	--obj-button-secondary-invert-disabled-border: 1px solid var(--obj-color-disabled-fill);
 	--obj-button-secondary-invert-disabled-font-color: var(--obj-color-disabled-fill);
 
+	/* Clear */
+
+	--obj-button-clear-font-family: var(--obj-font-family);
+	--obj-button-clear-font-size: var(--obj-font-size);
+	--obj-button-clear-font-weight: 600;
+
+	--obj-button-clear-background: transparent;
+	--obj-button-clear-border: 1px solid transparent;
+	--obj-button-clear-font-color: var(--obj-color-text-dark);
+
+	--obj-button-clear-hover-background: var(--obj-color-brand-accent);
+	--obj-button-clear-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-button-clear-hover-font-color: var(--obj-color-text-light);
+
+	--obj-button-clear-disabled-background: transparent;
+	--obj-button-clear-disabled-border: 1px solid transparent;
+	--obj-button-clear-disabled-font-color: var(--obj-color-disabled-fill);
+
+	--obj-button-clear-invert-background: transparent;
+	--obj-button-clear-invert-border: 1px solid transparent;
+	--obj-button-clear-invert-font-color: var(--obj-color-text-light);
+
+	--obj-button-clear-invert-hover-background: var(--obj-color-brand-accent);
+	--obj-button-clear-invert-hover-border: 1px solid transparent;
+	--obj-button-clear-invert-hover-font-color: var(--obj-color-text-light);
+
+	--obj-button-clear-invert-disabled-background: transparent;
+	--obj-button-clear-invert-disabled-border: 1px solid transparent;
+	--obj-button-clear-invert-disabled-font-color: var(--obj-color-disabled-fill);
+
 	/* ---------- TEXT-FIELD ---------- */
 
 	--obj-input-font-family: var(--obj-font-family);
