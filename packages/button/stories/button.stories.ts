@@ -37,12 +37,12 @@ const Template: Story<ArgTypes> = (args: ArgTypes) => html`
 // Define Story - Default
 export const Default = Template.bind({});
 Default.args = {
-	label: 'Hello World 1'
+	label: 'Hello World 2'
 }
 // Define Story - Default2
 export const Default2 = Template.bind({});
 Default2.args = {
-	label: 'Hello World 1'
+	label: 'Hello World 2'
 }
 
 // Define Story - Primary
