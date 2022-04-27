@@ -1,13 +1,32 @@
 module.exports = {
 	framework: '@storybook/web-components',
 	stories: [
-		'../packages/*/dist/stories/**/*.stories.mdx',
-		'../packages/*/dist/stories/**/*.stories.@(js|jsx|ts|tsx)'
+		"../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+		'../packages/*/dist/stories/**/*.stories.@(js|jsx|ts|tsx|mdx)'
 	],
 	addons: [
-		'@storybook/addon-links',
+		'@etchteam/storybook-addon-css-variables-theme',
+		'storybook-addon-css-user-preferences',
 		'@storybook/addon-essentials',
-		'@etchteam/storybook-addon-css-variables-theme'
+		'@storybook/addon-a11y',
+		'@storybook/addon-interactions',
+		'@storybook/addon-links',
+		{
+			name: '@storybook/addon-storysource',
+			options: {
+				loaderOptions: {
+					injectStoryParameters: false,
+				},
+			},
+		},
+		{
+			name: '@storybook/addon-docs',
+			options: {
+				sourceLoaderOptions: {
+					injectStoryParameters: false,
+				},
+			},
+		},
 	],
 	features: {
 		postcss: false,

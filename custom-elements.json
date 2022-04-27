@@ -12,85 +12,136 @@
           "name": "Button",
           "cssProperties": [
             {
+              "description": "Button corner radius.",
               "name": "--obj-button-border-radius"
             },
             {
+              "description": "Button internal padding.",
               "name": "--obj-button-padding"
             },
             {
+              "description": "Horizontal text alignment.",
               "name": "--obj-button-text-align"
             },
             {
+              "description": "Button font family.",
+              "name": "--obj-button-font-family"
+            },
+            {
+              "description": "Button font size.",
+              "name": "--obj-button-font-size"
+            },
+            {
+              "description": "Button font weight.",
+              "name": "--obj-button-font-weight"
+            },
+            {
+              "description": "Primary button background color.",
               "name": "--obj-button-primary-background"
             },
             {
+              "description": "Primary button border.",
               "name": "--obj-button-primary-border"
             },
             {
+              "description": "Primary button font color.",
               "name": "--obj-button-primary-font-color"
             },
             {
-              "name": "--obj-button-primary-font-family"
-            },
-            {
-              "name": "--obj-button-primary-font-size"
-            },
-            {
-              "name": "--obj-button-primary-font-weight"
-            },
-            {
+              "description": "Primary button disabled background color.",
               "name": "--obj-button-primary-disabled-background"
             },
             {
+              "description": "Primary button disabled border.",
               "name": "--obj-button-primary-disabled-border"
             },
             {
+              "description": "Primary button disabled font color.",
               "name": "--obj-button-primary-disabled-font-color"
             },
             {
+              "description": "Primary button invert background color.",
               "name": "--obj-button-primary-invert-background"
             },
             {
+              "description": "Primary button invert border.",
               "name": "--obj-button-primary-invert-border"
             },
             {
+              "description": "Primary button invert font color.",
               "name": "--obj-button-primary-invert-font-color"
             },
             {
+              "description": "Secondary button background color.",
               "name": "--obj-button-secondary-background"
             },
             {
+              "description": "Secondary button border.",
               "name": "--obj-button-secondary-border"
             },
             {
+              "description": "Secondary button font color.",
               "name": "--obj-button-secondary-font-color"
             },
             {
-              "name": "--obj-button-secondary-font-family"
-            },
-            {
-              "name": "--obj-button-secondary-font-size"
-            },
-            {
-              "name": "--obj-button-secondary-font-weight"
-            },
-            {
+              "description": "Secondary button disabled background color.",
               "name": "--obj-button-secondary-disabled-background"
             },
             {
+              "description": "Secondary button disabled border.",
               "name": "--obj-button-secondary-disabled-border"
             },
             {
+              "description": "Secondary button disabled font color.",
               "name": "--obj-button-secondary-disabled-font-color"
             },
             {
+              "description": "Secondary button invert background color.",
               "name": "--obj-button-secondary-invert-background"
             },
             {
+              "description": "Secondary button invert border.",
               "name": "--obj-button-secondary-invert-border"
             },
             {
+              "description": "Secondary button invert font color.",
               "name": "--obj-button-secondary-invert-font-color"
+            },
+            {
+              "description": "Clear button background color.",
+              "name": "--obj-button-clear-background"
+            },
+            {
+              "description": "Clear button border.",
+              "name": "--obj-button-clear-border"
+            },
+            {
+              "description": "Clear button font color.",
+              "name": "--obj-button-clear-font-color"
+            },
+            {
+              "description": "Clear button disabled background color.",
+              "name": "--obj-button-clear-disabled-background"
+            },
+            {
+              "description": "Clear button disabled border.",
+              "name": "--obj-button-clear-disabled-border"
+            },
+            {
+              "description": "Clear button disabled font color.",
+              "name": "--obj-button-clear-disabled-font-color"
+            },
+            {
+              "description": "Clear button invert background color.",
+              "name": "--obj-button-clear-invert-background"
+            },
+            {
+              "description": "Clear button invert border.",
+              "name": "--obj-button-clear-invert-border"
+            },
+            {
+              "description": "Clear button invert font color.",
+              "name": "--obj-button-clear-invert-font-color"
             }
           ],
           "cssParts": [
@@ -106,7 +157,6 @@
               "type": {
                 "text": "string"
               },
-              "privacy": "public",
               "description": "The button display type. e.g. primary, secondary.",
               "default": "'secondary'",
               "attribute": "type",
@@ -118,7 +168,6 @@
               "type": {
                 "text": "string"
               },
-              "privacy": "public",
               "description": "The button display label.",
               "default": "''",
               "attribute": "label",
@@ -130,7 +179,6 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "public",
               "description": "Set to invert the component colors for rendering on dark backgrounds.",
               "attribute": "invert",
               "reflects": true
@@ -139,19 +187,19 @@
               "kind": "field",
               "name": "disabled",
               "type": {
-                "text": "boolean | undefined"
+                "text": "boolean"
               },
-              "privacy": "public",
+              "description": "Sets to place the component in an disabled state.",
               "attribute": "disabled",
               "reflects": true
             },
             {
               "kind": "field",
-              "name": "_validTypes",
+              "name": "#validTypes",
+              "privacy": "private",
               "type": {
                 "text": "array"
               },
-              "privacy": "private",
               "default": "['primary', 'secondary', 'clear']"
             },
             {
@@ -206,8 +254,9 @@
             {
               "name": "disabled",
               "type": {
-                "text": "boolean | undefined"
+                "text": "boolean"
               },
+              "description": "Sets to place the component in an disabled state.",
               "fieldName": "disabled"
             }
           ],

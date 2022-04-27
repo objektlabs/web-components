@@ -3,7 +3,7 @@
 
 	/* Fonts */
 
-	--obj-font-family: 'Open Sans';
+	--obj-font-family: 'Open Sans', sans-serif;
 	--obj-font-size: 14px;
 
 	/* Colors */
@@ -31,15 +31,15 @@
 
 	/* ---------- BUTTON ---------- */
 
+	--obj-button-font-family: var(--obj-font-family);
+	--obj-button-font-size: var(--obj-font-size);
+	--obj-button-font-weight: 600;
+
 	--obj-button-border-radius: 8px;
 	--obj-button-padding: 14.5px 20px;
 	--obj-button-text-align: center;
 
 	/* Primary */
-
-	--obj-button-primary-font-family: var(--obj-font-family);
-	--obj-button-primary-font-size: var(--obj-font-size);
-	--obj-button-primary-font-weight: 600;
 
 	--obj-button-primary-background: var(--obj-color-brand-default);
 	--obj-button-primary-border: 1px solid var(--obj-color-brand-default);
@@ -67,10 +67,6 @@
 
 	/* Secondary */
 
-	--obj-button-secondary-font-family: var(--obj-font-family);
-	--obj-button-secondary-font-size: var(--obj-font-size);
-	--obj-button-secondary-font-weight: 600;
-
 	--obj-button-secondary-background: var(--obj-color-brand-invert);
 	--obj-button-secondary-border: 1px solid var(--obj-color-brand-default);
 	--obj-button-secondary-font-color: var(--obj-color-text-dark);
@@ -96,10 +92,6 @@
 	--obj-button-secondary-invert-disabled-font-color: var(--obj-color-disabled-fill);
 
 	/* Clear */
-
-	--obj-button-clear-font-family: var(--obj-font-family);
-	--obj-button-clear-font-size: var(--obj-font-size);
-	--obj-button-clear-font-weight: 600;
 
 	--obj-button-clear-background: transparent;
 	--obj-button-clear-border: 1px solid transparent;
@@ -165,6 +157,22 @@
 	--obj-input-disabled-background: var(--obj-color-brand-invert);
 	--obj-input-disabled-border: 1px solid var(--obj-color-disabled-fill);
 	--obj-input-disabled-font-color: var(--obj-color-disabled-fill);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--obj-button-primary-background: var(--obj-button-primary-invert-background);
+		--obj-button-primary-border: var(--obj-button-primary-invert-border);
+		--obj-button-primary-font-color: var(--obj-button-primary-invert-font-color);
+
+		--obj-button-primary-hover-background: var(--obj-button-primary-invert-hover-background);
+		--obj-button-primary-hover-border: var(--obj-button-primary-invert-hover-border);
+		--obj-button-primary-hover-font-color: var(--obj-button-primary-invert-hover-font-color);
+
+		--obj-button-primary-disabled-background: var(--obj-button-primary-invert-disabled-background);
+		--obj-button-primary-disabled-border: var(--obj-button-primary-invert-disabled-border);
+		--obj-button-primary-disabled-font-color: var(--obj-button-primary-invert-disabled-font-color);
+	}
 }
 
 html {

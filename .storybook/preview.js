@@ -16,12 +16,14 @@ export const decorators = [
 
 // Configure global settings for all stories.
 export const parameters = {
-	actions: { argTypesRegex: "^on[A-Z].*" },
 	controls: {
+		expanded: true,
 		matchers: {
 			color: /(background|color)$/i,
 			date: /Date$/,
+			boolean: /.*/,
 		},
+		exclude: /(^_.*|^#.*|^\-\-.*)$/ // hide private properties
 	},
 	backgrounds: {
 		default: 'light',
@@ -36,5 +38,10 @@ export const parameters = {
 			'default': basicTheme,
 			'Purple Theme': purpleTheme,
 		}
-	}
+	},
+	options: {
+		storySort: {
+			order: ['Getting Started', 'Learn the Basics', 'Contribute', 'Inputs', 'Buttons'],
+		},
+	},
 }

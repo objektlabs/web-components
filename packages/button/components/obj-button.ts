@@ -26,61 +26,80 @@ import { ClassInfo, classMap } from 'lit/directives/class-map';
  * <obj-button label="Secondary" type="secondary"></obj-button>
  * <obj-button label="Disabled" type="secondary" disabled></obj-button>
  * <obj-button label="Invert" type="secondary" invert></obj-button>
+ * 
+ * Clear:
+ * 
+ * <obj-button label="Clear" type="clear"></obj-button>
+ * <obj-button label="Disabled" type="clear" disabled></obj-button>
+ * <obj-button label="Invert" type="clear" invert></obj-button>
  * ```
  * 
  * @element obj-button
  * 
  * @property {string} [type='secondary'] - The button display type. e.g. primary, secondary.
  * @property {string} [label=''] - The button display label.
- * @property {boolean} [invert] - Set to invert the component colors for rendering on dark backgrounds.
  * 
- * @fires click - Dispatched when the button is clicked.
+ * @property {boolean} [invert] - Set to invert the component colors for rendering on dark backgrounds.
+ * @property {boolean} [disabled] - Sets to place the component in an disabled state.
+ * 
+ * @fires {CustomEvent} click - Dispatched when the button is clicked.
  * 
  * @csspart button - The button container.
  * 
- * @cssprop --obj-button-border-radius
- * @cssprop --obj-button-padding
- * @cssprop --obj-button-text-align
+ * @cssprop --obj-button-border-radius - Button corner radius.
+ * @cssprop --obj-button-padding - Button internal padding.
+ * @cssprop --obj-button-text-align - Horizontal text alignment.
  * 
- * @cssprop --obj-button-primary-background
- * @cssprop --obj-button-primary-border
- * @cssprop --obj-button-primary-font-color
- * @cssprop --obj-button-primary-font-family
- * @cssprop --obj-button-primary-font-size
- * @cssprop --obj-button-primary-font-weight
- *
- * @cssprop --obj-button-primary-disabled-background
- * @cssprop --obj-button-primary-disabled-border
- * @cssprop --obj-button-primary-disabled-font-color
- *
- * @cssprop --obj-button-primary-invert-background
- * @cssprop --obj-button-primary-invert-border
- * @cssprop --obj-button-primary-invert-font-color
+ * @cssprop --obj-button-font-family - Button font family.
+ * @cssprop --obj-button-font-size - Button font size.
+ * @cssprop --obj-button-font-weight - Button font weight.
  * 
- * @cssprop --obj-button-secondary-background
- * @cssprop --obj-button-secondary-border
- * @cssprop --obj-button-secondary-font-color
- * @cssprop --obj-button-secondary-font-family
- * @cssprop --obj-button-secondary-font-size
- * @cssprop --obj-button-secondary-font-weight
+ * @cssprop --obj-button-primary-background - Primary button background color.
+ * @cssprop --obj-button-primary-border - Primary button border.
+ * @cssprop --obj-button-primary-font-color - Primary button font color.
  *
- * @cssprop --obj-button-secondary-disabled-background
- * @cssprop --obj-button-secondary-disabled-border
- * @cssprop --obj-button-secondary-disabled-font-color
+ * @cssprop --obj-button-primary-disabled-background - Primary button disabled background color.
+ * @cssprop --obj-button-primary-disabled-border - Primary button disabled border.
+ * @cssprop --obj-button-primary-disabled-font-color - Primary button disabled font color.
+ *
+ * @cssprop --obj-button-primary-invert-background - Primary button invert background color.
+ * @cssprop --obj-button-primary-invert-border - Primary button invert border.
+ * @cssprop --obj-button-primary-invert-font-color - Primary button invert font color.
  * 
- * @cssprop --obj-button-secondary-invert-background
- * @cssprop --obj-button-secondary-invert-border
- * @cssprop --obj-button-secondary-invert-font-color
+ * @cssprop --obj-button-secondary-background - Secondary button background color.
+ * @cssprop --obj-button-secondary-border - Secondary button border.
+ * @cssprop --obj-button-secondary-font-color - Secondary button font color.
+ *
+ * @cssprop --obj-button-secondary-disabled-background - Secondary button disabled background color.
+ * @cssprop --obj-button-secondary-disabled-border - Secondary button disabled border.
+ * @cssprop --obj-button-secondary-disabled-font-color - Secondary button disabled font color.
+ *
+ * @cssprop --obj-button-secondary-invert-background - Secondary button invert background color.
+ * @cssprop --obj-button-secondary-invert-border - Secondary button invert border.
+ * @cssprop --obj-button-secondary-invert-font-color - Secondary button invert font color.
+ * 
+ * @cssprop --obj-button-clear-background - Clear button background color.
+ * @cssprop --obj-button-clear-border - Clear button border.
+ * @cssprop --obj-button-clear-font-color - Clear button font color.
+ *
+ * @cssprop --obj-button-clear-disabled-background - Clear button disabled background color.
+ * @cssprop --obj-button-clear-disabled-border - Clear button disabled border.
+ * @cssprop --obj-button-clear-disabled-font-color - Clear button disabled font color.
+ *
+ * @cssprop --obj-button-clear-invert-background - Clear button invert background color.
+ * @cssprop --obj-button-clear-invert-border - Clear button invert border.
+ * @cssprop --obj-button-clear-invert-font-color - Clear button invert font color.
  */
 @customElement('obj-button')
 export class Button extends LitElement {
 
-	@property({ type: String, reflect: true }) public type?: string;
-	@property({ type: String, reflect: true }) public label?: string;
-	@property({ type: Boolean, reflect: true }) public invert?: boolean;
-	@property({ type: Boolean, reflect: true }) public disabled?: boolean;
+	@property({ type: String, reflect: true }) type?: string;
+	@property({ type: String, reflect: true }) label?: string;
 
-	private _validTypes = ['primary', 'secondary', 'clear'];
+	@property({ type: Boolean, reflect: true }) invert?: boolean;
+	@property({ type: Boolean, reflect: true }) disabled?: boolean;
+
+	#validTypes = ['primary', 'secondary', 'clear'];
 
 	// ------------
 	// CONSTRUCTORS
@@ -116,7 +135,9 @@ export class Button extends LitElement {
 		e.stopPropagation();
 
 		this.dispatchEvent(new CustomEvent('click', {
-			// n/a
+			detail: null,
+			bubbles: true,
+			composed: true
 		}));
 	}
 
@@ -155,6 +176,10 @@ export class Button extends LitElement {
 					border-radius: var(--obj-button-border-radius, 0px);
 					padding: var(--obj-button-padding, 10px);
 					text-align: var(--obj-button-text-align, center);
+
+					font-family: var(--obj-button-font-family, Arial);
+					font-size: var(--obj-button-font-size, 12px);
+					font-weight: var(--obj-button-font-weight, normal);
 					
 					cursor: pointer;
 					user-select: none;
@@ -165,10 +190,6 @@ export class Button extends LitElement {
 				/* TYPE - PRIMARY */
 
 				.type-primary {
-					font-family: var(--obj-button-primary-font-family, Arial);
-					font-size: var(--obj-button-primary-font-size, 12px);
-					font-weight: var(--obj-button-primary-font-weight, normal);
-
 					background: var(--obj-button-primary-background, grey);
 					border: var(--obj-button-primary-border, 1px solid grey);
 					color: var(--obj-button-primary-font-color, white);
@@ -213,10 +234,6 @@ export class Button extends LitElement {
 				/* TYPE - SECONDARY */
 
 				.type-secondary {
-					font-family: var(--obj-button-secondary-font-family, Arial);
-					font-size: var(--obj-button-secondary-font-size, 12px);
-					font-weight: var(--obj-button-secondary-font-weight, normal);
-
 					background: var(--obj-button-secondary-background, transparent);
 					border: var(--obj-button-secondary-border, 1px solid grey);
 					color: var(--obj-button-secondary-font-color, grey);
@@ -261,10 +278,6 @@ export class Button extends LitElement {
 				/* TYPE - CLEAR */
 
 				.type-clear {
-					font-family: var(--obj-button-clear-font-family, Arial);
-					font-size: var(--obj-button-clear-font-size, 12px);
-					font-weight: var(--obj-button-clear-font-weight, normal);
-
 					background: var(--obj-button-clear-background, transparent);
 					border: var(--obj-button-clear-border, 1px solid transparent);
 					color: var(--obj-button-clear-font-color, grey);
@@ -317,7 +330,7 @@ export class Button extends LitElement {
 	override render() {
 
 		// Calculate the state classes to apply to the component.
-		const renderType = this._validTypes.find(type => type === this.type?.toLowerCase()) || 'primary';
+		const renderType = this.#validTypes.find(type => type === this.type?.toLowerCase()) || 'primary';
 
 		const classes: ClassInfo = {
 			'container': true,
@@ -328,13 +341,13 @@ export class Button extends LitElement {
 
 		// Generate the component template.
 		return html`
-			<div
+			<button
 				part="button"
 				class="${classMap(classes)}"
 				@click=${this.#handleClick}>
 				${this.label || html`&nbsp;`}
 				<slot></slot>
-			</div>
+			</button>
 		`;
 	}
 }

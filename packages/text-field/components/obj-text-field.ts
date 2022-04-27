@@ -27,11 +27,12 @@ import { ClassInfo, classMap } from 'lit/directives/class-map';
  * @property {string} [value] - The value entered into the text field.
  * @property {string} [placeholder] - The default text to display in the text field when the value is not set.
  * @property {string} [message] - A guide message to show under the text field.
+ * 
  * @property {boolean} [error] - Set to place the component in an error state.
  * @property {boolean} [invert] - Set to invert the component colors for rendering on dark backgrounds.
  * @property {boolean} [disabled] - Sets to place the component in an disabled state.
  * 
- * @fires value-changed - Dispatched when the text in entered into the field.
+ * @fires {CustomEvent} value-changed - Dispatched when the text in entered into the field.
  * 
  * @cssprop TODO
  */
@@ -43,6 +44,7 @@ export class TextField extends LitElement {
 	@property({ type: String, reflect: true }) public value?: string;
 	@property({ type: String, reflect: true }) public placeholder?: string;
 	@property({ type: String, reflect: true }) public message?: string;
+
 	@property({ type: Boolean, reflect: true }) public error?: boolean;
 	@property({ type: Boolean, reflect: true }) public invert?: boolean;
 	@property({ type: Boolean, reflect: true }) public disabled?: boolean;
@@ -82,7 +84,9 @@ export class TextField extends LitElement {
 		this.value = (<HTMLInputElement>e?.target).value || undefined;
 
 		this.dispatchEvent(new CustomEvent('value-changed', {
-			detail: this.value
+			detail: this.value,
+			bubbles: true,
+			composed: true
 		}));
 	}
 
