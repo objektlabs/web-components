@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Demo App</title>
+
+		<base href="/">
+
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width, height=device-height, initial-scale=1, viewport-fit=cover, shrink-to-fit=no, user-scalable=no">
+		<meta name="description" content="Make sense of your money">
+		<meta name="author" content="Objekt Labs">
+		<meta name="theme-color" content="#758E4F">
+
+		<!-- Load web app manifest -->
+		<link rel="manifest" href="./manifest.webmanifest">
+
+		<!-- Set app icons for browser tabs and search indexing -->
+		<link rel="shortcut icon" href="./favicon.ico">
+
+		<link rel="icon" type="image/png" sizes="128x128" href="./assets/icons/app-128.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/app-180.png">
+
+		<!-- Apple-specific meta tags. Refer to https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="apple-mobile-web-app-title" content="Marvin">
+		<meta name="apple-mobile-web-app-orientations" content="portrait-any">
+
+		<!-- Attempt to preload all CSS assets. -->
+		<link rel="preload" as="style" href="./assets/fonts/roboto/roboto.css">
+		<link rel="preload" as="style" href="./assets/fonts/material-icons/material-icons.css">
+		<link rel="preload" as="style" href="./index.css">
+
+		<!-- Load google font stylesheets -->
+		<link rel="stylesheet" href="./assets/fonts/roboto/roboto.css">
+		<link rel="stylesheet" href="./assets/fonts/material-icons/material-icons.css">
+
+		<!-- Load app global stylesheets -->
+		<link rel="stylesheet" href="./index.css">
+
+		<style>
+			body {}
+		</style>
+
+		<!-- Register app service -->
+		<script>
+			if ('serviceWorker' in navigator && location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+
+				window.addEventListener('load', () => {
+
+					navigator.serviceWorker.register('service-worker.js').then(registration => {
+						console.log('Service Worker registered');
+					}, error => {
+						console.error('Unable to register service worker', error);
+					});
+				});
+			}
+		</script>
+	</head>
+
+	<body>
+		<app-shell></app-shell>
+	</body>
+</html>

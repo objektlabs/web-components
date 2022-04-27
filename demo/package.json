@@ -1,0 +1,48 @@
+{
+	"name": "objekt-web-components-demo",
+	"version": "1.0.0",
+	"description": "Objekt web components catalogue",
+	"license": "ISC",
+	"author": "Objekt Labs",
+	"homepage": "https://github.com/objektlabs/web-components#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/objektlabs/web-components.git"
+	},
+	"bugs": {
+		"url": "https://github.com/objektlabs/web-components/issues"
+	},
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"build": "npx webpack --config=./config/webpack.release.js",
+		"serve": "npx webpack serve --open --config=./config/webpack.dev.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"lit": "^2.2.2"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.17.9",
+		"@babel/eslint-parser": "^7.17.0",
+		"@babel/eslint-plugin": "^7.17.7",
+		"@babel/plugin-proposal-class-properties": "^7.16.7",
+		"@babel/plugin-proposal-decorators": "^7.17.9",
+		"@babel/plugin-proposal-private-methods": "^7.16.11",
+		"@babel/plugin-transform-runtime": "^7.17.0",
+		"@babel/preset-env": "^7.16.11",
+		"babel-loader": "^8.2.5",
+		"clean-webpack-plugin": "^4.0.0",
+		"copy-webpack-plugin": "^10.2.4",
+		"css-loader": "^6.7.1",
+		"css-minimizer-webpack-plugin": "^3.4.1",
+		"html-webpack-plugin": "^5.5.0",
+		"style-loader": "^3.3.1",
+		"terser-webpack-plugin": "^5.3.1",
+		"webpack": "^5.72.0",
+		"webpack-cli": "^4.9.2",
+		"webpack-dev-server": "^4.8.1",
+		"webpack-merge": "^5.8.0",
+		"workbox-webpack-plugin": "^6.5.3"
+	}
+}

@@ -1,0 +1,50 @@
+{
+	"name": "Demo App",
+	"short_name": "Demo App",
+	"description": "Objekt Web Components Demo",
+	"theme_color": "#758e4f",
+	"background_color": "#758e4f",
+	"display": "standalone",
+	"orientation": "portrait",
+	"scope": "/",
+	"start_url": "/?utm_source=pwa",
+	"icons": [
+		{
+			"src": "./assets/icons/app-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "./assets/icons/app-512.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "any maskable"
+		}
+	],
+	"shortcuts": [
+		{
+			"name": "What is my portfolio balance?",
+			"short_name": "Portfolio",
+			"description": "View your overall portfolio balance",
+			"url": "/accounts?source=pwa",
+			"icons": [
+				{
+					"src": "./assets/icons/app-192.png",
+					"sizes": "192x192"
+				}
+			]
+		},
+		{
+			"name": "How's my finances doing?",
+			"short_name": "Finances",
+			"description": "View a summary of your finances",
+			"url": "/dashboard?source=pwa",
+			"icons": [
+				{
+					"src": "./assets/icons/app-192.png",
+					"sizes": "192x192"
+				}
+			]
+		}
+	]
+}
