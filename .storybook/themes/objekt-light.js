@@ -8,6 +8,8 @@ export default create({
 	brandUrl: 'https://github.com/objektlabs/web-components',
 	//brandImage: 'https://place-hold.it/350x150',
 
+	fontCode: 'monospace',
+
 	/*
 	colorPrimary: 'hotpink',
 	colorSecondary: 'deepskyblue',

@@ -32,11 +32,17 @@ Primary:
 | `type`        | `type`        |           | `string`         | The text field variant type, e.g. stack, outline, inline, filled, or clear. |
 | `value`       | `value`       |           | `string`         | The value entered into the text field.           |
 
+## Methods
+
+| Method         | Type                    |
+|----------------|-------------------------|
+| `#handleInput` | `(e: InputEvent): void` |
+
 ## Events
 
-| Event           | Type                  | Description                                      |
-|-----------------|-----------------------|--------------------------------------------------|
-| `value-changed` | `CustomEvent<string>` | Dispatched when the text in entered into the field. |
+| Event           | Type          | Description                                      |
+|-----------------|---------------|--------------------------------------------------|
+| `value-changed` | `CustomEvent` | Dispatched when the text in entered into the field. |
 
 ## CSS Custom Properties
 

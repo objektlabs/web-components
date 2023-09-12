@@ -11,14 +11,7 @@ module.exports = {
 		'@storybook/addon-a11y',
 		'@storybook/addon-interactions',
 		'@storybook/addon-links',
-		{
-			name: '@storybook/addon-storysource',
-			options: {
-				loaderOptions: {
-					injectStoryParameters: false,
-				},
-			},
-		},
+		'@storybook/addon-storysource',
 		{
 			name: '@storybook/addon-docs',
 			options: {

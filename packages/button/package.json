@@ -2,8 +2,8 @@
 	"name": "@objekt/obj-button",
 	"version": "0.0.4",
 	"description": "A clickable button component.",
-	"license": "ISC",
 	"author": "Objekt Labs",
+	"license": "ISC",
 	"homepage": "https://github.com/objektlabs/web-components/tree/main/packages/button",
 	"repository": {
 		"type": "git",
