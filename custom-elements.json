@@ -195,16 +195,21 @@
             },
             {
               "kind": "field",
-              "name": "#validTypes",
-              "privacy": "private",
+              "name": "validTypes",
               "type": {
                 "text": "array"
               },
+              "privacy": "private",
               "default": "['primary', 'secondary', 'clear']"
             },
             {
               "kind": "method",
-              "name": "#handleClick",
+              "name": "handleClick",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
               "parameters": [
                 {
                   "name": "e",
@@ -307,7 +312,6 @@
               "type": {
                 "text": "string"
               },
-              "privacy": "public",
               "description": "The text field variant type, e.g. stack, outline, inline, filled, or clear.",
               "attribute": "type",
               "reflects": true
@@ -318,7 +322,6 @@
               "type": {
                 "text": "string"
               },
-              "privacy": "public",
               "description": "The text field display label.",
               "attribute": "label",
               "reflects": true
@@ -329,7 +332,6 @@
               "type": {
                 "text": "string"
               },
-              "privacy": "public",
               "description": "The value entered into the text field.",
               "attribute": "value",
               "reflects": true
@@ -340,7 +342,6 @@
               "type": {
                 "text": "string"
               },
-              "privacy": "public",
               "description": "The default text to display in the text field when the value is not set.",
               "attribute": "placeholder",
               "reflects": true
@@ -351,7 +352,6 @@
               "type": {
                 "text": "string"
               },
-              "privacy": "public",
               "description": "A guide message to show under the text field.",
               "attribute": "message",
               "reflects": true
@@ -362,7 +362,6 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "public",
               "description": "Set to place the component in an error state.",
               "attribute": "error",
               "reflects": true
@@ -373,7 +372,6 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "public",
               "description": "Set to invert the component colors for rendering on dark backgrounds.",
               "attribute": "invert",
               "reflects": true
@@ -384,14 +382,13 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "public",
               "description": "Sets to place the component in an disabled state.",
               "attribute": "disabled",
               "reflects": true
             },
             {
               "kind": "field",
-              "name": "_validTypes",
+              "name": "validTypes",
               "type": {
                 "text": "array"
               },
@@ -400,7 +397,13 @@
             },
             {
               "kind": "method",
-              "name": "#handleInput",
+              "name": "handleInput",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
               "parameters": [
                 {
                   "name": "e",

@@ -1,17 +1,20 @@
+import { dirname, join } from "path";
+
 module.exports = {
-	framework: '@storybook/web-components',
+	framework: getAbsolutePath("@storybook/web-components"),
+
 	stories: [
 		"../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)",
 		'../packages/*/dist/stories/**/*.stories.@(js|jsx|ts|tsx|mdx)'
 	],
+
 	addons: [
-		'@etchteam/storybook-addon-css-variables-theme',
-		'storybook-addon-css-user-preferences',
-		'@storybook/addon-essentials',
-		'@storybook/addon-a11y',
-		'@storybook/addon-interactions',
-		'@storybook/addon-links',
-		'@storybook/addon-storysource',
+		getAbsolutePath("@etchteam/storybook-addon-css-variables-theme"),
+		getAbsolutePath("@storybook/addon-essentials"),
+		getAbsolutePath("@storybook/addon-a11y"),
+		getAbsolutePath("@storybook/addon-interactions"),
+		getAbsolutePath("@storybook/addon-links"),
+		getAbsolutePath("@storybook/addon-storysource"),
 		{
 			name: '@storybook/addon-docs',
 			options: {
@@ -21,12 +24,15 @@ module.exports = {
 			},
 		},
 	],
+
 	features: {
 		postcss: false,
 	},
+
 	staticDirs: [
 		{ from: '../custom-elements.json', to: 'custom-elements.json' }
 	],
+
 	webpackFinal: async (config, { configType }) => {
 
 		// To prevent double refresh due to tsc running in the background, exlude
@@ -42,5 +48,13 @@ module.exports = {
 		}
 
 		return config;
+	},
+
+	docs: {
+		autodocs: true
 	}
 };
+
+function getAbsolutePath(value) {
+	return dirname(require.resolve(join(value, "package.json")));
+}

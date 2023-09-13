@@ -33,20 +33,20 @@ Clear:
 
 ## Properties
 
-| Property   | Attribute  | Modifiers | Type          | Default     | Description                                      |
-|------------|------------|-----------|---------------|-------------|--------------------------------------------------|
-| `disabled` | `disabled` |           | `boolean`     |             | Sets to place the component in an disabled state. |
-| `invert`   | `invert`   |           | `boolean`     |             | Set to invert the component colors for rendering on dark backgrounds. |
-| `label`    | `label`    |           | `string`      | ""          | The button display label.                        |
-| `override` |            |           |               |             | The element style template.                      |
-| `styles`   |            | readonly  | `CSSResult[]` |             |                                                  |
-| `type`     | `type`     |           | `string`      | "secondary" | The button display type. e.g. primary, secondary. |
+| Property   | Attribute  | Type          | Default     | Description                                      |
+|------------|------------|---------------|-------------|--------------------------------------------------|
+| `disabled` | `disabled` | `boolean`     |             | Sets to place the component in an disabled state. |
+| `invert`   | `invert`   | `boolean`     |             | Set to invert the component colors for rendering on dark backgrounds. |
+| `label`    | `label`    | `string`      | ""          | The button display label.                        |
+| `override` |            |               |             | The element style template.                      |
+| `styles`   |            | `CSSResult[]` | [null]      |                                                  |
+| `type`     | `type`     | `string`      | "secondary" | The button display type. e.g. primary, secondary. |
 
 ## Methods
 
-| Method         | Type                    |
-|----------------|-------------------------|
-| `#handleClick` | `(e: MouseEvent): void` |
+| Method        | Type                    |
+|---------------|-------------------------|
+| `handleClick` | `(e: MouseEvent): void` |
 
 ## Events
 

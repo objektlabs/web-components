@@ -1,7 +1,11 @@
 {
-    "files": [],
-    "references": [
-      { "path": "packages/button" },
-      { "path": "packages/text-field" }
-    ]
-  }
+	"files": [],
+	"references": [
+		{
+			"path": "packages/button"
+		},
+		{
+			"path": "packages/text-field"
+		}
+	]
+}

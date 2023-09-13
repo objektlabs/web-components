@@ -1,14 +1,16 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+
+import { withActions } from '@storybook/addon-actions/decorator';
 import { html, TemplateResult } from 'lit';
-import { Story, Meta } from '@storybook/web-components';
 
 import '../components/obj-button';
 
-// ---------------------
-// CONFIGURE STORY BLOCK
-// ---------------------
+// -------------
+// CONFIGURATION
+// -------------
 
 export default {
-	title: 'Components/Button/Type/Secondary',
+	title: 'Components/Button/Secondary',
 	component: 'obj-button',
 	argTypes: {
 		type: {
@@ -18,69 +20,52 @@ export default {
 	},
 	parameters: {
 		actions: {
-			handles: ['click']
+			handles: ['click', 'contextmenu']
 		},
-	}
+	},
+	decorators: [withActions],
+	tags: ['autodocs']
 } as Meta;
 
-// ---------------------
-// CREATE STORY TEMPLATE
-// ---------------------
+// -------
+// STORIES
+// -------
 
-interface ArgTypes {
-	type: string;
-	label: string;
-	invert: boolean;
-	disabled: boolean;
-	slot: TemplateResult;
-}
-
-const Template: Story<ArgTypes> = (args: ArgTypes) => html`
-	<obj-button
-		.type="${args.type}"
-		.label="${args.label}"
-		?invert="${args.invert}"
-		?disabled="${args.disabled}">
-		${args.slot}
-	</obj-button>
-`;
-
-const createStory = (name: string, background: string, args: Partial<ArgTypes>) => {
-
-	const storyConfig: Story<ArgTypes> = Template.bind({});
-	storyConfig.storyName = name;
-	storyConfig.parameters = {
-		backgrounds: { default: background },
-	};
-	storyConfig.args = args;
-
-	return storyConfig;
+export const Default: StoryObj = {
+	args: {
+		type: 'secondary',
+		label: 'Secondary'
+	}
 };
 
-// -------------
-// SETUP STORIES
-// -------------
+export const Disabled: StoryObj = {
+	args: {
+		type: 'secondary',
+		label: 'Secondary',
+		disabled: true
+	}
+};
 
-export const Default = createStory('Default', 'light', {
-	type: 'secondary',
-	label: 'Hello World'
-});
+export const Invert: StoryObj = {
+	args: {
+		type: 'secondary',
+		label: 'Secondary',
+		invert: true
+	},
+	parameters: {
+		backgrounds: { default: 'dark' },
+	}
+};
 
-export const Disabled = createStory('Disabled', 'light', {
-	type: 'secondary',
-	label: 'Hello World',
-	disabled: true
-});
-
-export const Invert = createStory('Invert', 'dark', {
-	type: 'secondary',
-	label: 'Hello World',
-	invert: true
-});
-
-export const InvertDisabled = createStory('Invert, Disabled', 'dark', {
-	type: 'secondary',
-	label: 'Hello World',
-	disabled: true,
-	invert: true
-});
+export const InvertDisabled: StoryObj = {
+	name: 'Invert + Disabled',
+	args: {
+		type: 'secondary',
+		label: 'Secondary',
+		disabled: true,
+		invert: true
+	},
+	parameters: {
+		backgrounds: { default: 'dark' },
+	}
+};

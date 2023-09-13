@@ -1,6 +1,6 @@
-import { html, css, LitElement, CSSResultGroup, TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators';
-import { ClassInfo, classMap } from 'lit/directives/class-map';
+import { html, css, LitElement, TemplateResult } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { ClassInfo, classMap } from 'lit/directives/class-map.js';
 
 /**
  * A clickable button component.
@@ -99,7 +99,7 @@ export class Button extends LitElement {
 	@property({ type: Boolean, reflect: true }) invert?: boolean;
 	@property({ type: Boolean, reflect: true }) disabled?: boolean;
 
-	#validTypes = ['primary', 'secondary', 'clear'];
+	private validTypes = ['primary', 'secondary', 'clear'];
 
 	// ------------
 	// CONSTRUCTORS
@@ -129,7 +129,7 @@ export class Button extends LitElement {
 	// EVENT HANDLERS
 	// --------------
 
-	#handleClick(e: MouseEvent) {
+	handleClick(e: MouseEvent): void {
 
 		e.preventDefault();
 		e.stopPropagation();
@@ -153,184 +153,180 @@ export class Button extends LitElement {
 
 	/**
 	 * The element style template.
-	 * 
 	 */
-	static override get styles() {
+	static override styles = [
+		css`
+			/* HOST */
 
-		return [
-			css`
-				/* HOST */
+			:host {
+				display: inline-flex;
+			}
 
-				:host {
-					display: inline-flex;
-				}
+			.container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
 
-				.container {
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-					justify-content: center;
+				width: 100%;
 
-					width: 100%;
+				border-radius: var(--obj-button-border-radius, 0px);
+				padding: var(--obj-button-padding, 10px);
+				text-align: var(--obj-button-text-align, center);
 
-					border-radius: var(--obj-button-border-radius, 0px);
-					padding: var(--obj-button-padding, 10px);
-					text-align: var(--obj-button-text-align, center);
+				font-family: var(--obj-button-font-family, Arial);
+				font-size: var(--obj-button-font-size, 12px);
+				font-weight: var(--obj-button-font-weight, normal);
+				
+				cursor: pointer;
+				user-select: none;
 
-					font-family: var(--obj-button-font-family, Arial);
-					font-size: var(--obj-button-font-size, 12px);
-					font-weight: var(--obj-button-font-weight, normal);
-					
-					cursor: pointer;
-					user-select: none;
+				transition: all 0.25s;
+			}
 
-					transition: all 0.25s;
-				}
+			/* TYPE - PRIMARY */
 
-				/* TYPE - PRIMARY */
+			.type-primary {
+				background: var(--obj-button-primary-background, grey);
+				border: var(--obj-button-primary-border, 1px solid grey);
+				color: var(--obj-button-primary-font-color, white);
+			}
 
-				.type-primary {
-					background: var(--obj-button-primary-background, grey);
-					border: var(--obj-button-primary-border, 1px solid grey);
-					color: var(--obj-button-primary-font-color, white);
-				}
+			.type-primary:hover {
+				background: var(--obj-button-primary-hover-background, grey);
+				border: var(--obj-button-primary-hover-border, 1px solid grey);
+				color: var(--obj-button-primary-hover-font-color, white);
+			}
 
-				.type-primary:hover {
-					background: var(--obj-button-primary-hover-background, grey);
-					border: var(--obj-button-primary-hover-border, 1px solid grey);
-					color: var(--obj-button-primary-hover-font-color, white);
-				}
+			.type-primary.disabled {
+				background: var(--obj-button-primary-disabled-background, lightgrey);
+				border: var(--obj-button-primary-disabled-border, 1px solid lightgrey);
+				color: var(--obj-button-primary-disabled-font-color, white);
 
-				.type-primary.disabled {
-					background: var(--obj-button-primary-disabled-background, lightgrey);
-					border: var(--obj-button-primary-disabled-border, 1px solid lightgrey);
-					color: var(--obj-button-primary-disabled-font-color, white);
+				cursor: default;
+			}
 
-					cursor: default;
-				}
+			/* TYPE - PRIMARY - INVERT */
 
-				/* TYPE - PRIMARY - INVERT */
+			.type-primary.invert {
+				background: var(--obj-button-primary-invert-background, white);
+				border: var(--obj-button-primary-invert-border, 1px solid white);
+				color: var(--obj-button-primary-invert-font-color, grey);
+			}
 
-				.type-primary.invert {
-					background: var(--obj-button-primary-invert-background, white);
-					border: var(--obj-button-primary-invert-border, 1px solid white);
-					color: var(--obj-button-primary-invert-font-color, grey);
-				}
+			.type-primary.invert:hover {
+				background: var(--obj-button-primary-invert-hover-background, grey);
+				border: var(--obj-button-primary-invert-hover-border, 1px solid grey);
+				color: var(--obj-button-primary-invert-hover-font-color, white);
+			}
 
-				.type-primary.invert:hover {
-					background: var(--obj-button-primary-invert-hover-background, grey);
-					border: var(--obj-button-primary-invert-hover-border, 1px solid grey);
-					color: var(--obj-button-primary-invert-hover-font-color, white);
-				}
+			.type-primary.disabled.invert {
+				background: var(--obj-button-primary-invert-disabled-background, lightgrey);
+				border: var(--obj-button-primary-invert-disabled-border, 1px solid lightgrey);
+				color: var(--obj-button-primary-invert-disabled-font-color, white);
 
-				.type-primary.disabled.invert {
-					background: var(--obj-button-primary-invert-disabled-background, lightgrey);
-					border: var(--obj-button-primary-invert-disabled-border, 1px solid lightgrey);
-					color: var(--obj-button-primary-invert-disabled-font-color, white);
+				cursor: default;
+			}
 
-					cursor: default;
-				}
+			/* TYPE - SECONDARY */
 
-				/* TYPE - SECONDARY */
+			.type-secondary {
+				background: var(--obj-button-secondary-background, transparent);
+				border: var(--obj-button-secondary-border, 1px solid grey);
+				color: var(--obj-button-secondary-font-color, grey);
+			}
 
-				.type-secondary {
-					background: var(--obj-button-secondary-background, transparent);
-					border: var(--obj-button-secondary-border, 1px solid grey);
-					color: var(--obj-button-secondary-font-color, grey);
-				}
+			.type-secondary:hover {
+				background: var(--obj-button-secondary-hover-background, grey);
+				border: var(--obj-button-secondary-hover-border, 1px solid grey);
+				color: var(--obj-button-secondary-hover-font-color, white);
+			}
 
-				.type-secondary:hover {
-					background: var(--obj-button-secondary-hover-background, grey);
-					border: var(--obj-button-secondary-hover-border, 1px solid grey);
-					color: var(--obj-button-secondary-hover-font-color, white);
-				}
+			.type-secondary.disabled {
+				background: var(--obj-button-secondary-disabled-background, white);
+				border: var(--obj-button-secondary-disabled-border, 1px solid lightgrey);
+				color: var(--obj-button-secondary-disabled-font-color, lightgrey);
 
-				.type-secondary.disabled {
-					background: var(--obj-button-secondary-disabled-background, white);
-					border: var(--obj-button-secondary-disabled-border, 1px solid lightgrey);
-					color: var(--obj-button-secondary-disabled-font-color, lightgrey);
+				cursor: default;
+			}
 
-					cursor: default;
-				}
+			/* TYPE - SECONDARY - INVERT */
 
-				/* TYPE - SECONDARY - INVERT */
+			.type-secondary.invert {
+				background: var(--obj-button-secondary-invert-background, transparent);
+				border: var(--obj-button-secondary-invert-border, 1px solid white);
+				color: var(--obj-button-secondary-invert-font-color, white);
+			}
 
-				.type-secondary.invert {
-					background: var(--obj-button-secondary-invert-background, transparent);
-					border: var(--obj-button-secondary-invert-border, 1px solid white);
-					color: var(--obj-button-secondary-invert-font-color, white);
-				}
+			.type-secondary.invert:hover {
+				background: var(--obj-button-secondary-invert-hover-background, white);
+				border: var(--obj-button-secondary-invert-hover-border, 1px solid white);
+				color: var(--obj-button-secondary-invert-hover-font-color, grey);
+			}
 
-				.type-secondary.invert:hover {
-					background: var(--obj-button-secondary-invert-hover-background, white);
-					border: var(--obj-button-secondary-invert-hover-border, 1px solid white);
-					color: var(--obj-button-secondary-invert-hover-font-color, grey);
-				}
+			.type-secondary.disabled.invert {
+				background: var(--obj-button-secondary-invert-disabled-background, transparent);
+				border: var(--obj-button-secondary-invert-disabled-border, 1px solid lightgrey);
+				color: var(--obj-button-secondary-invert-disabled-font-color, lightgrey);
 
-				.type-secondary.disabled.invert {
-					background: var(--obj-button-secondary-invert-disabled-background, transparent);
-					border: var(--obj-button-secondary-invert-disabled-border, 1px solid lightgrey);
-					color: var(--obj-button-secondary-invert-disabled-font-color, lightgrey);
+				cursor: default;
+			}
 
-					cursor: default;
-				}
+			/* TYPE - CLEAR */
 
-				/* TYPE - CLEAR */
+			.type-clear {
+				background: var(--obj-button-clear-background, transparent);
+				border: var(--obj-button-clear-border, 1px solid transparent);
+				color: var(--obj-button-clear-font-color, grey);
+			}
 
-				.type-clear {
-					background: var(--obj-button-clear-background, transparent);
-					border: var(--obj-button-clear-border, 1px solid transparent);
-					color: var(--obj-button-clear-font-color, grey);
-				}
+			.type-clear:hover {
+				background: var(--obj-button-clear-hover-background, grey);
+				border: var(--obj-button-clear-hover-border, 1px solid grey);
+				color: var(--obj-button-clear-hover-font-color, white);
+			}
 
-				.type-clear:hover {
-					background: var(--obj-button-clear-hover-background, grey);
-					border: var(--obj-button-clear-hover-border, 1px solid grey);
-					color: var(--obj-button-clear-hover-font-color, white);
-				}
+			.type-clear.disabled {
+				background: var(--obj-button-clear-disabled-background, transparent);
+				border: var(--obj-button-clear-disabled-border, 1px solid transparent);
+				color: var(--obj-button-clear-disabled-font-color, lightgrey);
 
-				.type-clear.disabled {
-					background: var(--obj-button-clear-disabled-background, transparent);
-					border: var(--obj-button-clear-disabled-border, 1px solid transparent);
-					color: var(--obj-button-clear-disabled-font-color, lightgrey);
+				cursor: default;
+			}
 
-					cursor: default;
-				}
+			/* TYPE - CLEAR - INVERT */
 
-				/* TYPE - CLEAR - INVERT */
+			.type-clear.invert {
+				background: var(--obj-button-clear-invert-background, transparent);
+				border: var(--obj-button-clear-invert-border, 1px solid transparent);
+				color: var(--obj-button-clear-invert-font-color, white);
+			}
 
-				.type-clear.invert {
-					background: var(--obj-button-clear-invert-background, transparent);
-					border: var(--obj-button-clear-invert-border, 1px solid transparent);
-					color: var(--obj-button-clear-invert-font-color, white);
-				}
+			.type-clear.invert:hover {
+				background: var(--obj-button-clear-invert-hover-background, transparent);
+				border: var(--obj-button-clear-invert-hover-border, 1px solid transparent);
+				color: var(--obj-button-clear-invert-hover-font-color, grey);
+			}
 
-				.type-clear.invert:hover {
-					background: var(--obj-button-clear-invert-hover-background, transparent);
-					border: var(--obj-button-clear-invert-hover-border, 1px solid transparent);
-					color: var(--obj-button-clear-invert-hover-font-color, grey);
-				}
+			.type-clear.disabled.invert {
+				background: var(--obj-button-clear-invert-disabled-background, transparent);
+				border: var(--obj-button-clear-invert-disabled-border, 1px solid transparent);
+				color: var(--obj-button-clear-invert-disabled-font-color, lightgrey);
 
-				.type-clear.disabled.invert {
-					background: var(--obj-button-clear-invert-disabled-background, transparent);
-					border: var(--obj-button-clear-invert-disabled-border, 1px solid transparent);
-					color: var(--obj-button-clear-invert-disabled-font-color, lightgrey);
-
-					cursor: default;
-				}
-			`
-		];
-	}
+				cursor: default;
+			}
+		`
+	];
 
 	/**
 	 * Apply changes to the element DOM when a property value changes.
 	 * 
-	 * @returns {TemplateResult} The updated DOM template.
+	 * @returns The updated DOM template.
 	 */
-	override render() {
+	override render(): TemplateResult {
 
 		// Calculate the state classes to apply to the component.
-		const renderType = this.#validTypes.find(type => type === this.type?.toLowerCase()) || 'primary';
+		const renderType = this.validTypes.find(type => type === this.type?.toLowerCase()) || 'primary';
 
 		const classes: ClassInfo = {
 			'container': true,
@@ -344,7 +340,7 @@ export class Button extends LitElement {
 			<button
 				part="button"
 				class="${classMap(classes)}"
-				@click=${this.#handleClick}>
+				@click=${this.handleClick}>
 				${this.label || html`&nbsp;`}
 				<slot></slot>
 			</button>

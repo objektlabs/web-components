@@ -1,15 +1,16 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+
+import { withActions } from '@storybook/addon-actions/decorator';
 import { html, TemplateResult } from 'lit';
-import { Story, Meta } from '@storybook/web-components';
 
 import '../components/obj-text-field';
 
-// ---------------------
-// CONFIGURE STORY BLOCK
-// ---------------------
+// -------------
+// CONFIGURATION
+// -------------
 
-// Setup the story block.
 export default {
-	title: 'Components/Text-Field/Type/Outline',
+	title: 'Components/Text-Field/Outline',
 	component: 'obj-text-field',
 	argTypes: {
 		type: {
@@ -21,78 +22,86 @@ export default {
 		actions: {
 			handles: ['value-changed']
 		},
-	}
+	},
+	decorators: [withActions],
+	tags: ['autodocs']
 } as Meta;
 
-// ---------------------
-// CREATE STORY TEMPLATE
-// ---------------------
+// -------
+// STORIES
+// -------
 
-interface ArgTypes {
-	type: string;
-	label: string;
-	value: string;
-	placeholder: string;
-	message: string;
-	error: boolean;
-	invert: boolean;
-	disabled: boolean;
-	slot: TemplateResult;
-}
-
-const Template: Story<ArgTypes> = (args: ArgTypes) => html`
-	<obj-text-field
-		.type="${args.type}"
-		.label="${args.label}"
-		.value="${args.value}"
-		.placeholder="${args.placeholder}"
-		.message="${args.message}"
-		.error="${args.error}"
-		?invert="${args.invert}"
-		?disabled="${args.disabled}">
-		${args.slot}
-	</obj-text-field>
-`;
-
-const createStory = (name: string, background: string, args: Partial<ArgTypes>) => {
-
-	const storyConfig: Story<ArgTypes> = Template.bind({});
-	storyConfig.storyName = name;
-	storyConfig.parameters = {
-		backgrounds: { default: background },
-	};
-	storyConfig.args = args;
-
-	return storyConfig;
+export const Label: StoryObj = {
+	args: {
+		type: 'outline',
+		label: 'Username',
+	}
 };
 
-// -------------
-// SETUP STORIES
-// -------------
+export const Value: StoryObj = {
+	args: {
+		type: 'outline',
+		label: 'Username',
+		value: 'Hello World'
+	}
+};
 
-export const Default = createStory('Default', 'light', {
-	label: 'Username',
-	type: 'outline'
-});
+export const Placeholder: StoryObj = {
+	args: {
+		type: 'outline',
+		label: 'Username',
+		placeholder: 'e.g. user@site.com'
+	}
+};
 
-export const Disabled = createStory('Disabled', 'light', {
-	label: 'Username',
-	value: 'Hello World',
-	type: 'outline',
-	disabled: true
-});
+export const Message: StoryObj = {
+	args: {
+		type: 'outline',
+		label: 'Username',
+		message: 'Must be at least 8 characters long'
+	}
+};
 
-export const Invert = createStory('Invert', 'dark', {
-	label: 'Username',
-	value: 'Hello World',
-	type: 'outline',
-	invert: true
-});
+export const Error: StoryObj = {
+	args: {
+		type: 'outline',
+		label: 'Username',
+		error: true,
+		message: 'Field is required'
+	}
+};
 
-export const InvertDisabled = createStory('Invert, Disabled', 'light', {
-	label: 'Username',
-	value: 'Hello World',
-	type: 'outline',
-	invert: true,
-	disabled: true
-});
+export const Disabled: StoryObj = {
+	args: {
+		type: 'outline',
+		label: 'Username',
+		value: 'Hello World',
+		disabled: true
+	}
+};
+
+export const Invert: StoryObj = {
+	args: {
+		type: 'outline',
+		label: 'Username',
+		value: 'Hello World',
+		invert: true
+	},
+	parameters: {
+		backgrounds: { default: 'dark' },
+	}
+};
+
+export const InvertDisabled: StoryObj = {
+	name: 'Invert + Disabled',
+	args: {
+		type: 'outline',
+		label: 'Username',
+		value: 'Hello World',
+		invert: true,
+		disabled: true
+	},
+	parameters: {
+		backgrounds: { default: 'dark' },
+	}
+};
