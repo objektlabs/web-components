@@ -3,9 +3,14 @@ import { customElement, property } from 'lit/decorators.js';
 import { ClassInfo, classMap } from 'lit/directives/class-map.js';
 
 /**
- * A simple text input component.
+ * A multi-variant text input component.
  * 
- * &#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/inputs-text-field)
+ * 💡 **Demo**:
+ * [Stack](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-stack--docs) |
+ * [Outline](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-outline--docs) |
+ * [Inline](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-inline--docs) |
+ * [Filled](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-filled--docs) |
+ * [Clear](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-clear--docs)
  * 
  * ## Installation
  * ```sh
@@ -39,7 +44,7 @@ import { ClassInfo, classMap } from 'lit/directives/class-map.js';
 @customElement('obj-text-field')
 export class TextField extends LitElement {
 
-	@property({ type: String, reflect: true }) type?: string;
+	@property({ type: String, reflect: true }) type?: 'stack' | 'inline' | 'outline' | 'clear' | 'filled';
 	@property({ type: String, reflect: true }) label?: string;
 	@property({ type: String, reflect: true }) value?: string;
 	@property({ type: String, reflect: true }) placeholder?: string;
@@ -48,8 +53,6 @@ export class TextField extends LitElement {
 	@property({ type: Boolean, reflect: true }) error?: boolean;
 	@property({ type: Boolean, reflect: true }) invert?: boolean;
 	@property({ type: Boolean, reflect: true }) disabled?: boolean;
-
-	private validTypes = ['stack', 'inline', 'outline', 'clear', 'filled'];
 
 	// ------------
 	// CONSTRUCTORS
@@ -324,7 +327,7 @@ export class TextField extends LitElement {
 
 				text-align: var(--obj-input-text-align, left);
 
-				color: var(--obj-input-message-font-color, red);
+				color: var(--obj-input-message-font-color, black);
 
 				padding-top: var(--obj-input-line-gap, 10px);
 				padding-bottom: 0px;
@@ -450,11 +453,9 @@ export class TextField extends LitElement {
 	override render(): TemplateResult {
 
 		// Calculate the state classes to apply to the component.
-		const renderType = this.validTypes.find(type => type === this.type?.toLowerCase()) || 'inline';
-
 		const classes: ClassInfo = {
 			'container': true,
-			['type-' + renderType]: true,
+			['type-' + this.type ?? 'inline']: true,
 			'error': this.error === true,
 			'disabled': this.disabled === true,
 			'invert': this.invert === true,

@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A clickable button component.\n\n&#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/buttons-button)\n\n## Installation\n```sh\nnpm install @objekt/obj-button\n```",
+          "description": "A multi-variant clickable button component.\n\n💡 **Demo**:\n[Primary](https://objektlabs.github.io/web-components/?path=/docs/components-button-primary--docs) |\n[Secondary](https://objektlabs.github.io/web-components/?path=/docs/components-button-secondary--docs) |\n[Clear](https://objektlabs.github.io/web-components/?path=/docs/components-button-clear--docs)\n\n## Installation\n```sh\nnpm install @objekt/obj-button\n```",
           "name": "Button",
           "cssProperties": [
             {
@@ -194,15 +194,6 @@
               "reflects": true
             },
             {
-              "kind": "field",
-              "name": "validTypes",
-              "type": {
-                "text": "array"
-              },
-              "privacy": "private",
-              "default": "['primary', 'secondary', 'clear']"
-            },
-            {
               "kind": "method",
               "name": "handleClick",
               "return": {
@@ -298,7 +289,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A simple text input component.\n\n&#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/inputs-text-field)\n\n## Installation\n```sh\nnpm install @objekt/obj-text-field\n```",
+          "description": "A multi-variant text input component.\n\n💡 **Demo**:\n[Stack](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-stack--docs) |\n[Outline](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-outline--docs) |\n[Inline](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-inline--docs) |\n[Filled](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-filled--docs) |\n[Clear](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-clear--docs)\n\n## Installation\n```sh\nnpm install @objekt/obj-text-field\n```",
           "name": "TextField",
           "cssProperties": [
             {
@@ -385,15 +376,6 @@
               "description": "Sets to place the component in an disabled state.",
               "attribute": "disabled",
               "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "validTypes",
-              "type": {
-                "text": "array"
-              },
-              "privacy": "private",
-              "default": "['stack', 'inline', 'outline', 'clear', 'filled']"
             },
             {
               "kind": "method",

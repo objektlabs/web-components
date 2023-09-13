@@ -3,9 +3,12 @@ import { customElement, property } from 'lit/decorators.js';
 import { ClassInfo, classMap } from 'lit/directives/class-map.js';
 
 /**
- * A clickable button component.
+ * A multi-variant clickable button component.
  * 
- * &#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/buttons-button)
+ * 💡 **Demo**:
+ * [Primary](https://objektlabs.github.io/web-components/?path=/docs/components-button-primary--docs) |
+ * [Secondary](https://objektlabs.github.io/web-components/?path=/docs/components-button-secondary--docs) |
+ * [Clear](https://objektlabs.github.io/web-components/?path=/docs/components-button-clear--docs)
  * 
  * ## Installation
  * ```sh
@@ -93,13 +96,11 @@ import { ClassInfo, classMap } from 'lit/directives/class-map.js';
 @customElement('obj-button')
 export class Button extends LitElement {
 
-	@property({ type: String, reflect: true }) type?: string;
+	@property({ type: String, reflect: true }) type?: 'primary' | 'secondary' | 'clear';
 	@property({ type: String, reflect: true }) label?: string;
 
 	@property({ type: Boolean, reflect: true }) invert?: boolean;
 	@property({ type: Boolean, reflect: true }) disabled?: boolean;
-
-	private validTypes = ['primary', 'secondary', 'clear'];
 
 	// ------------
 	// CONSTRUCTORS
@@ -326,11 +327,9 @@ export class Button extends LitElement {
 	override render(): TemplateResult {
 
 		// Calculate the state classes to apply to the component.
-		const renderType = this.validTypes.find(type => type === this.type?.toLowerCase()) || 'primary';
-
 		const classes: ClassInfo = {
 			'container': true,
-			['type-' + renderType]: true,
+			['type-' + this.type ?? 'primary']: true,
 			'disabled': this.disabled === true,
 			'invert': this.invert === true,
 		};

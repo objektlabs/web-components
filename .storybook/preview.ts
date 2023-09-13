@@ -1,20 +1,21 @@
 import type { Preview } from "@storybook/web-components";
 
-//import { setCustomElementsManifest } from '@storybook/web-components';
-//import customElements from '../custom-elements.json';
+import { setCustomElementsManifest } from '@storybook/web-components';
+import customElements from '../custom-elements.json';
 
-// import basicTheme from '!!style-loader?injectType=lazyStyleTag!css-loader!../themes/default-theme.css'
-// import purpleTheme from '!!style-loader?injectType=lazyStyleTag!css-loader!../themes/purple-theme.css'
+import blueTheme from '!!style-loader?injectType=lazyStyleTag!css-loader!../themes/blue-theme.css'
+import greenTheme from '!!style-loader?injectType=lazyStyleTag!css-loader!../themes/green-theme.css'
+import purpleTheme from '!!style-loader?injectType=lazyStyleTag!css-loader!../themes/purple-theme.css'
 
-// import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
+import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
 
 // Auto generate properties in the docs view from the custom elements manifest.
-//setCustomElementsManifest(customElements);
+setCustomElementsManifest(customElements);
 
 // Activate the theme switcher addon.
-// export const decorators = [
-// 	cssVariablesTheme
-// ];
+export const decorators = [
+	cssVariablesTheme
+];
 
 // Configure global settings for all stories.
 const preview: Preview = {
@@ -23,7 +24,7 @@ const preview: Preview = {
 			// Automatically report actions to the actions panel from events starting with 'on' e.g. 'onClick.
 			// See: https://storybook.js.org/docs/web-components/essentials/actions#automatically-matching-args
 			// TODO: investigate why this is not working
-			argTypesRegex: '^val.*'
+			argTypesRegex: '^on.*'
 		},
 		controls: {
 			// Show documentation columns in controls, e.g. Description, Default, etc.
@@ -34,8 +35,7 @@ const preview: Preview = {
 			// See: https://storybook.js.org/docs/web-components/essentials/controls#show-full-documentation-for-each-property
 			matchers: {
 				color: /(background|color)$/i,
-				date: /Date$/,
-				// boolean: /.*/,
+				date: /Date$/
 			},
 		},
 		backgrounds: {
@@ -67,12 +67,13 @@ const preview: Preview = {
 			// See: https://storybook.js.org/docs/web-components/configure/theming#theming-docs
 			// theme: objektDarkThemethemes.dark
 		},
-		// cssVariables: {
-		// 	files: {
-		// 		'default': basicTheme,
-		// 		'Purple Theme': purpleTheme,
-		// 	}
-		// }
+		cssVariables: {
+			files: {
+				'Blue Theme': blueTheme,
+				'Green Theme': greenTheme,
+				'Purple Theme': purpleTheme,
+			}
+		}
 	},
 };
 

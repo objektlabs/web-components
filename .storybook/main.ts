@@ -1,4 +1,4 @@
-import type { StorybookConfig } from "@storybook/web-components-vite";
+import type { StorybookConfig } from "@storybook/web-components-webpack5";
 
 import { join, dirname } from "path";
 
@@ -7,12 +7,12 @@ import { join, dirname } from "path";
  * It is needed in projects that use Yarn PnP or are set up within a monorepo.
  */
 function getAbsolutePath(value: string): any {
-	return dirname(require.resolve(join(value, "package.json")));
+  return dirname(require.resolve(join(value, "package.json")));
 }
 
 const config: StorybookConfig = {
 	framework: {
-		name: getAbsolutePath("@storybook/web-components-vite"),
+		name: getAbsolutePath("@storybook/web-components-webpack5"),
 		options: {},
 	},
 	stories: [
@@ -41,21 +41,6 @@ const config: StorybookConfig = {
 		// See: https://storybook.js.org/addons/@storybook/addon-links
 		getAbsolutePath("@storybook/addon-links"),
 
-		// getAbsolutePath("@etchteam/storybook-addon-css-variables-theme"),
-		// {
-		// 	name: '@storybook/addon-docs',
-		// 	options: {
-		// 		sourceLoaderOptions: {
-		// 			injectStoryParameters: false,
-		// 		},
-		// 	},
-		// },
-
-		/*
-		'@etchteam/storybook-addon-css-variables-theme',
-		'storybook-addon-css-user-preferences'
-		*/
-
 		// Addon to toggle between themes.
 		// https://storybook.js.org/addons/@etchteam/storybook-addon-css-variables-theme
 		getAbsolutePath("@etchteam/storybook-addon-css-variables-theme"),
@@ -74,6 +59,22 @@ const config: StorybookConfig = {
 	staticDirs: [
 		{ from: '../custom-elements.json', to: 'custom-elements.json' }
 	],
+	webpackFinal: async (config, { configType }) => {
+
+		// To prevent double refresh due to tsc running in the background, exlude
+		// all source directories from causing a refresh of storybook, i.e. only
+		// reload if anything in the /dist directory changes
+		config.watchOptions = {
+			ignored: [
+				'**/packages/*/components/*.ts',
+				'**/packages/*/stories/*.ts',
+				'**/packages/*/tests/*.ts',
+				'**/node_modules'
+			],
+		}
+
+		return config;
+	},
 };
 
 export default config;

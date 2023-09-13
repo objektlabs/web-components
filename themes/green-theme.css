@@ -1,0 +1,180 @@
+:root {
+	/* ---------- DEFAULTS ---------- */
+
+	/* Fonts */
+
+	--obj-font-family: 'Open Sans', sans-serif;
+	--obj-font-size: 14px;
+
+	/* Colors */
+
+	--obj-color-brand-default: #7b8802;
+	--obj-color-brand-accent: #8e9c0f;
+	--obj-color-brand-invert: #ffffff;
+
+	--obj-color-text-light: #ffffff;
+	--obj-color-text-dark: #86888b;
+	--obj-color-text-black: #111111;
+
+	--obj-color-disabled-fill: #dddddd;
+	--obj-color-disabled-text: #ffffff;
+
+	--obj-color-border-dark: #86888b;
+	--obj-color-border-light: #86888b;
+
+	--obj-color-background-light: #ffffff;
+
+	--obj-color-error: red;
+	--obj-color-warn: orange;
+	--obj-color-success: darkgreen;
+	--obj-color-info: blue;
+
+	/* ---------- BUTTON ---------- */
+
+	--obj-button-font-family: var(--obj-font-family);
+	--obj-button-font-size: var(--obj-font-size);
+	--obj-button-font-weight: 600;
+
+	--obj-button-border-radius: 8px;
+	--obj-button-padding: 14.5px 20px;
+	--obj-button-text-align: center;
+
+	/* Primary */
+
+	--obj-button-primary-background: var(--obj-color-brand-default);
+	--obj-button-primary-border: 1px solid var(--obj-color-brand-default);
+	--obj-button-primary-font-color: var(--obj-color-text-light);
+
+	--obj-button-primary-hover-background: var(--obj-color-brand-accent);
+	--obj-button-primary-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-button-primary-hover-font-color: var(--obj-color-text-light);
+
+	--obj-button-primary-disabled-background: var(--obj-color-disabled-fill);
+	--obj-button-primary-disabled-border: 1px solid var(--obj-color-disabled-fill);
+	--obj-button-primary-disabled-font-color: var(--obj-color-disabled-text);
+
+	--obj-button-primary-invert-background: var(--obj-color-brand-invert);
+	--obj-button-primary-invert-border: 1px solid var(--obj-color-brand-invert);
+	--obj-button-primary-invert-font-color: var(--obj-color-text-dark);
+
+	--obj-button-primary-invert-hover-background: var(--obj-color-brand-accent);
+	--obj-button-primary-invert-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-button-primary-invert-hover-font-color: var(--obj-color-text-light);
+
+	--obj-button-primary-invert-disabled-background: var(--obj-color-disabled-fill);
+	--obj-button-primary-invert-disabled-border: 1px solid var(--obj-color-disabled-fill);
+	--obj-button-primary-invert-disabled-font-color: var(--obj-color-disabled-text);
+
+	/* Secondary */
+
+	--obj-button-secondary-background: var(--obj-color-brand-invert);
+	--obj-button-secondary-border: 1px solid var(--obj-color-brand-default);
+	--obj-button-secondary-font-color: var(--obj-color-text-dark);
+
+	--obj-button-secondary-hover-background: var(--obj-color-brand-accent);
+	--obj-button-secondary-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-button-secondary-hover-font-color: var(--obj-color-text-light);
+
+	--obj-button-secondary-disabled-background: var(--obj-color-brand-invert);
+	--obj-button-secondary-disabled-border: 1px solid var(--obj-color-disabled-fill);
+	--obj-button-secondary-disabled-font-color: var(--obj-color-disabled-fill);
+
+	--obj-button-secondary-invert-background: transparent;
+	--obj-button-secondary-invert-border: 1px solid var(--obj-color-brand-invert);
+	--obj-button-secondary-invert-font-color: var(--obj-color-text-light);
+
+	--obj-button-secondary-invert-hover-background: var(--obj-color-brand-accent);
+	--obj-button-secondary-invert-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-button-secondary-invert-hover-font-color: var(--obj-color-text-light);
+
+	--obj-button-secondary-invert-disabled-background: transparent;
+	--obj-button-secondary-invert-disabled-border: 1px solid var(--obj-color-disabled-fill);
+	--obj-button-secondary-invert-disabled-font-color: var(--obj-color-disabled-fill);
+
+	/* Clear */
+
+	--obj-button-clear-background: transparent;
+	--obj-button-clear-border: 1px solid transparent;
+	--obj-button-clear-font-color: var(--obj-color-text-dark);
+
+	--obj-button-clear-hover-background: var(--obj-color-brand-accent);
+	--obj-button-clear-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-button-clear-hover-font-color: var(--obj-color-text-light);
+
+	--obj-button-clear-disabled-background: transparent;
+	--obj-button-clear-disabled-border: 1px solid transparent;
+	--obj-button-clear-disabled-font-color: var(--obj-color-disabled-fill);
+
+	--obj-button-clear-invert-background: transparent;
+	--obj-button-clear-invert-border: 1px solid transparent;
+	--obj-button-clear-invert-font-color: var(--obj-color-text-light);
+
+	--obj-button-clear-invert-hover-background: var(--obj-color-brand-accent);
+	--obj-button-clear-invert-hover-border: 1px solid transparent;
+	--obj-button-clear-invert-hover-font-color: var(--obj-color-text-light);
+
+	--obj-button-clear-invert-disabled-background: transparent;
+	--obj-button-clear-invert-disabled-border: 1px solid transparent;
+	--obj-button-clear-invert-disabled-font-color: var(--obj-color-disabled-fill);
+
+	/* ---------- TEXT-FIELD ---------- */
+
+	--obj-input-font-family: var(--obj-font-family);
+	--obj-input-font-size: 16px;
+	--obj-input-font-weight: normal;
+	--obj-input-font-color: var(--obj-color-text-black);
+
+	--obj-input-border: 1px solid var(--obj-color-border-dark);
+	--obj-input-border-radius: 5px;
+
+	--obj-input-background: var(--obj-color-background-light);
+
+	--obj-input-text-align: left;
+	--obj-input-padding-x: 10px;
+	--obj-input-padding-y: 10px;
+	--obj-input-line-gap: 5px;
+
+	--obj-input-focus-border: 2px solid var(--obj-color-brand-default);
+	--obj-input-focus-label-font-color: var(--obj-color-brand-default);
+	--obj-input-padding: 10px;
+
+	--obj-input-label-font-size: 16px;
+	--obj-input-label-font-weight: normal;
+	--obj-input-label-font-color: var(--obj-color-text-dark);
+
+	--obj-input-message-font-size: var(--obj-font-size);
+	--obj-input-message-font-weight: normal;
+	--obj-input-message-font-color: var(--obj-color-text-black);
+
+	--obj-input-error-background: var(--obj-color-background-light);
+	--obj-input-error-border: 1px solid var(--obj-color-error);
+	--obj-input-error-font-color: var(--obj-color-error);
+
+	--obj-input-hover-background: var(--obj-color-background-light);
+	--obj-input-hover-border: 1px solid var(--obj-color-brand-accent);
+	--obj-input-hover-font-color: var(--obj-color-text-black);
+
+	--obj-input-disabled-background: var(--obj-color-brand-invert);
+	--obj-input-disabled-border: 1px solid var(--obj-color-disabled-fill);
+	--obj-input-disabled-font-color: var(--obj-color-disabled-fill);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--obj-button-primary-background: var(--obj-button-primary-invert-background);
+		--obj-button-primary-border: var(--obj-button-primary-invert-border);
+		--obj-button-primary-font-color: var(--obj-button-primary-invert-font-color);
+
+		--obj-button-primary-hover-background: var(--obj-button-primary-invert-hover-background);
+		--obj-button-primary-hover-border: var(--obj-button-primary-invert-hover-border);
+		--obj-button-primary-hover-font-color: var(--obj-button-primary-invert-hover-font-color);
+
+		--obj-button-primary-disabled-background: var(--obj-button-primary-invert-disabled-background);
+		--obj-button-primary-disabled-border: var(--obj-button-primary-invert-disabled-border);
+		--obj-button-primary-disabled-font-color: var(--obj-button-primary-invert-disabled-font-color);
+	}
+}
+
+html {
+	font-size: 16px;
+}
