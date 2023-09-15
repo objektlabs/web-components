@@ -1,0 +1,123 @@
+
+
+import { ArgTypes, Args, StoryObj, getCustomElements } from '@storybook/web-components';
+
+import { action } from '@storybook/addon-actions';
+import { html } from 'lit';
+
+import '../components/obj-button';
+
+/**
+ * Generate the default controls template for the component from the configured storybook custom elements manifest.
+ * 
+ * @param overrides The story level overrides to apply to the default template.
+ * 
+ * @returns The component controls template.
+ */
+export const GenerateControlsFromManifest = (tagName: string, argTypes?: Partial<ArgTypes<Args>>): Partial<ArgTypes<Args>> => {
+
+	// Extract the component custom element manifest details.
+	const manifest = getCustomElements() || [];
+
+	let cssParts: any[] = [];
+	let cssProperties: any[] = [];
+	let events: any[] = [];
+
+	for (const component of manifest.modules) {
+
+		for (const item of component.declarations) {
+
+			if (item.tagName === tagName) {
+
+				cssParts = item.cssParts || [];
+				cssProperties = item.cssProperties || [];
+				events = item.events || [];
+			}
+		}
+	}
+
+	// Build up the basic controls list from the custom element manifest data.
+	return {
+
+		// Remove CSS shadow parts from the controls list.
+		...Object.fromEntries(
+			cssParts.map(e => [e.name, {
+				control: { type: 'none' },
+				// if: { arg: 'NONE', eq: 0 }
+			}])
+		),
+
+		// Remove CSS properties parts from the controls list.
+		...Object.fromEntries(
+			cssProperties.map(e => [e.name, {
+				control: { type: 'none' },
+				// if: { arg: 'NONE', eq: 0 }
+			}])
+		),
+
+		// Remove events from the controls list.
+		...Object.fromEntries(
+			events.map(e => [e.name, {
+				control: { type: 'none' },
+				// if: { arg: 'NONE', eq: 0 }
+			}])
+		),
+
+		// Include override controls.
+		...argTypes
+	};
+}
+
+/**
+ * Generate the default controls template for the component.
+ * 
+ * @param overrides The story level overrides to apply to the default template.
+ * 
+ * @returns The component controls template.
+ */
+export const Controls = (argTypes?: Partial<ArgTypes<Args>>): Partial<ArgTypes<Args>> => {
+
+	if (!argTypes) {
+		argTypes = {};
+	}
+
+	return GenerateControlsFromManifest('obj-button', {
+		type: {
+			control: { type: 'radio' },
+			options: ['primary', 'secondary', 'clear']
+		},
+		...argTypes
+	});
+}
+
+/**
+ * Generate the default story template for the component.
+ * 
+ * @param overrides The story level overrides to apply to the default template.
+ * 
+ * @returns The component story template.
+ */
+export const Story = (story?: StoryObj): StoryObj => {
+
+	if (!story) {
+		story = {};
+	}
+
+	return {
+		...story,
+		args: {
+			type: 'primary',
+			label: 'Hello World',
+			...story.args
+		},
+		render: args => html`
+			<obj-button
+				type="${args.type}"
+				label="${args.label}"
+				?disabled="${args.disabled}"
+				?invert="${args.invert}"
+				@click="${action('click')}"
+			></obj-button>
+		`
+	};
+}

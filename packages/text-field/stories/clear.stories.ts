@@ -1,9 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta } from '@storybook/web-components';
 
-import { withActions } from '@storybook/addon-actions/decorator';
-import { html, TemplateResult } from 'lit';
-
-import '../components/obj-text-field';
+import { Controls, Story } from './obj-text-field.template';
 
 // -------------
 // CONFIGURATION
@@ -12,96 +9,84 @@ import '../components/obj-text-field';
 export default {
 	title: 'Components/Text-Field/Clear',
 	component: 'obj-text-field',
-	argTypes: {
-		type: {
-			control: { type: 'radio' },
-			options: ['stack', 'inline', 'outline', 'filled', 'clear']
-		}
-	},
-	parameters: {
-		actions: {
-			handles: ['value-changed']
-		},
-	},
-	decorators: [withActions],
-	tags: ['autodocs']
+	argTypes: Controls()
 } as Meta;
 
 // -------
 // STORIES
 // -------
 
-export const Label: StoryObj = {
+export const Label = Story({
 	args: {
 		type: 'clear',
 		label: 'Username',
 	}
-};
+});
 
-export const Value: StoryObj = {
+export const Value = Story({
 	args: {
 		type: 'clear',
 		label: 'Username',
-		value: 'Hello World'
+		value: 'Lorem Ipsum Dolor'
 	}
-};
+});
 
-export const Placeholder: StoryObj = {
+export const Placeholder = Story({
 	args: {
 		type: 'clear',
 		label: 'Username',
 		placeholder: 'e.g. user@site.com'
 	}
-};
+});
 
-export const Message: StoryObj = {
+export const Message = Story({
 	args: {
 		type: 'clear',
 		label: 'Username',
 		message: 'Must be at least 8 characters long'
 	}
-};
+});
 
-export const Error: StoryObj = {
+export const Error = Story({
 	args: {
 		type: 'clear',
 		label: 'Username',
 		error: true,
 		message: 'Field is required'
 	}
-};
+});
 
-export const Disabled: StoryObj = {
+export const Disabled = Story({
 	args: {
 		type: 'clear',
 		label: 'Username',
-		value: 'Hello World',
+		value: 'Lorem Ipsum Dolor',
 		disabled: true
 	}
-};
+});
 
-export const Invert: StoryObj = {
+export const Invert = Story({
 	args: {
 		type: 'clear',
 		label: 'Username',
-		value: 'Hello World',
+		value: 'Lorem Ipsum Dolor',
 		invert: true
 	},
 	parameters: {
 		backgrounds: { default: 'dark' },
 	}
-};
+});
 
-export const InvertDisabled: StoryObj = {
+export const InvertDisabled = Story({
 	name: 'Invert + Disabled',
 	args: {
 		type: 'clear',
 		label: 'Username',
-		value: 'Hello World',
+		value: 'Lorem Ipsum Dolor',
 		invert: true,
 		disabled: true
 	},
 	parameters: {
 		backgrounds: { default: 'dark' },
 	}
-};
+});

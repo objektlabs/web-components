@@ -38,8 +38,6 @@ import { ClassInfo, classMap } from 'lit/directives/class-map.js';
  * @property {boolean} [disabled] - Sets to place the component in an disabled state.
  * 
  * @fires {CustomEvent} value-changed - Dispatched when the text in entered into the field.
- * 
- * @cssprop TODO
  */
 @customElement('obj-text-field')
 export class TextField extends LitElement {
@@ -368,7 +366,40 @@ export class TextField extends LitElement {
 
 			/* INVERT */
 
-			/* --- todo --- */
+			.invert .touch-zone > input {
+				color: var(--obj-input-invert-font-color, white) !important;
+			}
+
+			.invert .touch-zone > .label {
+				color: var(--obj-input-invert-font-color, white) !important;
+
+				transition: none;
+			}
+
+			.invert.type-stack .touch-zone > .border,
+			.invert.type-outline .touch-zone > .border,
+			.invert.type-inline .touch-zone > .border {
+				background-color: var(--obj-input-invert-background, transparent);
+
+				border-top: var(--obj-input-invert-border, 1px solid white);
+				border-bottom: var(--obj-input-invert-border, 1px solid white);
+				border-left: var(--obj-input-invert-border, 1px solid white);
+				border-right: var(--obj-input-invert-border, 1px solid white);
+			}
+
+			.invert.type-filled .touch-zone > .border {
+				background-color: var(--obj-input-invert-background, transparent);
+
+				border-bottom: var(--obj-input-invert-border, 1px solid white);
+			}
+
+			.invert.type-clear .touch-zone > .border {
+				border-bottom: var(--obj-input-invert-border, 1px solid white);
+			}
+
+			.invert .message {
+				color: var(--obj-input-invert-font-color, white) !important;
+			}
 
 			/* HOVER */
 

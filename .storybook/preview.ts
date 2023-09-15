@@ -52,16 +52,27 @@ const preview: Preview = {
 			// Apply custom UI sort order.
 			// See: https://storybook.js.org/docs/web-components/writing-stories/naming-components-and-hierarchy#sorting-stories
 			storySort: {
-				order: ['Getting Started', 'Learn the Basics', 'Contribute'],
+				method: 'configure',
+				includeNames: true,
+				order: [
+					'Getting Started',
+					'Contribute',
+					'Components',
+					[
+						'Button', ['Primary', 'Secondary', 'Clear', '*'],
+						'Text-Field', ['Stack', 'Inline', 'Outline', 'Filled', 'Clear', '*']
+					]
+				],
 			},
 		},
 		docs: {
 			// Include a table of contents on the docs page.
 			// See: https://storybook.js.org/docs/web-components/writing-docs/autodocs#generate-a-table-of-contents
-			toc: {
-				disable: false,
-				title: 'Contents',
-			}
+			// XXX: removing this as the Storybook UI overflows with this enabled as the code preview does not wrap long code blocks correctly.
+			// toc: {
+			// 	disable: true,
+			// 	title: 'Contents',
+			// }
 
 			// Set the preview theme to match the Storybook UI.
 			// See: https://storybook.js.org/docs/web-components/configure/theming#theming-docs

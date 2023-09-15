@@ -291,11 +291,6 @@
           "kind": "class",
           "description": "A multi-variant text input component.\n\n💡 **Demo**:\n[Stack](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-stack--docs) |\n[Outline](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-outline--docs) |\n[Inline](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-inline--docs) |\n[Filled](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-filled--docs) |\n[Clear](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-clear--docs)\n\n## Installation\n```sh\nnpm install @objekt/obj-text-field\n```",
           "name": "TextField",
-          "cssProperties": [
-            {
-              "name": "TODO"
-            }
-          ],
           "members": [
             {
               "kind": "field",

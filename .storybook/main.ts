@@ -7,7 +7,7 @@ import { join, dirname } from "path";
  * It is needed in projects that use Yarn PnP or are set up within a monorepo.
  */
 function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, "package.json")));
+	return dirname(require.resolve(join(value, "package.json")));
 }
 
 const config: StorybookConfig = {
@@ -35,6 +35,7 @@ const config: StorybookConfig = {
 
 		// Addon to show the story source code panel.
 		// https://storybook.js.org/addons/@storybook/addon-storysource
+		// XXX: there is a bug in this plugin that throws "SyntaxError: Cannot use import statement outside a module" during the build step.
 		// getAbsolutePath("@storybook/addon-storysource"),
 
 		// Addon to link from one story to another.
@@ -53,7 +54,7 @@ const config: StorybookConfig = {
 	docs: {
 		// Generate a docs page for stories that include the 'autodocs' tag.
 		// https://storybook.js.org/docs/web-components/writing-docs/autodocs#setup-automated-documentation
-		autodocs: "tag",
+		autodocs: true,
 		defaultName: 'Docs'
 	},
 	staticDirs: [

@@ -22,9 +22,9 @@
 		"test": "npm run test --workspaces",
 		"docs": "npx rimraf docs && npm run docs:custom-elements && npm run docs:readme && npm run docs:storybook",
 		"docs:readme": "npm run docs --workspaces",
-		"docs:storybook": "npx storybook build --output-dir=docs",
+		"docs:storybook": "npx storybook build --docs --docs --output-dir=docs",
 		"docs:custom-elements": "npx cem analyze --litelement --globs packages/*/components/*",
-		"serve": "npm run clean && tsc --build tsconfig.project.json && npm run docs:custom-elements && concurrently -k -r \"tsc --build tsconfig.project.json --watch --preserveWatchOutput\" \"npx storybook dev --port=6006\""
+		"serve": "npm run clean && tsc --build tsconfig.project.json && npm run docs:custom-elements && concurrently -k -r \"tsc --build tsconfig.project.json --watch --preserveWatchOutput\" \"npx storybook dev --docs --port=6006\""
 	},
 	"devDependencies": {
 		"@babel/preset-env": "^7.22.15",
@@ -35,10 +35,9 @@
 		"@storybook/addon-essentials": "^7.4.1",
 		"@storybook/addon-interactions": "^7.4.1",
 		"@storybook/addon-links": "^7.4.1",
-		"@storybook/addon-storysource": "^7.4.1",
 		"@storybook/blocks": "^7.4.1",
 		"@storybook/jest": "^0.2.2",
-		"@storybook/manager-api": "^7.4.1",
+		"@storybook/manager-api": "^7.4.2",
 		"@storybook/testing-library": "^0.2.0",
 		"@storybook/theming": "^7.4.1",
 		"@storybook/web-components": "^7.4.1",

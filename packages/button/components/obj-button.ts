@@ -185,6 +185,12 @@ export class Button extends LitElement {
 				transition: all 0.25s;
 			}
 
+			:host([disabled]) {
+				cursor: default;
+
+				pointer-events: none;
+			}
+
 			/* TYPE - PRIMARY */
 
 			.type-primary {
@@ -203,8 +209,6 @@ export class Button extends LitElement {
 				background: var(--obj-button-primary-disabled-background, lightgrey);
 				border: var(--obj-button-primary-disabled-border, 1px solid lightgrey);
 				color: var(--obj-button-primary-disabled-font-color, white);
-
-				cursor: default;
 			}
 
 			/* TYPE - PRIMARY - INVERT */
@@ -225,8 +229,6 @@ export class Button extends LitElement {
 				background: var(--obj-button-primary-invert-disabled-background, lightgrey);
 				border: var(--obj-button-primary-invert-disabled-border, 1px solid lightgrey);
 				color: var(--obj-button-primary-invert-disabled-font-color, white);
-
-				cursor: default;
 			}
 
 			/* TYPE - SECONDARY */
@@ -247,8 +249,6 @@ export class Button extends LitElement {
 				background: var(--obj-button-secondary-disabled-background, white);
 				border: var(--obj-button-secondary-disabled-border, 1px solid lightgrey);
 				color: var(--obj-button-secondary-disabled-font-color, lightgrey);
-
-				cursor: default;
 			}
 
 			/* TYPE - SECONDARY - INVERT */
@@ -269,8 +269,6 @@ export class Button extends LitElement {
 				background: var(--obj-button-secondary-invert-disabled-background, transparent);
 				border: var(--obj-button-secondary-invert-disabled-border, 1px solid lightgrey);
 				color: var(--obj-button-secondary-invert-disabled-font-color, lightgrey);
-
-				cursor: default;
 			}
 
 			/* TYPE - CLEAR */
@@ -291,8 +289,6 @@ export class Button extends LitElement {
 				background: var(--obj-button-clear-disabled-background, transparent);
 				border: var(--obj-button-clear-disabled-border, 1px solid transparent);
 				color: var(--obj-button-clear-disabled-font-color, lightgrey);
-
-				cursor: default;
 			}
 
 			/* TYPE - CLEAR - INVERT */
@@ -313,8 +309,6 @@ export class Button extends LitElement {
 				background: var(--obj-button-clear-invert-disabled-background, transparent);
 				border: var(--obj-button-clear-invert-disabled-border, 1px solid transparent);
 				color: var(--obj-button-clear-invert-disabled-font-color, lightgrey);
-
-				cursor: default;
 			}
 		`
 	];
@@ -339,6 +333,7 @@ export class Button extends LitElement {
 			<button
 				part="button"
 				class="${classMap(classes)}"
+				?disabled="${this.disabled}"
 				@click=${this.handleClick}>
 				${this.label || html`&nbsp;`}
 				<slot></slot>

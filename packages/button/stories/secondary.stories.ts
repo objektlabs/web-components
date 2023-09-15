@@ -1,9 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta } from '@storybook/web-components';
 
-import { withActions } from '@storybook/addon-actions/decorator';
-import { html, TemplateResult } from 'lit';
-
-import '../components/obj-button';
+import { Controls, Story } from './obj-button.template';
 
 // -------------
 // CONFIGURATION
@@ -12,41 +9,29 @@ import '../components/obj-button';
 export default {
 	title: 'Components/Button/Secondary',
 	component: 'obj-button',
-	argTypes: {
-		type: {
-			control: { type: 'radio' },
-			options: ['primary', 'secondary', 'clear']
-		}
-	},
-	parameters: {
-		actions: {
-			handles: ['click', 'contextmenu']
-		},
-	},
-	decorators: [withActions],
-	tags: ['autodocs']
+	argTypes: Controls()
 } as Meta;
 
 // -------
 // STORIES
 // -------
 
-export const Default: StoryObj = {
+export const Default = Story({
 	args: {
 		type: 'secondary',
 		label: 'Secondary'
 	}
-};
+});
 
-export const Disabled: StoryObj = {
+export const Disabled = Story({
 	args: {
 		type: 'secondary',
 		label: 'Secondary',
 		disabled: true
 	}
-};
+});
 
-export const Invert: StoryObj = {
+export const Invert = Story({
 	args: {
 		type: 'secondary',
 		label: 'Secondary',
@@ -55,9 +40,9 @@ export const Invert: StoryObj = {
 	parameters: {
 		backgrounds: { default: 'dark' },
 	}
-};
+});
 
-export const InvertDisabled: StoryObj = {
+export const InvertDisabled = Story({
 	name: 'Invert + Disabled',
 	args: {
 		type: 'secondary',
@@ -68,4 +53,4 @@ export const InvertDisabled: StoryObj = {
 	parameters: {
 		backgrounds: { default: 'dark' },
 	}
-};
+});
