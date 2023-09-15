@@ -9,6 +9,8 @@ import purpleTheme from '!!style-loader?injectType=lazyStyleTag!css-loader!../th
 
 import cssVariablesTheme from '@etchteam/storybook-addon-css-variables-theme';
 
+import objektLightTheme from './themes/objekt-light';
+
 // Auto generate properties in the docs view from the custom elements manifest.
 setCustomElementsManifest(customElements);
 
@@ -44,7 +46,7 @@ const preview: Preview = {
 			default: 'light',
 			values: [
 				{ name: 'white', value: '#ffffff' },
-				{ name: 'light', value: '#f0f0f0' },
+				{ name: 'light', value: '#f6f9fc' },
 				{ name: 'dark', value: '#202124' },
 			],
 		},
@@ -57,6 +59,7 @@ const preview: Preview = {
 				order: [
 					'Getting Started',
 					'Contribute',
+					'Design System',
 					'Components',
 					[
 						'Button', ['Primary', 'Secondary', 'Clear', '*'],
@@ -76,7 +79,15 @@ const preview: Preview = {
 
 			// Set the preview theme to match the Storybook UI.
 			// See: https://storybook.js.org/docs/web-components/configure/theming#theming-docs
-			// theme: objektDarkThemethemes.dark
+			theme: objektLightTheme,
+
+			// Clean-up and rewrite the source code preview.
+			// See: https://storybook.js.org/docs/web-components/api/doc-block-source#transform
+			source: {
+				transform: (code: string) => code
+					.replace(/=\"\"/g, '') // Remove empty ="" from boolean attributes
+			}
+
 		},
 		cssVariables: {
 			files: {

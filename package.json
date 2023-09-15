@@ -1,58 +1,59 @@
 {
-	"name": "@objekt/web-components",
-	"version": "1.0.0",
-	"description": "Collection of UI components for mobile and web",
-	"license": "ISC",
-	"author": "Objekt Labs",
-	"homepage": "https://github.com/objektlabs/web-components#readme",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/objektlabs/web-components.git"
-	},
-	"bugs": {
-		"url": "https://github.com/objektlabs/web-components/issues"
-	},
-	"main": "index.js",
-	"directories": {
-		"doc": "docs"
-	},
-	"scripts": {
-		"clean": "npm run clean --workspaces",
-		"build": "npm run build --workspaces",
-		"test": "npm run test --workspaces",
-		"docs": "npx rimraf docs && npm run docs:custom-elements && npm run docs:readme && npm run docs:storybook",
-		"docs:readme": "npm run docs --workspaces",
-		"docs:storybook": "npx storybook build --docs --docs --output-dir=docs",
-		"docs:custom-elements": "npx cem analyze --litelement --globs packages/*/components/*",
-		"serve": "npm run clean && tsc --build tsconfig.project.json && npm run docs:custom-elements && concurrently -k -r \"tsc --build tsconfig.project.json --watch --preserveWatchOutput\" \"npx storybook dev --docs --port=6006\""
-	},
-	"devDependencies": {
-		"@babel/preset-env": "^7.22.15",
-		"@babel/preset-typescript": "^7.22.15",
-		"@custom-elements-manifest/analyzer": "^0.5.7",
-		"@etchteam/storybook-addon-css-variables-theme": "^1.5.1",
-		"@storybook/addon-a11y": "^7.4.1",
-		"@storybook/addon-essentials": "^7.4.1",
-		"@storybook/addon-interactions": "^7.4.1",
-		"@storybook/addon-links": "^7.4.1",
-		"@storybook/blocks": "^7.4.1",
-		"@storybook/jest": "^0.2.2",
-		"@storybook/manager-api": "^7.4.2",
-		"@storybook/testing-library": "^0.2.0",
-		"@storybook/theming": "^7.4.1",
-		"@storybook/web-components": "^7.4.1",
-		"@storybook/web-components-webpack5": "^7.4.1",
-		"concurrently": "^7.1.0",
-		"lit": "^2.8.0",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"rimraf": "^5.0.1",
-		"storybook": "^7.4.1",
-		"typescript": "^5.2.2"
-	},
-	"workspaces": [
-		"packages/button",
-		"packages/text-field"
-	],
-	"customElements": "custom-elements.json"
+  "name": "@objekt/web-components",
+  "version": "1.0.0",
+  "description": "Collection of UI components for mobile and web",
+  "license": "ISC",
+  "author": "Objekt Labs",
+  "homepage": "https://github.com/objektlabs/web-components#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/objektlabs/web-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/objektlabs/web-components/issues"
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "clean": "npm run clean --workspaces",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "docs": "npx rimraf docs && npm run docs:custom-elements && npm run docs:readme && npm run docs:storybook",
+    "docs:readme": "npm run docs --workspaces",
+    "docs:storybook": "npx storybook build --docs --docs --output-dir=docs",
+    "docs:custom-elements": "npx cem analyze",
+    "serve": "npm run clean && tsc --build tsconfig.project.json && npm run docs:custom-elements && concurrently -k -r \"tsc --build tsconfig.project.json --watch --preserveWatchOutput\" \"npx storybook dev --docs --port=6006\""
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.15",
+    "@babel/preset-typescript": "^7.22.15",
+    "@custom-elements-manifest/analyzer": "^0.5.7",
+    "@etchteam/storybook-addon-css-variables-theme": "^1.5.1",
+    "@storybook/addon-a11y": "^7.4.1",
+    "@storybook/addon-essentials": "^7.4.1",
+    "@storybook/addon-interactions": "^7.4.1",
+    "@storybook/addon-links": "^7.4.1",
+    "@storybook/blocks": "^7.4.1",
+    "@storybook/jest": "^0.2.2",
+    "@storybook/manager-api": "^7.4.2",
+    "@storybook/testing-library": "^0.2.0",
+    "@storybook/theming": "^7.4.1",
+    "@storybook/web-components": "^7.4.1",
+    "@storybook/web-components-webpack5": "^7.4.1",
+    "concurrently": "^7.1.0",
+    "lit": "^2.8.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remark-gfm": "^3.0.1",
+    "rimraf": "^5.0.1",
+    "storybook": "^7.4.1",
+    "typescript": "^5.2.2"
+  },
+  "workspaces": [
+    "packages/button",
+    "packages/text-field"
+  ],
+  "customElements": "custom-elements.json"
 }
