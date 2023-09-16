@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/web-components';
 
-import { Controls, Story } from './obj-text-field.template';
+import { Controls, Params, Story } from './obj-text-field.template';
 
 // -------------
 // CONFIGURATION
@@ -9,7 +9,8 @@ import { Controls, Story } from './obj-text-field.template';
 export default {
 	title: 'Components/Text-Field/Clear',
 	component: 'obj-text-field',
-	argTypes: Controls()
+	argTypes: Controls(),
+	parameters: Params()
 } as Meta;
 
 // -------

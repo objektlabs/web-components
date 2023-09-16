@@ -23,8 +23,15 @@ const config: StorybookConfig = {
 	],
 	addons: [
 		// Include the default storybook addons, i.e. actions, backgrounds, controls, docs, viewport, toolbars, measure, outline.
-		// See: https://storybook.js.org/docs/web-components/essentials/introduction
-		getAbsolutePath('@storybook/addon-essentials'),
+		// See: https://storybook.js.org/docs/react/essentials/introduction#configuration
+		// getAbsolutePath('@storybook/addon-essentials'),
+		getAbsolutePath('@storybook/addon-actions'),
+		getAbsolutePath('@storybook/addon-viewport'),
+		getAbsolutePath('@storybook/addon-controls'),
+		getAbsolutePath('@storybook/addon-backgrounds'),
+		getAbsolutePath('@storybook/addon-toolbars'),
+		getAbsolutePath('@storybook/addon-measure'),
+		getAbsolutePath('@storybook/addon-outline'),
 
 		// Addon to report component accessbility warnings.
 		// https://storybook.js.org/addons/@storybook/addon-a11y

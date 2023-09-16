@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/web-components';
 
-import { Controls, Story } from './obj-button.template';
+import { Controls, Params, Story } from './obj-button.template';
 
 // -------------
 // CONFIGURATION
@@ -11,14 +11,7 @@ export default {
 	displayName: 'Test',
 	component: 'obj-button',
 	argTypes: Controls(),
-	parameters: {
-		docs: {
-			controls: { exclude: ['*'] },
-			canvas: {
-				sourceState: 'shown'
-			},
-		},
-	},
+	parameters: Params()
 } as Meta;
 
 // -------

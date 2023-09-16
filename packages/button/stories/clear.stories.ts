@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/web-components';
 
-import { Controls, Story } from './obj-button.template';
+import { Controls, Params, Story } from './obj-button.template';
 
 // -------------
 // CONFIGURATION
@@ -9,7 +9,8 @@ import { Controls, Story } from './obj-button.template';
 export default {
 	title: 'Components/Button/Clear',
 	component: 'obj-button',
-	argTypes: Controls()
+	argTypes: Controls(),
+	parameters: Params()
 } as Meta;
 
 // -------

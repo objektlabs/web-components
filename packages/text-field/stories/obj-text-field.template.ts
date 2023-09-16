@@ -1,7 +1,6 @@
 
 
-import { ArgTypes, Args, StoryObj, getCustomElements } from '@storybook/web-components';
-
+import { ArgTypes, Args, Parameters, StoryObj, getCustomElements } from '@storybook/web-components';
 import { action } from '@storybook/addon-actions';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -85,10 +84,33 @@ export const Controls = (argTypes?: Partial<ArgTypes<Args>>): Partial<ArgTypes<A
 	return GenerateControlsFromManifest('obj-text-field', {
 		type: {
 			control: { type: 'radio' },
-			options: ['primary', 'secondary', 'clear']
+			options: ['stack', 'inline', 'outline', 'filled', 'clear']
 		},
 		...argTypes
 	});
+}
+
+/**
+ * Generate the default parameters template for the component.
+ * 
+ * @param overrides The story level overrides to apply to the default template.
+ * 
+ * @returns The component parameters template.
+ */
+export const Params = (parameters?: Parameters): Parameters => {
+
+	if (!parameters) {
+		parameters = {};
+	}
+
+	return {
+		docs: {
+			canvas: {
+				sourceState: 'shown'
+			}
+		},
+		...parameters
+	};
 }
 
 /**
@@ -113,8 +135,8 @@ export const Story = (story?: StoryObj): StoryObj => {
 		},
 		render: args => html`
 			<obj-text-field
-				type="${args.type}"
-				label="${args.label}"
+				type="${ifDefined(args.type)}"
+				label="${ifDefined(args.label)}"
 				value="${ifDefined(args.value)}"
 				placeholder="${ifDefined(args.placeholder)}"
 				message="${ifDefined(args.message)}"

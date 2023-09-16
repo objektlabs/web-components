@@ -1,5 +1,7 @@
 import type { Preview } from "@storybook/web-components";
 
+import DocsPageTemplate from './templates/DocsPageTemplate.mdx';
+
 import { setCustomElementsManifest } from '@storybook/web-components';
 import customElements from '../custom-elements.json';
 
@@ -43,10 +45,10 @@ const preview: Preview = {
 		backgrounds: {
 			// Set default background color & list of available preview background colors.
 			// See: https://storybook.js.org/docs/web-components/essentials/backgrounds
-			default: 'light',
+			default: 'white',
 			values: [
 				{ name: 'white', value: '#ffffff' },
-				{ name: 'light', value: '#f6f9fc' },
+				{ name: 'light', value: '#f0f0f0' },
 				{ name: 'dark', value: '#202124' },
 			],
 		},
@@ -69,6 +71,10 @@ const preview: Preview = {
 			},
 		},
 		docs: {
+			// Configure the default story docs page template.
+			// See: https://storybook.js.org/docs/web-components/writing-docs/autodocs#with-mdx
+			page: DocsPageTemplate,
+
 			// Include a table of contents on the docs page.
 			// See: https://storybook.js.org/docs/web-components/writing-docs/autodocs#generate-a-table-of-contents
 			// XXX: removing this as the Storybook UI overflows with this enabled as the code preview does not wrap long code blocks correctly.
@@ -85,9 +91,10 @@ const preview: Preview = {
 			// See: https://storybook.js.org/docs/web-components/api/doc-block-source#transform
 			source: {
 				transform: (code: string) => code
+					.replace(/ /g, '\n  ') // Put each property on a new line
+					.replace(/></g, '>\n<') // Put the closing tag to a new line
 					.replace(/=\"\"/g, '') // Remove empty ="" from boolean attributes
 			}
-
 		},
 		cssVariables: {
 			files: {
