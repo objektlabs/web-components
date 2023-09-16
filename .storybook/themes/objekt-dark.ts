@@ -10,29 +10,29 @@ export default create({
 	//brandTarget: '_self',
 
 	// // Color
-	// colorPrimary: 'hotpink',
-	// colorSecondary: 'deepskyblue',
+	colorPrimary: 'red',
+	colorSecondary: '#029CFD',
 
-	// // UI
-	// appBg: 'white',
-	// appContentBg: 'silver',
-	// appBorderColor: 'grey',
-	// appBorderRadius: 4,
+	// UI
+	appBg: '#1e2128',
+	appContentBg: '#1e2128',
+	appBorderColor: '#ffffff1a',
+	appBorderRadius: 10,
 
-	// // Typography
+	// Typography
 	// fontBase: '"Open Sans", sans-serif',
 	// fontCode: 'monospace',
 
-	// // Text colors
+	// Text colors
 	// textColor: 'black',
 	// textInverseColor: 'rgba(255,255,255,0.9)',
 
-	// // Toolbar default and active colors
-	// barTextColor: 'silver',
-	// barSelectedColor: 'black',
-	// barBg: 'hotpink',
+	// Toolbar default and active colors
+	barTextColor: '#798186',
+	//barSelectedColor: 'red',
+	barBg: '#1e2128',
 
-	// // Form colors
+	// Form colors
 	// inputBg: 'white',
 	// inputBorder: 'silver',
 	// inputTextColor: 'black',
