@@ -1,8 +1,13 @@
 # obj-text-field
 
-A simple text input component.
+A multi-variant text input component.
 
-&#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/inputs-text-field)
+💡 **Demo**:
+[Stack](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-stack--docs) |
+[Outline](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-outline--docs) |
+[Inline](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-inline--docs) |
+[Filled](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-filled--docs) |
+[Clear](https://objektlabs.github.io/web-components/?path=/docs/components-text-field-clear--docs)
 
 ## Installation
 ```sh
@@ -37,9 +42,3 @@ Primary:
 | Event           | Type          | Description                                      |
 |-----------------|---------------|--------------------------------------------------|
 | `value-changed` | `CustomEvent` | Dispatched when the text in entered into the field. |
-
-## CSS Custom Properties
-
-| Property |
-|----------|
-| `TODO`   |

@@ -32,6 +32,7 @@
 		"lit": "^2.8.0"
 	},
 	"devDependencies": {
+		"@objekt/utils": "file:../storybook-web-component-helpers",
 		"@webcomponents/webcomponentsjs": "^2.6.0",
 		"rimraf": "^5.0.1",
 		"typescript": "^5.2.2",

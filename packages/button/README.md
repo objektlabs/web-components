@@ -1,8 +1,11 @@
 # obj-button
 
-A clickable button component.
+A multi-variant clickable button component.
 
-&#128161; [Live demo](https://objektlabs.github.io/web-components/?path=/story/buttons-button)
+💡 **Demo**:
+[Primary](https://objektlabs.github.io/web-components/?path=/docs/components-button-primary--docs) |
+[Secondary](https://objektlabs.github.io/web-components/?path=/docs/components-button-secondary--docs) |
+[Clear](https://objektlabs.github.io/web-components/?path=/docs/components-button-clear--docs)
 
 ## Installation
 ```sh

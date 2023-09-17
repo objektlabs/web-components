@@ -1,10 +1,10 @@
 {
-	"name": "@objekt/obj-button",
+	"name": "@objekt/storybook-web-component-helpers",
 	"version": "0.0.4",
-	"description": "A clickable button component.",
+	"description": "Utilities and helpers reused throughout the project",
 	"author": "Objekt Labs",
 	"license": "ISC",
-	"homepage": "https://github.com/objektlabs/web-components/tree/main/packages/button",
+	"homepage": "https://github.com/objektlabs/web-components/tree/main/packages/storybook-web-component-helpers",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/objektlabs/web-components.git"
@@ -23,19 +23,12 @@
 	"scripts": {
 		"clean": "npx rimraf dist docs",
 		"build": "npm run clean && npm run docs && tsc",
-		"docs": "npx web-component-analyzer ./components/**/*.{js,ts} --outFile README.md",
+		"docs": "echo \"Error: no docs specified\" && exit 0",
 		"test": "echo \"Error: no test specified\" && exit 0",
 		"prepublish": "npm run build",
 		"publish": "npm publish --access public"
 	},
-	"dependencies": {
-		"lit": "^2.8.0"
-	},
 	"devDependencies": {
-		"@objekt/utils": "file:../storybook-web-component-helpers",
-		"@webcomponents/webcomponentsjs": "^2.6.0",
-		"rimraf": "^5.0.1",
-		"typescript": "^5.2.2",
-		"web-component-analyzer": "^1.1.7"
+		"@storybook/web-components": "^7.4.2"
 	}
 }
