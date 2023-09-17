@@ -91,7 +91,7 @@ const preview: Preview = {
 			// See: https://storybook.js.org/docs/web-components/api/doc-block-source#transform
 			source: {
 				transform: (code: string) => code
-					.replace(/ /g, '\n  ') // Put each property on a new line
+					.replace(/ ([\w-]+="[^"]*")/g, '\n  $1') // Put each attribute on a new line
 					.replace(/></g, '>\n<') // Put the closing tag to a new line
 					.replace(/=\"\"/g, '') // Remove empty ="" from boolean attributes
 			}
